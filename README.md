@@ -3,6 +3,10 @@
 **Chapters:** 39  
 **Lessons:** 543
 
+Explanation of Symbols:
+
+**💰** - Paid Lessons
+**✅** - Free Lessons which are done
 ---
 
 ## 1. Introduction (2 lessons)
@@ -14,13 +18,13 @@
 
 - Why warmup?
 - Contains Duplicate (easy) ✅
-- Pangram (easy)
-- Reverse Vowels (easy)
-- Valid Palindrome (easy)
-- Valid Anagram (easy)
-- Shortest Word Distance (easy)
-- Number of Good Pairs (easy)
-- Sqrt (medium)
+- Pangram (easy) ✅
+- Reverse Vowels (easy) ✅
+- Valid Palindrome (easy) ✅
+- Valid Anagram (easy) ✅
+- Shortest Word Distance (easy) 💰
+- Number of Good Pairs (easy) ✅
+- Sqrt (medium) ✅
 
 ## 3. Pattern: Two Pointers (21 lessons)
 
