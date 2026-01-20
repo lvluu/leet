@@ -26,7 +26,7 @@ Explanation of Symbols:
 - Number of Good Pairs (easy) ✅
 - Sqrt (medium) ✅
 
-## 3. Pattern: Two Pointers (21 lessons)
+## 3. Pattern: Two Pointers (21 lessons) ✅
 
 - Introduction to Two Pointers Pattern
 - Pair with Target Sum (easy)
@@ -40,7 +40,7 @@ Explanation of Symbols:
 - Problem Challenge 2: Comparing Strings containing Backspaces (medium)
 - Problem Challenge 3: Minimum Window Sort (medium)
 
-## 4. Pattern: Fast & Slow Pointers (15 lessons)
+## 4. Pattern: Fast & Slow Pointers (15 lessons) ✅
 
 - Introduction to Fast & Slow Pointers Pattern
 - LinkedList Cycle (easy)
