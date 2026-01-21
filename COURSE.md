@@ -51,7 +51,7 @@ Explanation of Symbols:
 - Problem Challenge 2: Rearrange a LinkedList (medium)
 - Problem Challenge 3: Cycle in a Circular Array (hard)
 
-## 5. Pattern: Sliding Window (25 lessons)
+## 5. Pattern: Sliding Window (25 lessons) ✅
 
 - Introduction to Sliding Window Pattern
 - Maximum Sum Subarray of Size K (easy)

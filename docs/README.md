@@ -14,6 +14,9 @@ The Two Pointers pattern uses indices to traverse data structures efficiently, e
 ### Sliding Window
 The Sliding Window pattern maintains a range of elements that slides through an array or string to solve problems involving contiguous subarrays or substrings.
 
+### Merge Intervals
+The Merge Intervals pattern focuses on sorting and combining overlapping ranges, commonly used in scheduling and timeline problems.
+
 ## How to Use This Guide
 
 Each pattern section includes:

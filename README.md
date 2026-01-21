@@ -62,6 +62,9 @@ The output will be in the `_book` directory.
 │   └── sliding-window/       # Sliding Window Pattern
 │       ├── introduction.md
 │       └── advanced-techniques.md
+    ──── ... merge-intervals/       # Merge Intervals Pattern
+        ├── introduction.md
+        └── advanced-techniques.md
 ├── book.json                 # GitBook configuration
 ├── .gitbook.yaml            # GitBook root configuration
 └── .github/
