@@ -9,6 +9,8 @@
   --border-color: #e2e8f0;
   --text-color: #1e293b;
   --code-bg: #f1f5f9;
+
+  color-scheme: light;
 }
 
 /* Improved typography */
@@ -195,10 +197,129 @@
     --border-color: #334155;
     --text-color: #e2e8f0;
     --code-bg: #1e293b;
+
+    color-scheme: dark;
   }
-  
-  .book .book-body {
+
+  /* Page background + base text */
+  html,
+  body,
+  .book,
+  .book .book-body,
+  .book .book-body .body-inner,
+  .book .book-body .page-wrapper {
     background: var(--background);
     color: var(--text-color);
+  }
+
+  /* Sidebar */
+  .book .book-summary {
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+  }
+
+  .book .book-summary ul.summary li a,
+  .book .book-summary ul.summary li span {
+    color: var(--text-color);
+  }
+
+  .book .book-summary ul.summary li.active > a,
+  .book .book-summary ul.summary li a:hover {
+    color: #ffffff;
+  }
+
+  /* Content area */
+  .book .book-body .page-wrapper .page-inner section.normal {
+    color: var(--text-color);
+  }
+
+  .book .book-body .page-wrapper .page-inner section.normal h1,
+  .book .book-body .page-wrapper .page-inner section.normal h2,
+  .book .book-body .page-wrapper .page-inner section.normal h3 {
+    color: var(--text-color);
+  }
+
+  /* Tables + blockquotes */
+  .book .book-body .page-wrapper .page-inner section.normal table td {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .book .book-body .page-wrapper .page-inner section.normal table tr:hover {
+    background: rgba(148, 163, 184, 0.12);
+  }
+
+  .book .book-body .page-wrapper .page-inner section.normal blockquote {
+    background: rgba(148, 163, 184, 0.10);
+  }
+
+  /* Code blocks + inline code */
+  .book .book-body .page-wrapper .page-inner section.normal pre,
+  .book .book-body .page-wrapper .page-inner section.normal code {
+    background: var(--code-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+
+  /* Prism token tweaks (keeps your existing prism-ghcolors.css but improves contrast on dark bg) */
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #e2e8f0;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #94a3b8;
+  }
+
+  .token.punctuation {
+    color: #cbd5e1;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #fca5a5;
+  }
+
+  .token.boolean,
+  .token.number {
+    color: #fdba74;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #86efac;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .token.variable {
+    color: #93c5fd;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function,
+  .token.class-name {
+    color: #c4b5fd;
+  }
+
+  .token.keyword {
+    color: #93c5fd;
+    font-weight: 600;
+  }
+
+  .token.regex,
+  .token.important {
+    color: #fbbf24;
   }
 }
