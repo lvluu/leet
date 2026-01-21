@@ -1,0 +1,547 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Advanced Techniques · Coding Patterns Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="lvluu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Pointers Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../two-pointers/introduction.html">
+            
+                <a href="../two-pointers/introduction.html">
+            
+                    
+                    Introduction to Two Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../two-pointers/fast-slow.html">
+            
+                <a href="../two-pointers/fast-slow.html">
+            
+                    
+                    Fast & Slow Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sliding Window Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    Introduction to Sliding Window
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="advanced-techniques.html">
+            
+                <a href="advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Advanced Techniques</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="advanced-sliding-window-techniques">Advanced Sliding Window Techniques</h1>
+<p>This guide covers more advanced applications of the sliding window pattern, including character replacement, permutation matching, and minimum window problems.</p>
+<h2 id="1-character-replacement-problems">1. Character Replacement Problems</h2>
+<p>These problems involve allowing a limited number of character changes to maximize a window property.</p>
+<h3 id="longest-substring-with-same-letters-after-k-replacements">Longest Substring with Same Letters after K Replacements</h3>
+<p><strong>Problem</strong>: Given a string, find the length of the longest substring with the same letters after replacing at most <code>k</code> characters.</p>
+<p><strong>Strategy</strong>: Track the frequency of characters in the window. The number of replacements needed = window_size - max_frequency. When this exceeds <code>k</code>, shrink the window.</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">length_of_longest_substring</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    char_freq <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    left <span class="token operator">=</span> <span class="token number">0</span>
+    max_len <span class="token operator">=</span> <span class="token number">0</span>
+    max_repeat_count <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> right <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        char_freq<span class="token punctuation">[</span>s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> char_freq<span class="token punctuation">.</span>get<span class="token punctuation">(</span>s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+        max_repeat_count <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>max_repeat_count<span class="token punctuation">,</span> char_freq<span class="token punctuation">[</span>s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># If replacements needed &gt; k, shrink window</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> max_repeat_count <span class="token operator">&gt;</span> k<span class="token punctuation">:</span>
+            char_freq<span class="token punctuation">[</span>s<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+            left <span class="token operator">+=</span> <span class="token number">1</span>
+
+        max_len <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>max_len<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> max_len
+</code></pre>
+<p><strong>JavaScript implementation</strong>:</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">lengthOfLongestSubstring</span><span class="token punctuation">(</span><span class="token parameter">s<span class="token punctuation">,</span> k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> charFreq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> maxLen <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> maxRepeatCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> right <span class="token operator">&lt;</span> s<span class="token punctuation">.</span>length<span class="token punctuation">;</span> right<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    charFreq<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>charFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    maxRepeatCount <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxRepeatCount<span class="token punctuation">,</span> charFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> maxRepeatCount <span class="token operator">&gt;</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      charFreq<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span> charFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      left<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    maxLen <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxLen<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> maxLen<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="2-permutation-matching">2. Permutation Matching</h2>
+<p>Finding if a permutation of a pattern exists as a substring in a larger string.</p>
+<h3 id="permutation-in-a-string">Permutation in a String</h3>
+<p><strong>Problem</strong>: Given strings <code>s1</code> and <code>s2</code>, return true if <code>s2</code> contains a permutation of <code>s1</code>.</p>
+<p><strong>Strategy</strong>: Use a fixed-size window equal to <code>s1.length</code>. Track character frequencies and compare with the pattern.</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">check_inclusion</span><span class="token punctuation">(</span>s1<span class="token punctuation">,</span> s2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    s1_freq <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    window_freq <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> s1<span class="token punctuation">:</span>
+        s1_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">=</span> s1_freq<span class="token punctuation">.</span>get<span class="token punctuation">(</span>char<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+
+    left <span class="token operator">=</span> <span class="token number">0</span>
+    matched <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> right <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        right_char <span class="token operator">=</span> s2<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> right_char <span class="token keyword">in</span> s1_freq<span class="token punctuation">:</span>
+            window_freq<span class="token punctuation">[</span>right_char<span class="token punctuation">]</span> <span class="token operator">=</span> window_freq<span class="token punctuation">.</span>get<span class="token punctuation">(</span>right_char<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">if</span> window_freq<span class="token punctuation">[</span>right_char<span class="token punctuation">]</span> <span class="token operator">==</span> s1_freq<span class="token punctuation">[</span>right_char<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                matched <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token keyword">if</span> right <span class="token operator">&gt;=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            left_char <span class="token operator">=</span> s2<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+            <span class="token keyword">if</span> left_char <span class="token keyword">in</span> s1_freq<span class="token punctuation">:</span>
+                <span class="token keyword">if</span> window_freq<span class="token punctuation">[</span>left_char<span class="token punctuation">]</span> <span class="token operator">==</span> s1_freq<span class="token punctuation">[</span>left_char<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    matched <span class="token operator">-=</span> <span class="token number">1</span>
+                window_freq<span class="token punctuation">[</span>left_char<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+            left <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token keyword">if</span> matched <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s1_freq<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+</code></pre>
+<h2 id="3-minimum-window-problems">3. Minimum Window Problems</h2>
+<p>Finding the smallest window that satisfies a condition.</p>
+<h3 id="smallest-window-containing-substring">Smallest Window Containing Substring</h3>
+<p><strong>Problem</strong>: Find the minimum window in string <code>s</code> that contains all characters of string <code>t</code>.</p>
+<p><strong>Strategy</strong>: Expand window to find a valid solution, then contract to minimize it.</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">min_window</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> s <span class="token keyword">or</span> <span class="token keyword">not</span> t<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span>
+
+    target_freq <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> t<span class="token punctuation">:</span>
+        target_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">=</span> target_freq<span class="token punctuation">.</span>get<span class="token punctuation">(</span>char<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+
+    required <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>target_freq<span class="token punctuation">)</span>
+    formed <span class="token operator">=</span> <span class="token number">0</span>
+    window_freq <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    left <span class="token operator">=</span> <span class="token number">0</span>
+    min_len <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">&apos;inf&apos;</span><span class="token punctuation">)</span>
+    min_left <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> right <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        char <span class="token operator">=</span> s<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
+        window_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">=</span> window_freq<span class="token punctuation">.</span>get<span class="token punctuation">(</span>char<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+
+        <span class="token keyword">if</span> char <span class="token keyword">in</span> target_freq <span class="token keyword">and</span> window_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">==</span> target_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            formed <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token keyword">while</span> left <span class="token operator">&lt;=</span> right <span class="token keyword">and</span> formed <span class="token operator">==</span> required<span class="token punctuation">:</span>
+            <span class="token comment"># Update result if this window is smaller</span>
+            <span class="token keyword">if</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;</span> min_len<span class="token punctuation">:</span>
+                min_len <span class="token operator">=</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span>
+                min_left <span class="token operator">=</span> left
+
+            <span class="token comment"># Try to shrink window</span>
+            char <span class="token operator">=</span> s<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+            window_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+            <span class="token keyword">if</span> char <span class="token keyword">in</span> target_freq <span class="token keyword">and</span> window_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target_freq<span class="token punctuation">[</span>char<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                formed <span class="token operator">-=</span> <span class="token number">1</span>
+            left <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span> <span class="token keyword">if</span> min_len <span class="token operator">==</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">&apos;inf&apos;</span><span class="token punctuation">)</span> <span class="token keyword">else</span> s<span class="token punctuation">[</span>min_left<span class="token punctuation">:</span>min_left <span class="token operator">+</span> min_len<span class="token punctuation">]</span>
+</code></pre>
+<p><strong>Java implementation</strong>:</p>
+<pre class="language-"><code class="lang-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">minWindow</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token class-name">String</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> targetFreq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> t<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        targetFreq<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> targetFreq<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> required <span class="token operator">=</span> targetFreq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> formed <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Character</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> windowFreq <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> minLen <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">,</span> minLeft <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> right <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> right<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">char</span> c <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        windowFreq<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> windowFreq<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>targetFreq<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> 
+            windowFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">intValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> targetFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">intValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            formed<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right <span class="token operator">&amp;&amp;</span> formed <span class="token operator">==</span> required<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;</span> minLen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                minLen <span class="token operator">=</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                minLeft <span class="token operator">=</span> left<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">char</span> leftChar <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            windowFreq<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>leftChar<span class="token punctuation">,</span> windowFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>leftChar<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>targetFreq<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>leftChar<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> 
+                windowFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>leftChar<span class="token punctuation">)</span> <span class="token operator">&lt;</span> targetFreq<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>leftChar<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                formed<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            left<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> minLen <span class="token operator">==</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span> <span class="token operator">?</span> <span class="token string">&quot;&quot;</span> <span class="token operator">:</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>minLeft<span class="token punctuation">,</span> minLeft <span class="token operator">+</span> minLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="4-subarray-product-problems">4. Subarray Product Problems</h2>
+<p>Dealing with products instead of sums requires careful handling of zeros and negative numbers.</p>
+<h3 id="subarrays-with-product-less-than-target">Subarrays with Product Less than Target</h3>
+<p><strong>Problem</strong>: Find the count of contiguous subarrays where the product of all elements is less than a target value.</p>
+<p><strong>Strategy</strong>: Use a dynamic window. For each position of <code>right</code>, count all valid subarrays ending at <code>right</code>.</p>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">num_subarray_product_less_than_k</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> k <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+    product <span class="token operator">=</span> <span class="token number">1</span>
+    left <span class="token operator">=</span> <span class="token number">0</span>
+    count <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> right <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        product <span class="token operator">*=</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
+
+        <span class="token keyword">while</span> product <span class="token operator">&gt;=</span> k<span class="token punctuation">:</span>
+            product <span class="token operator">//=</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+            left <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token comment"># All subarrays ending at right</span>
+        count <span class="token operator">+=</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> count
+</code></pre>
+<h2 id="key-insights">Key Insights</h2>
+<ol>
+<li><p><strong>Window state tracking</strong>: Use appropriate data structures (maps, sets, counters) to maintain window state efficiently.</p>
+</li>
+<li><p><strong>Optimization trick</strong>: In some problems (like character replacement), you don&apos;t need to update <code>max_repeat_count</code> when shrinking&#x2014;it&apos;s okay if it&apos;s stale because we only care about larger windows.</p>
+</li>
+<li><p><strong>Counting subarrays</strong>: When asked for count, remember that a window of size <code>n</code> contains <code>n</code> subarrays ending at the right pointer.</p>
+</li>
+<li><p><strong>Two conditions</strong>: Some problems require satisfying two conditions simultaneously (e.g., substring with K distinct chars AND max frequency).</p>
+</li>
+<li><p><strong>Edge cases</strong>: Always check for empty inputs, k=0 or k&gt;n, negative numbers (for product problems).</p>
+</li>
+</ol>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/longest-repeating-character-replacement/" target="_blank">Longest Substring with Same Letters after Replacement</a> (hard)</li>
+<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/" target="_blank">Longest Subarray with Ones after Replacement</a> (hard)</li>
+<li><a href="https://leetcode.com/problems/permutation-in-string/" target="_blank">Permutation in a String</a> (hard)</li>
+<li><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/" target="_blank">String Anagrams</a> (hard)</li>
+<li><a href="https://leetcode.com/problems/minimum-window-substring/" target="_blank">Smallest Window containing Substring</a> (hard)</li>
+<li><a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words/" target="_blank">Words Concatenation</a> (hard)</li>
+<li><a href="https://leetcode.com/problems/subarray-product-less-than-k/" target="_blank">Subarrays with Product Less than a Target</a> (hard)</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Sliding Window">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Advanced Techniques","level":"3.2","depth":1,"previous":{"title":"Introduction to Sliding Window","level":"3.1","depth":1,"path":"sliding-window/introduction.md","ref":"sliding-window/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","edit-link","prism","-highlight","copy-code-button","splitter","anchorjs","expandable-chapters-small"],"root":"./docs","styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.0.0","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"sliding-window/advanced-techniques.md","mtime":"2026-01-21T07:23:34.831Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-21T07:24:12.764Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
