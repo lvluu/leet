@@ -13,7 +13,6 @@
     "theme-comscore",
     "github",
     "edit-link",
-    "prism",
     "-highlight",
     "copy-code-button",
     "splitter",
@@ -44,14 +43,6 @@
     "page-toc-button": {
       "maxTocDepth": 2,
       "minTocSize": 2
-    },
-    "prism": {
-      "css": [
-        "prism-themes/themes/prism-ghcolors.css"
-      ],
-      "lang": {
-        "flow": "typescript"
-      }
     },
     "sharing": {
       "facebook": false,
