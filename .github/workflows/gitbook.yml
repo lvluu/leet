@@ -16,9 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Build GitBook
+      - name: Build and Deploy GitBook
         uses: ZanderZhao/gitbook-action@v1.2.4
         with:
           token: ${{ secrets.GH_TOKEN }}
+          source_branch: main
           source_dir: ./
-          gitbook_version: latest
+          publish_branch: gh-pages
