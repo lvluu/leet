@@ -1,0 +1,325 @@
+/* Modern GitBook Theme Customization */
+
+/* Clean, modern color scheme */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #64748b;
+  --background: #ffffff;
+  --sidebar-bg: #f8fafc;
+  --border-color: #e2e8f0;
+  --text-color: #1e293b;
+  --code-bg: #f1f5f9;
+
+  color-scheme: light;
+}
+
+/* Improved typography */
+.book .book-body .page-wrapper .page-inner section.normal {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-color);
+  max-width: 900px;
+}
+
+/* Clean headings */
+.book .book-body .page-wrapper .page-inner section.normal h1,
+.book .book-body .page-wrapper .page-inner section.normal h2,
+.book .book-body .page-wrapper .page-inner section.normal h3 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1 {
+  font-size: 2.25rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.4rem;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h3 {
+  font-size: 1.5rem;
+}
+
+/* Modern sidebar */
+.book .book-summary {
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.book .book-summary ul.summary li a,
+.book .book-summary ul.summary li span {
+  padding: 10px 15px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.book .book-summary ul.summary li.active > a,
+.book .book-summary ul.summary li a:hover {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  margin: 2px 8px;
+}
+
+/* Clean code blocks */
+.book .book-body .page-wrapper .page-inner section.normal pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.book .book-body .page-wrapper .page-inner section.normal code {
+  background: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+}
+
+/* Modern links */
+.book .book-body .page-wrapper .page-inner section.normal a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal a:hover {
+  border-bottom-color: var(--primary-color);
+}
+
+/* Clean tables */
+.book .book-body .page-wrapper .page-inner section.normal table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal table th {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.book .book-body .page-wrapper .page-inner section.normal table tr:hover {
+  background: var(--sidebar-bg);
+}
+
+/* Modern blockquotes */
+.book .book-body .page-wrapper .page-inner section.normal blockquote {
+  border-left: 4px solid var(--primary-color);
+  background: var(--sidebar-bg);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Clean navigation buttons */
+.book .book-body .page-wrapper .page-inner section.normal .navigation {
+  border-top: 1px solid var(--border-color);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+/* Copy button styling */
+.copy-code-button {
+  background: var(--primary-color) !important;
+  border-radius: 4px !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.copy-code-button:hover {
+  opacity: 1;
+}
+
+/* Back to top button */
+.back-to-top-button {
+  background: var(--primary-color) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .book .book-body .page-wrapper .page-inner section.normal {
+    font-size: 15px;
+    padding: 1rem;
+  }
+  
+  .book .book-body .page-wrapper .page-inner section.normal h1 {
+    font-size: 1.875rem;
+  }
+  
+  .book .book-body .page-wrapper .page-inner section.normal h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #3b82f6;
+    --secondary-color: #94a3b8;
+    --background: #0f172a;
+    --sidebar-bg: #1e293b;
+    --border-color: #334155;
+    --text-color: #e2e8f0;
+    --code-bg: #1e293b;
+
+    color-scheme: dark;
+  }
+
+  /* Page background + base text */
+  html,
+  body,
+  .book,
+  .book .book-body,
+  .book .book-body .body-inner,
+  .book .book-body .page-wrapper {
+    background: var(--background);
+    color: var(--text-color);
+  }
+
+  /* Sidebar */
+  .book .book-summary {
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+  }
+
+  .book .book-summary ul.summary li a,
+  .book .book-summary ul.summary li span {
+    color: var(--text-color);
+  }
+
+  .book .book-summary ul.summary li.active > a,
+  .book .book-summary ul.summary li a:hover {
+    color: #ffffff;
+  }
+
+  /* Content area */
+  .book .book-body .page-wrapper .page-inner section.normal {
+    color: var(--text-color);
+  }
+
+  .book .book-body .page-wrapper .page-inner section.normal h1,
+  .book .book-body .page-wrapper .page-inner section.normal h2,
+  .book .book-body .page-wrapper .page-inner section.normal h3 {
+    color: var(--text-color);
+  }
+
+  /* Tables + blockquotes */
+  .book .book-body .page-wrapper .page-inner section.normal table td {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .book .book-body .page-wrapper .page-inner section.normal table tr:hover {
+    background: rgba(148, 163, 184, 0.12);
+  }
+
+  .book .book-body .page-wrapper .page-inner section.normal blockquote {
+    background: rgba(148, 163, 184, 0.10);
+  }
+
+  /* Code blocks + inline code */
+  .book .book-body .page-wrapper .page-inner section.normal pre,
+  .book .book-body .page-wrapper .page-inner section.normal code {
+    background: var(--code-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+  }
+
+  /* Prism token tweaks (keeps your existing prism-ghcolors.css but improves contrast on dark bg) */
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #e2e8f0;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #94a3b8;
+  }
+
+  .token.punctuation {
+    color: #cbd5e1;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #fca5a5;
+  }
+
+  .token.boolean,
+  .token.number {
+    color: #fdba74;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #86efac;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .token.variable {
+    color: #93c5fd;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function,
+  .token.class-name {
+    color: #c4b5fd;
+  }
+
+  .token.keyword {
+    color: #93c5fd;
+    font-weight: 600;
+  }
+
+  .token.regex,
+  .token.important {
+    color: #fbbf24;
+  }
+}

@@ -1,0 +1,488 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Advanced Techniques · Coding Patterns Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="lvluu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Pointers Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../two-pointers/introduction.html">
+            
+                <a href="../two-pointers/introduction.html">
+            
+                    
+                    Introduction to Two Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../two-pointers/fast-slow.html">
+            
+                <a href="../two-pointers/fast-slow.html">
+            
+                    
+                    Fast & Slow Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sliding Window Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../sliding-window/introduction.html">
+            
+                <a href="../sliding-window/introduction.html">
+            
+                    
+                    Introduction to Sliding Window
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../sliding-window/advanced-techniques.html">
+            
+                <a href="../sliding-window/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Merge Intervals Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    Introduction to Merge Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2" data-path="advanced-techniques.html">
+            
+                <a href="advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Advanced Techniques</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="advanced-merge-intervals-techniques">Advanced Merge Intervals Techniques</h1>
+<p>This guide covers advanced applications of the Merge Intervals pattern, including sweep line/event counting, min-heap scheduling, and common edge cases.</p>
+<h2 id="1-endpoint-semantics-closed-vs-half-open">1. Endpoint Semantics (Closed vs Half-open)</h2>
+<p>A frequent source of bugs is whether two intervals that &#x201C;touch&#x201D; at an endpoint should be merged.</p>
+<ul>
+<li>Closed intervals <code>[a, b]</code> overlap when <code>next.start &lt;= current.end</code>.</li>
+<li>Half-open intervals <code>[a, b)</code> overlap when <code>next.start &lt; current.end</code>.</li>
+</ul>
+<p>Always confirm which model the problem uses (meeting times often behave like half-open; many LeetCode interval problems behave like closed).</p>
+<h2 id="2-sweep-line--event-counting">2. Sweep Line / Event Counting</h2>
+<p>Instead of merging intervals directly, you can convert them into <strong>events</strong> and scan from left to right.</p>
+<h3 id="meeting-rooms-ii-minimum-number-of-rooms">Meeting Rooms II (minimum number of rooms)</h3>
+<p><strong>Problem</strong>: Given meeting intervals, find the minimum number of rooms required.</p>
+<p><strong>Idea</strong>: Create events <code>(time, +1)</code> for meeting start and <code>(time, -1)</code> for meeting end. Sort events; the maximum prefix sum is the answer.</p>
+<p><strong>Tie-breaking matters</strong></p>
+<ul>
+<li>If an end time and start time are the same, process <strong>end before start</strong> to avoid counting them as overlapping.</li>
+</ul>
+<pre><code class="lang-python">def min_meeting_rooms(intervals):
+    events = []
+    for start, end in intervals:
+        events.append((start, 1))
+        events.append((end, -1))
+
+    # end (-1) comes before start (+1) at the same time
+    events.sort(key=lambda x: (x[0], x[1]))
+
+    rooms = 0
+    max_rooms = 0
+    for _, delta in events:
+        rooms += delta
+        max_rooms = max(max_rooms, rooms)
+
+    return max_rooms
+</code></pre>
+<h3 id="maximum-cpu-load-maximum-overlap-weight">Maximum CPU Load (maximum overlap &#x201C;weight&#x201D;)</h3>
+<p><strong>Problem</strong>: Each interval has a load; find the maximum total load at any time.</p>
+<p><strong>Idea</strong>: Events become <code>(time, +load)</code> and <code>(time, -load)</code>; scan and track max prefix sum.</p>
+<pre><code class="lang-python">def max_cpu_load(jobs):
+    events = []
+    for start, end, load in jobs:
+        events.append((start, load))
+        events.append((end, -load))
+
+    # same tie-breaking principle: end before start
+    events.sort(key=lambda x: (x[0], x[1]))
+
+    current = 0
+    best = 0
+    for _, delta in events:
+        current += delta
+        best = max(best, current)
+
+    return best
+</code></pre>
+<h2 id="3-min-heap-scheduling-track-active-intervals">3. Min-Heap Scheduling (Track Active Intervals)</h2>
+<p>A min-heap is useful when you need to manage &#x201C;currently active&#x201D; intervals and remove the earliest-finishing ones.</p>
+<h3 id="meeting-rooms-ii-heap-approach">Meeting Rooms II (heap approach)</h3>
+<p><strong>Idea</strong>: Sort by start time. Keep a min-heap of end times for active meetings.</p>
+<ul>
+<li>If the earliest ending meeting ends before the next starts, reuse that room (pop).</li>
+<li>Push the new meeting&#x2019;s end.</li>
+<li>Heap size is the room count.</li>
+</ul>
+<pre><code class="lang-python">import heapq
+
+def min_meeting_rooms_heap(intervals):
+    if not intervals:
+        return 0
+
+    intervals.sort(key=lambda x: x[0])
+    ends = []  # min-heap of end times
+
+    for start, end in intervals:
+        if ends and ends[0] &lt;= start:
+            heapq.heappop(ends)
+        heapq.heappush(ends, end)
+
+    return len(ends)
+</code></pre>
+<h3 id="employee-free-time">Employee Free Time</h3>
+<p><strong>Idea</strong>: Merge multiple employees&#x2019; schedules (k lists of sorted intervals), then find gaps between the merged busy times.</p>
+<p>Common approaches:</p>
+<ul>
+<li>Flatten all intervals, sort, merge, then scan gaps.</li>
+<li>Use a min-heap over the heads of k sorted lists to do a k-way merge (better when k lists are large).</li>
+</ul>
+<h2 id="4-greedy-one-pass-after-sort-tricks">4. Greedy &#x201C;One-pass after sort&#x201D; Tricks</h2>
+<p>Some interval problems reduce to choosing as many non-overlapping intervals as possible or minimizing resources.</p>
+<h3 id="minimum-number-of-arrows-to-burst-balloons">Minimum Number of Arrows to Burst Balloons</h3>
+<p><strong>Idea</strong>: Sort by end coordinate; greedily shoot an arrow at the current end. If the next balloon starts after that point, you need a new arrow.</p>
+<pre><code class="lang-python">def find_min_arrows(points):
+    if not points:
+        return 0
+
+    points.sort(key=lambda x: x[1])
+    arrows = 1
+    arrow_pos = points[0][1]
+
+    for start, end in points[1:]:
+        if start &gt; arrow_pos:
+            arrows += 1
+            arrow_pos = end
+
+    return arrows
+</code></pre>
+<h2 id="5-common-pitfalls--checklist">5. Common Pitfalls &amp; Checklist</h2>
+<ol>
+<li>Sorting key: most merge problems require sorting by <code>start</code> (sometimes by <code>end</code>).</li>
+<li>Endpoint semantics: decide <code>&lt;=</code> vs <code>&lt;</code> for overlap.</li>
+<li>In-place edits: be careful if you mutate the input list/interval objects.</li>
+<li>Large coordinates: use integer-safe comparisons (no floating point).</li>
+<li>Output format: some problems want inclusive endpoints, some want merged busy times vs free times.</li>
+</ol>
+<h2 id="practice-problems">Practice Problems</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank">Meeting Rooms II</a></li>
+<li><a href="https://leetcode.com/problems/employee-free-time/" target="_blank">Employee Free Time</a></li>
+<li><a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/" target="_blank">Minimum Number of Arrows to Burst Balloons</a></li>
+<li><a href="https://leetcode.com/problems/car-pooling/" target="_blank">Car Pooling</a> (classic sweep line)</li>
+<li><a href="https://leetcode.com/problems/my-calendar-i/" target="_blank">My Calendar I</a> (overlap detection)</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Merge Intervals">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Advanced Techniques","level":"4.2","depth":1,"previous":{"title":"Introduction to Merge Intervals","level":"4.1","depth":1,"path":"merge-intervals/introduction.md","ref":"merge-intervals/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"merge-intervals/advanced-techniques.md","mtime":"2026-01-21T17:00:13.992Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-21T17:01:00.623Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
