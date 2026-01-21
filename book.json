@@ -4,33 +4,62 @@
   "description": "Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io",
   "author": "lvluu",
   "language": "en",
-  "gitbook": ">=3.0.0",
+  "gitbook": ">=3.2.3",
   "structure": {
     "readme": "README.md",
     "summary": "SUMMARY.md"
   },
   "plugins": [
+    "theme-comscore",
     "github",
     "edit-link",
     "prism",
     "-highlight",
     "copy-code-button",
     "splitter",
+    "search-plus",
+    "advanced-emoji",
     "anchorjs",
-    "expandable-chapters-small"
+    "expandable-chapters-small",
+    "page-toc-button",
+    "back-to-top-button",
+    "-lunr",
+    "-search"
   ],
   "pluginsConfig": {
+    "theme-comscore": {
+      "showLevel": true
+    },
     "github": {
       "url": "https://github.com/lvluu/leet"
     },
     "edit-link": {
       "base": "https://github.com/lvluu/leet/edit/main",
-      "label": "Edit This Page"
+      "label": "✏️ Edit"
+    },
+    "search-plus": {
+      "depth": 3,
+      "maxLength": 10000
+    },
+    "page-toc-button": {
+      "maxTocDepth": 2,
+      "minTocSize": 2
+    },
+    "prism": {
+      "css": [
+        "prism-themes/themes/prism-ghcolors.css"
+      ],
+      "lang": {
+        "flow": "typescript"
+      }
     },
     "sharing": {
       "facebook": false,
       "twitter": false,
       "all": []
     }
+  },
+  "styles": {
+    "website": "styles/website.css"
   }
 }
