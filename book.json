@@ -30,7 +30,7 @@
     "sharing": {
       "facebook": false,
       "twitter": false,
-      "all": false
+      "all": []
     }
   }
 }
