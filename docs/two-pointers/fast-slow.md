@@ -102,10 +102,8 @@ function hasCycle(head) {
 ```
 
 Practice problems
-- Linked List Cycle (detect)
-- Linked List Cycle II (find cycle start)
-- Middle of the Linked List
-- Remove Nth Node From End of List
-- Happy Number (number-cycle detection using fast/slow on digits)
-
-Want more examples (visual diagrams, step-through GIFs, or extra languages)?
+- [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/) (detect)
+- [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) (find cycle start)
+- [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/)
+- [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+- [Happy Number](https://leetcode.com/problems/happy-number/) (number-cycle detection using fast/slow on digits)

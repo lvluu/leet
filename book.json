@@ -1,0 +1,36 @@
+{
+  "root": "./docs",
+  "title": "Coding Patterns Guide",
+  "description": "Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io",
+  "author": "lvluu",
+  "language": "en",
+  "gitbook": ">=3.0.0",
+  "structure": {
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
+  },
+  "plugins": [
+    "github",
+    "edit-link",
+    "prism",
+    "-highlight",
+    "copy-code-button",
+    "splitter",
+    "anchorjs",
+    "expandable-chapters-small"
+  ],
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/lvluu/leet"
+    },
+    "edit-link": {
+      "base": "https://github.com/lvluu/leet/edit/main",
+      "label": "Edit This Page"
+    },
+    "sharing": {
+      "facebook": false,
+      "twitter": false,
+      "all": false
+    }
+  }
+}

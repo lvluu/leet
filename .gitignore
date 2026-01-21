@@ -1,0 +1,10 @@
+# GitBook Build
+_book/
+node_modules/
+
+# GitBook Plugins
+*.epub
+*.mobi
+*.pdf
+
+.gitprofilerc

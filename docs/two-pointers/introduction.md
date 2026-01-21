@@ -59,9 +59,7 @@ def sorted_squares(nums):
 ```
 
 Problems to practice
-- Pair with Target Sum
-- Squaring a Sorted Array
-- Triplet Sum to Zero (combine two-pointers with loops)
-- Dutch National Flag Problem
-
-Want me to add more examples (Java, JavaScript), visual diagrams, or practice exercises?
+- [Pair with Target Sum](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+- [Squaring a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+- [Triplet Sum to Zero](https://leetcode.com/problems/3sum/) (combine two-pointers with loops)
+- [Dutch National Flag Problem](https://leetcode.com/problems/sort-colors/)
