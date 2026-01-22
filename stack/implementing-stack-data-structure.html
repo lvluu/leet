@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to Cyclic Sort · Coding Patterns Guide</title>
+        <title>Implementing Stack Data Structure · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../in-place-reversal/introduction.html" />
+    <link rel="next" href="../monotonic-stack/introduction.html" />
     
     
-    <link rel="prev" href="../merge-intervals/advanced-techniques.html" />
+    <link rel="prev" href="introduction.html" />
     
 
     </head>
@@ -220,9 +220,9 @@
         
         
     
-        <li class="chapter active" data-level="5.1" data-path="introduction.html">
+        <li class="chapter " data-level="5.1" data-path="../cyclic-sort/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../cyclic-sort/introduction.html">
             
                     
                     Introduction to Cyclic Sort
@@ -260,9 +260,9 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../stack/introduction.html">
+        <li class="chapter " data-level="7.1" data-path="introduction.html">
             
-                <a href="../stack/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Stack
@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="../stack/implementing-stack-data-structure.html">
+        <li class="chapter active" data-level="7.2" data-path="implementing-stack-data-structure.html">
             
-                <a href="../stack/implementing-stack-data-structure.html">
+                <a href="implementing-stack-data-structure.html">
             
                     
                     Implementing Stack Data Structure
@@ -336,7 +336,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to Cyclic Sort</a>
+        <a href=".." >Implementing Stack Data Structure</a>
     </h1>
 </div>
 
@@ -351,98 +351,127 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-cyclic-sort-pattern">Introduction to Cyclic Sort Pattern</h1>
-<p>The Cyclic Sort pattern is an in-place technique for arrays containing numbers in a known, limited range (most commonly <code>1..n</code> or <code>0..n</code>).</p>
-<p>The key idea is simple: <strong>each value belongs to a specific index</strong>. While scanning the array, if the current number is not in its correct position, swap it into place. This often turns seemingly $O(n \log n)$ sorting-based problems into clean $O(n)$ solutions.</p>
-<p>When to use</p>
+                                <h1 id="implementing-stack-data-structure">Implementing Stack Data Structure</h1>
+<p>A stack can be implemented in multiple ways. The most common are:</p>
 <ul>
-<li>The array contains integers in a tight range like <code>1..n</code> or <code>0..n</code>.</li>
-<li>You need to find a <strong>missing number</strong>, <strong>duplicate</strong>, <strong>corrupt pair</strong>, or the <strong>first missing positive</strong>.</li>
-<li>You&#x2019;re allowed to modify the array (in-place is the usual win).</li>
+<li><strong>Dynamic array / list-based stack</strong> (fast and simple)</li>
+<li><strong>Linked-list-based stack</strong> (useful when you want explicit node control)</li>
 </ul>
-<p>Common variants</p>
+<p>The stack API
+A minimal stack typically supports:</p>
 <ul>
-<li><code>1..n</code> placement: value <code>x</code> should be at index <code>x - 1</code>.</li>
-<li><code>0..n</code> placement: value <code>x</code> should be at index <code>x</code> (often with one missing).</li>
-<li>Duplicates present: you can&#x2019;t always place everything perfectly; use mismatches to detect duplicates/missing.</li>
-<li>Multiple missing/duplicates: after placement, scan for indices where <code>nums[i] != i + 1</code>.</li>
+<li><code>push(x)</code></li>
+<li><code>pop()</code></li>
+<li><code>peek()</code></li>
+<li><code>is_empty()</code></li>
+<li>(optional) <code>size()</code></li>
 </ul>
-<p>Pattern recipe (for <code>1..n</code>)</p>
-<ol>
-<li>Set <code>i = 0</code>.</li>
-<li>While <code>i &lt; n</code>:<ul>
-<li>Let <code>correct = nums[i] - 1</code>.</li>
-<li>If <code>nums[i]</code> is in range and <code>nums[i] != nums[correct]</code>, swap <code>nums[i]</code> with <code>nums[correct]</code>.</li>
-<li>Otherwise, increment <code>i</code>.</li>
-</ul>
-</li>
-<li>After this pass, many problems become a simple scan for mismatches.</li>
-</ol>
-<p>Why the <code>nums[i] != nums[correct]</code> check matters</p>
+<p>Implementation 1: list-based stack (Python)</p>
+<p>In Python, a plain list is a great stack:</p>
 <ul>
-<li>If duplicates exist, naive swapping can loop forever (you keep swapping identical values).</li>
-<li>The inequality check ensures every swap makes progress.</li>
+<li><code>append(x)</code> is <code>push</code></li>
+<li><code>pop()</code> is <code>pop</code></li>
+</ul>
+<pre><code class="lang-python">class Stack:
+    def __init__(self):
+        self._data = []
+
+    def push(self, x):
+        self._data.append(x)
+
+    def pop(self):
+        if not self._data:
+            raise IndexError(&quot;pop from empty stack&quot;)
+        return self._data.pop()
+
+    def peek(self):
+        if not self._data:
+            raise IndexError(&quot;peek from empty stack&quot;)
+        return self._data[-1]
+
+    def is_empty(self) -&gt; bool:
+        return len(self._data) == 0
+
+    def size(self) -&gt; int:
+        return len(self._data)
+</code></pre>
+<p>Notes</p>
+<ul>
+<li>Prefer <code>list.append</code> / <code>list.pop()</code> from the <strong>end</strong> for $O(1)$ amortized behavior.</li>
+<li>Avoid <code>insert(0, x)</code> / <code>pop(0)</code> for stack behavior; those are $O(n)$.</li>
 </ul>
 <p>Complexity</p>
 <ul>
-<li>Time: $O(n)$ &#x2014; each element is swapped at most once into its final position.</li>
-<li>Space: $O(1)$ extra space (besides output storage).</li>
+<li><code>push</code>: $O(1)$ amortized</li>
+<li><code>pop</code>: $O(1)$ amortized</li>
+<li><code>peek</code>: $O(1)$</li>
+<li>space: $O(n)$</li>
 </ul>
-<p>Short examples</p>
-<p>Cyclic sort (<code>1..n</code>) &#x2014; Python</p>
-<pre><code class="lang-python">def cyclic_sort(nums):
-    i = 0
-    while i &lt; len(nums):
-        correct = nums[i] - 1
-        if nums[i] != nums[correct]:
-            nums[i], nums[correct] = nums[correct], nums[i]
-        else:
-            i += 1
-    return nums
+<p>Implementation 2: linked-list stack (Python)</p>
+<p>A linked list stack keeps a pointer to the top node.</p>
+<pre><code class="lang-python">class _Node:
+    __slots__ = (&quot;val&quot;, &quot;next&quot;)
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+
+class LinkedStack:
+    def __init__(self):
+        self._top = None
+        self._size = 0
+
+    def push(self, x):
+        self._top = _Node(x, self._top)
+        self._size += 1
+
+    def pop(self):
+        if self._top is None:
+            raise IndexError(&quot;pop from empty stack&quot;)
+        x = self._top.val
+        self._top = self._top.next
+        self._size -= 1
+        return x
+
+    def peek(self):
+        if self._top is None:
+            raise IndexError(&quot;peek from empty stack&quot;)
+        return self._top.val
+
+    def is_empty(self) -&gt; bool:
+        return self._top is None
+
+    def size(self) -&gt; int:
+        return self._size
 </code></pre>
-<p>Find the missing number (<code>0..n</code>) &#x2014; Python</p>
-<pre><code class="lang-python">def missing_number(nums):
-    i = 0
-    n = len(nums)
+<p>Complexity</p>
+<ul>
+<li>All operations are $O(1)$ worst-case.</li>
+<li>Space is $O(n)$, plus per-node overhead.</li>
+</ul>
+<p>Common pitfalls</p>
+<ul>
+<li>Returning <code>None</code> on empty <code>pop()</code>/<code>peek()</code> can hide bugs; raising an error is clearer.</li>
+<li>Accidentally implementing a queue by popping from the front of a list (<code>pop(0)</code>) causes $O(n)$ operations.</li>
+<li>Storing values instead of indices in monotonic-stack problems can block you from computing spans/distances.</li>
+</ul>
+<p>Quick usage example</p>
+<pre><code class="lang-python">s = Stack()
 
-    while i &lt; n:
-        correct = nums[i]
-        # values are in [0..n], but index range is [0..n-1]
-        if 0 &lt;= correct &lt; n and nums[i] != nums[correct]:
-            nums[i], nums[correct] = nums[correct], nums[i]
-        else:
-            i += 1
-
-    for idx, val in enumerate(nums):
-        if val != idx:
-            return idx
-
-    return n
-</code></pre>
-<p>Find all missing numbers (<code>1..n</code>) &#x2014; Python</p>
-<pre><code class="lang-python">def find_all_missing(nums):
-    i = 0
-    while i &lt; len(nums):
-        correct = nums[i] - 1
-        if 1 &lt;= nums[i] &lt;= len(nums) and nums[i] != nums[correct]:
-            nums[i], nums[correct] = nums[correct], nums[i]
-        else:
-            i += 1
-
-    missing = []
-    for i, v in enumerate(nums):
-        if v != i + 1:
-            missing.append(i + 1)
-    return missing
+s.push(10)
+s.push(20)
+assert s.peek() == 20
+assert s.pop() == 20
+assert s.pop() == 10
+assert s.is_empty()
 </code></pre>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/missing-number/" target="_blank">Missing Number</a></li>
-<li><a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/" target="_blank">Find All Numbers Disappeared in an Array</a></li>
-<li><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank">Find the Duplicate Number</a> (often solved without modifying; cyclic-sort variant exists)</li>
-<li><a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/" target="_blank">Find All Duplicates in an Array</a></li>
-<li><a href="https://leetcode.com/problems/set-mismatch/" target="_blank">Set Mismatch</a></li>
-<li><a href="https://leetcode.com/problems/first-missing-positive/" target="_blank">First Missing Positive</a></li>
+<li><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank">Implement Stack using Queues</a></li>
+<li><a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">Evaluate Reverse Polish Notation</a></li>
+<li><a href="https://leetcode.com/problems/simplify-path/" target="_blank">Simplify Path</a></li>
+<li><a href="https://leetcode.com/problems/decode-string/" target="_blank">Decode String</a></li>
 </ul>
 
                                 
@@ -471,12 +500,12 @@
 
             
                 
-                <a href="../merge-intervals/advanced-techniques.html" class="navigation navigation-prev " aria-label="Previous page: Advanced Techniques">
+                <a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Stack">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../in-place-reversal/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to In-place Reversal of a Linked List">
+                <a href="../monotonic-stack/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Monotonic Stack Pattern">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -487,7 +516,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Cyclic Sort","level":"5.1","depth":1,"next":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"path":"in-place-reversal/introduction.md","ref":"in-place-reversal/introduction.md","articles":[]},"previous":{"title":"Advanced Techniques","level":"4.2","depth":1,"path":"merge-intervals/advanced-techniques.md","ref":"merge-intervals/advanced-techniques.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"cyclic-sort/introduction.md","mtime":"2026-01-22T16:59:56.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-22T17:00:41.969Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Implementing Stack Data Structure","level":"7.2","depth":1,"next":{"title":"Introduction to Monotonic Stack Pattern","level":"8.1","depth":1,"path":"monotonic-stack/introduction.md","ref":"monotonic-stack/introduction.md","articles":[]},"previous":{"title":"Introduction to Stack","level":"7.1","depth":1,"path":"stack/introduction.md","ref":"stack/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"stack/implementing-stack-data-structure.md","mtime":"2026-01-22T16:59:56.295Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-22T17:00:41.969Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
