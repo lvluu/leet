@@ -80,7 +80,7 @@ Explanation of Symbols:
 - Problem Challenge 2: Maximum CPU Load (hard)
 - Problem Challenge 3: Employee Free Time (hard)
 
-## 7. Pattern: Cyclic Sort (17 lessons) 
+## 7. Pattern: Cyclic Sort (17 lessons) ✅
 
 - Introduction to Cyclic Sort Pattern
 - Cyclic Sort (easy)
