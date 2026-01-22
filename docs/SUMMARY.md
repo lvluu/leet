@@ -20,3 +20,7 @@
 ## Cyclic Sort Pattern
 
 * [Introduction to Cyclic Sort](cyclic-sort/introduction.md)
+
+## In-place Reversal of a Linked List Pattern
+
+* [Introduction to In-place Reversal of a Linked List](in-place-reversal/introduction.md)
