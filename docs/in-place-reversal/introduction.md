@@ -1,4 +1,3 @@
-````markdown
 # Introduction to In-place Reversal of a Linked List Pattern
 
 The **In-place Reversal of a Linked List** pattern focuses on reversing pointers inside a linked list without allocating additional data structures.
@@ -136,4 +135,4 @@ Problems to practice
 - [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
 - [Rotate List](https://leetcode.com/problems/rotate-list/)
 - [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) (often reverses the second half)
-````
+
