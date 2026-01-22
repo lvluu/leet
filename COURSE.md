@@ -92,7 +92,7 @@ Explanation of Symbols:
 - Problem Challenge 2: Find the Smallest Missing Positive Number (medium)
 - Problem Challenge 3: Find the First K Missing Positive Numbers (hard)
 
-## 8. Pattern: In-place Reversal of a Linked List (11 lessons)
+## 8. Pattern: In-place Reversal of a Linked List (11 lessons) ✅
 
 - Introduction to In-place Reversal of a Linked List Pattern
 - Reverse a LinkedList (easy)

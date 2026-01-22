@@ -24,3 +24,12 @@
 ## In-place Reversal of a Linked List Pattern
 
 * [Introduction to In-place Reversal of a Linked List](in-place-reversal/introduction.md)
+
+## Stack
+
+* [Introduction to Stack](stack/introduction.md)
+* [Implementing Stack Data Structure](stack/implementing-stack-data-structure.md)
+
+## Monotonic Stack Pattern
+
+* [Introduction to Monotonic Stack Pattern](monotonic-stack/introduction.md)
