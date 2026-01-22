@@ -16,3 +16,7 @@
 
 * [Introduction to Merge Intervals](merge-intervals/introduction.md)
 * [Advanced Techniques](merge-intervals/advanced-techniques.md)
+
+## Cyclic Sort Pattern
+
+* [Introduction to Cyclic Sort](cyclic-sort/introduction.md)

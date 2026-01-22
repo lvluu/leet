@@ -69,18 +69,18 @@ Explanation of Symbols:
 - Problem Challenge 6: Subarrays with Product Less than a Target (hard)
 - Solution Problem Challenge 5: : Subarrays with Product Less than a Target
 
-## 6. Pattern: Merge Intervals (15 lessons)
+## 6. Pattern: Merge Intervals (15 lessons) ✅
 
 - Introduction to Merge Intervals Pattern
 - Merge Intervals (medium)
 - Insert Interval (medium)
 - Intervals Intersection (medium)
 - Conflicting Appointments (medium)
-- Problem Challenge 1: Minimum Meeting Rooms (hard)
+- Problem Challenge 1: Minimum Meeting Rooms (hard) 💰
 - Problem Challenge 2: Maximum CPU Load (hard)
 - Problem Challenge 3: Employee Free Time (hard)
 
-## 7. Pattern: Cyclic Sort (17 lessons)
+## 7. Pattern: Cyclic Sort (17 lessons) 
 
 - Introduction to Cyclic Sort Pattern
 - Cyclic Sort (easy)
