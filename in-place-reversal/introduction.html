@@ -296,47 +296,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre><code class="lang-markdown"># Introduction to In-place Reversal of a Linked List Pattern
-
-The **In-place Reversal of a Linked List** pattern focuses on reversing pointers inside a linked list without allocating additional data structures.
-
-Instead of copying values into an array/stack, you **re-wire** `next` pointers as you traverse.
-
-When to use
-- You need to reverse an entire linked list or a portion of it.
-- You&#x2019;re asked to reverse nodes in groups (e.g., every $k$ nodes).
-- The constraints suggest **$O(1)$ extra space**, and mutating the list is allowed.
-
-Common variants
-- Reverse the whole list.
-- Reverse a sub-list between positions `p` and `q`.
-- Reverse nodes in groups of size `k`.
-- Reverse alternating groups of size `k`.
-- Rotate a list (often uses partial reversal or careful pointer rewiring).
-
-Pattern recipe (reverse a segment)
-1. Walk the list to reach the node just **before** the segment you want to reverse.
-2. Reverse the pointers inside the segment using the standard 3-pointer technique:
-   - `prev`, `current`, `next`.
-3. Reconnect:
-   - The node before the segment &#x2192; new head of reversed segment.
-   - The tail of the reversed segment &#x2192; the node after the segment.
-
-Core reversal loop
-- Keep a `prev` pointer.
-- Iteratively move `current.next` to point to `prev`.
-- Advance all pointers forward.
-
-Complexity
-- Time: $O(n)$ &#x2014; each node is processed a constant number of times.
-- Space: $O(1)$ extra space.
-
-Short examples
-
-Reverse a linked list (Python)
-
-```python
-class ListNode:
+                                <h1 id="introduction-to-in-place-reversal-of-a-linked-list-pattern">Introduction to In-place Reversal of a Linked List Pattern</h1>
+<p>The <strong>In-place Reversal of a Linked List</strong> pattern focuses on reversing pointers inside a linked list without allocating additional data structures.</p>
+<p>Instead of copying values into an array/stack, you <strong>re-wire</strong> <code>next</code> pointers as you traverse.</p>
+<p>When to use</p>
+<ul>
+<li>You need to reverse an entire linked list or a portion of it.</li>
+<li>You&#x2019;re asked to reverse nodes in groups (e.g., every $k$ nodes).</li>
+<li>The constraints suggest <strong>$O(1)$ extra space</strong>, and mutating the list is allowed.</li>
+</ul>
+<p>Common variants</p>
+<ul>
+<li>Reverse the whole list.</li>
+<li>Reverse a sub-list between positions <code>p</code> and <code>q</code>.</li>
+<li>Reverse nodes in groups of size <code>k</code>.</li>
+<li>Reverse alternating groups of size <code>k</code>.</li>
+<li>Rotate a list (often uses partial reversal or careful pointer rewiring).</li>
+</ul>
+<p>Pattern recipe (reverse a segment)</p>
+<ol>
+<li>Walk the list to reach the node just <strong>before</strong> the segment you want to reverse.</li>
+<li>Reverse the pointers inside the segment using the standard 3-pointer technique:<ul>
+<li><code>prev</code>, <code>current</code>, <code>next</code>.</li>
+</ul>
+</li>
+<li>Reconnect:<ul>
+<li>The node before the segment &#x2192; new head of reversed segment.</li>
+<li>The tail of the reversed segment &#x2192; the node after the segment.</li>
+</ul>
+</li>
+</ol>
+<p>Core reversal loop</p>
+<ul>
+<li>Keep a <code>prev</code> pointer.</li>
+<li>Iteratively move <code>current.next</code> to point to <code>prev</code>.</li>
+<li>Advance all pointers forward.</li>
+</ul>
+<p>Complexity</p>
+<ul>
+<li>Time: $O(n)$ &#x2014; each node is processed a constant number of times.</li>
+<li>Space: $O(1)$ extra space.</li>
+</ul>
+<p>Short examples</p>
+<p>Reverse a linked list (Python)</p>
+<pre><code class="lang-python">class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
@@ -353,12 +356,9 @@ def reverse_list(head: ListNode | None) -&gt; ListNode | None:
         current = nxt
 
     return prev
-```
-
-Reverse a sub-list from position `p` to `q` (1-indexed) &#x2014; Python
-
-```python
-def reverse_sub_list(head: ListNode | None, p: int, q: int) -&gt; ListNode | None:
+</code></pre>
+<p>Reverse a sub-list from position <code>p</code> to <code>q</code> (1-indexed) &#x2014; Python</p>
+<pre><code class="lang-python">def reverse_sub_list(head: ListNode | None, p: int, q: int) -&gt; ListNode | None:
     if not head or p == q:
         return head
 
@@ -391,12 +391,9 @@ def reverse_sub_list(head: ListNode | None, p: int, q: int) -&gt; ListNode | Non
     last_node_of_sub_list.next = current
 
     return head
-```
-
-Reverse nodes in groups of size `k` (outline) &#x2014; Python
-
-```python
-def reverse_k_group(head: ListNode | None, k: int) -&gt; ListNode | None:
+</code></pre>
+<p>Reverse nodes in groups of size <code>k</code> (outline) &#x2014; Python</p>
+<pre><code class="lang-python">def reverse_k_group(head: ListNode | None, k: int) -&gt; ListNode | None:
     if k &lt;= 1 or not head:
         return head
 
@@ -425,15 +422,15 @@ def reverse_k_group(head: ListNode | None, k: int) -&gt; ListNode | None:
         tmp = group_prev.next  # becomes the tail after reversal
         group_prev.next = kth
         group_prev = tmp
-```
-
-Problems to practice
-- [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
-- [Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii/)
-- [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
-- [Rotate List](https://leetcode.com/problems/rotate-list/)
-- [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) (often reverses the second half)
 </code></pre>
+<p>Problems to practice</p>
+<ul>
+<li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">Reverse Linked List</a></li>
+<li><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank">Reverse Linked List II</a></li>
+<li><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank">Reverse Nodes in k-Group</a></li>
+<li><a href="https://leetcode.com/problems/rotate-list/" target="_blank">Rotate List</a></li>
+<li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank">Palindrome Linked List</a> (often reverses the second half)</li>
+</ul>
 
                                 
                                 </section>
@@ -473,7 +470,7 @@ Problems to practice
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"previous":{"title":"Introduction to Cyclic Sort","level":"5.1","depth":1,"path":"cyclic-sort/introduction.md","ref":"cyclic-sort/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"in-place-reversal/introduction.md","mtime":"2026-01-22T09:30:40.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-22T09:31:23.163Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"previous":{"title":"Introduction to Cyclic Sort","level":"5.1","depth":1,"path":"cyclic-sort/introduction.md","ref":"cyclic-sort/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"in-place-reversal/introduction.md","mtime":"2026-01-22T16:18:17.159Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-22T16:19:01.834Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
