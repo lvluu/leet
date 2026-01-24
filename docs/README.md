@@ -20,6 +20,9 @@ The Merge Intervals pattern focuses on sorting and combining overlapping ranges,
 ### In-place Reversal of a Linked List
 The In-place Reversal pattern rewires `next` pointers to reverse all or part of a linked list in $O(1)$ extra space.
 
+### Hash Maps
+Hash maps store key-value pairs to enable fast lookups, frequency counting, grouping, and “seen so far” style solutions.
+
 ## How to Use This Guide
 
 Each pattern section includes:

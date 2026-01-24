@@ -33,3 +33,8 @@
 ## Monotonic Stack Pattern
 
 * [Introduction to Monotonic Stack Pattern](monotonic-stack/introduction.md)
+
+## Hash Maps Pattern
+
+* [Introduction to Hash Tables](hash-maps/introduction.md)
+* [Advanced Techniques](hash-maps/advanced-techniques.md)

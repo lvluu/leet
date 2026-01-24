@@ -101,7 +101,7 @@ Explanation of Symbols:
 - Problem Challenge 1: Reverse alternating K-element Sub-list (medium)
 - Problem Challenge 2: Rotate a LinkedList (medium)
 
-## 9. Pattern: Stacks (16 lessons)
+## 9. Pattern: Stacks (16 lessons) ✅
 
 - Introduction to Stack
 - Implementing Stack Data Structure
@@ -114,7 +114,7 @@ Explanation of Symbols:
 - Problem 5: Sorting a Stack (easy)
 - Problem 6: Simplify Path (medium)
 
-## 10. Pattern: Monotonic Stack (15 lessons)
+## 10. Pattern: Monotonic Stack (15 lessons) ✅
 
 - Introduction to Monotonic Stack
 - Remove Nodes From Linked List (easy)
