@@ -23,6 +23,9 @@ The In-place Reversal pattern rewires `next` pointers to reverse all or part of 
 ### Hash Maps
 Hash maps store key-value pairs to enable fast lookups, frequency counting, grouping, and “seen so far” style solutions.
 
+### Level Order Traversal
+Level order traversal is a BFS pattern for trees that processes nodes row-by-row using a queue.
+
 ## How to Use This Guide
 
 Each pattern section includes:

@@ -125,7 +125,7 @@ Explanation of Symbols:
 - Sum of Subarray Minimums (medium)
 - Remove K Digits (hard)
 
-## 11. Pattern: Hash Maps (13 lessons)
+## 11. Pattern: Hash Maps (13 lessons) ✅
 
 - Introduction to Hash Tables
 - Hashing, Collisions, Overflow, and Resizing in Hashtables
