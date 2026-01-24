@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Fast & Slow Pointers · Coding Patterns Guide</title>
+        <title>Introduction to Level Order Traversal · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../sliding-window/introduction.html" />
     
-    
-    <link rel="prev" href="introduction.html" />
+    <link rel="prev" href="../hash-maps/advanced-techniques.html" />
     
 
     </head>
@@ -121,9 +119,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="introduction.html">
+        <li class="chapter " data-level="2.1" data-path="../two-pointers/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../two-pointers/introduction.html">
             
                     
                     Introduction to Two Pointers
@@ -134,9 +132,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2" data-path="fast-slow.html">
+        <li class="chapter " data-level="2.2" data-path="../two-pointers/fast-slow.html">
             
-                <a href="fast-slow.html">
+                <a href="../two-pointers/fast-slow.html">
             
                     
                     Fast & Slow Pointers
@@ -346,9 +344,9 @@
         
         
     
-        <li class="chapter " data-level="10.1" data-path="../level-order-traversal/introduction.html">
+        <li class="chapter active" data-level="10.1" data-path="introduction.html">
             
-                <a href="../level-order-traversal/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Level Order Traversal
@@ -389,7 +387,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Fast & Slow Pointers</a>
+        <a href=".." >Introduction to Level Order Traversal</a>
     </h1>
 </div>
 
@@ -404,102 +402,118 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="fast--slow-pointers-pattern">Fast &amp; Slow Pointers Pattern</h1>
-<p>The Fast &amp; Slow (aka Tortoise and Hare) pattern uses two pointers that move through a data structure at different speeds. It&apos;s especially powerful on linked lists and sequences where relative distance or cycle detection is required.</p>
+                                <h1 id="introduction-to-level-order-traversal-pattern">Introduction to Level Order Traversal Pattern</h1>
+<p><strong>Level order traversal</strong> visits a tree <strong>level by level</strong> (top to bottom), typically using <strong>Breadth-First Search (BFS)</strong> with a queue.</p>
+<p>It&#x2019;s a go-to pattern whenever the problem statement hints at:</p>
+<ul>
+<li>&#x201C;level by level&#x201D;, &#x201C;each level&#x201D;, &#x201C;row by row&#x201D;</li>
+<li>&#x201C;minimum number of steps/edges&#x201D; (on unweighted graphs/trees)</li>
+<li>&#x201C;nearest&#x201D;, &#x201C;closest&#x201D;, &#x201C;shortest path&#x201D; (in an unweighted sense)</li>
+</ul>
 <p>When to use</p>
 <ul>
-<li>You need to detect cycles or loops (e.g., linked list cycle detection).</li>
-<li>You need the middle element, or to compare elements separated by a fixed gap (e.g., remove Nth from end).</li>
-<li>You want to measure distances (cycle length, starting point of a cycle).</li>
+<li>You need to process nodes <strong>in increasing distance from the root</strong>.</li>
+<li>The output is grouped by levels (e.g., list of lists).</li>
+<li>You need per-level aggregates (sum, average, max).</li>
+<li>You need to find the first node that satisfies a condition in BFS order.</li>
 </ul>
 <p>Common variants</p>
 <ul>
-<li>Floyd&apos;s cycle-finding (tortoise &amp; hare): move slow by 1 and fast by 2.</li>
-<li>Gap-based two-pointer: advance fast by <code>k</code> then move both until fast reaches the end.</li>
-<li>Fast/slow for finding middle: advance fast by 2 and slow by 1; when fast finishes, slow is at middle.</li>
+<li>Plain BFS (single queue): visit nodes in BFS order.</li>
+<li>Level-by-level BFS: capture the queue size to separate levels.</li>
+<li>Zigzag traversal: reverse direction on alternating levels.</li>
+<li>Reverse level order: collect levels then reverse at the end.</li>
+<li>Multi-source BFS: start with multiple nodes in the queue (common on grids/graphs).</li>
 </ul>
-<p>Pattern recipe</p>
+<p>Pattern recipe (level-by-level)</p>
 <ol>
-<li>Initialize <code>slow = head</code>, <code>fast = head</code> (or indices for arrays).</li>
-<li>Move <code>slow</code> one step and <code>fast</code> two steps (or move according to the variant needed).</li>
-<li>Check conditions: collision =&gt; cycle; <code>fast</code> reaches end =&gt; no cycle; when <code>fast</code> finishes =&gt; <code>slow</code> at middle.</li>
-<li>For cycle start: after meeting, reset one pointer to head and move both at speed 1 until they meet again.</li>
+<li>Initialize a queue with the root.</li>
+<li>While the queue is not empty:<ul>
+<li>Let <code>level_size = len(queue)</code>.</li>
+<li>Process exactly <code>level_size</code> nodes (this is one level).</li>
+<li>Add their children to the queue.</li>
+<li>Record results for the level.</li>
+</ul>
+</li>
 </ol>
 <p>Complexity</p>
 <ul>
-<li>Time: O(n) &#x2014; single pass or constant-number passes.</li>
-<li>Space: O(1) extra space.</li>
+<li>Time: $O(n)$ &#x2014; each node is enqueued/dequeued once.</li>
+<li>Space: $O(w)$ &#x2014; where $w$ is the maximum width of the tree (queue size at the widest level).</li>
 </ul>
-<p>Examples</p>
-<p>1) Detect cycle (Floyd&apos;s algorithm) &#x2014; Python</p>
-<pre><code class="lang-python">class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+<p>Short examples</p>
+<p>Binary tree level order traversal &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
 
-def has_cycle(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        if slow is fast:
-            return True
-    return False
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def level_order(root):
+    if not root:
+        return []
+
+    q = deque([root])
+    res = []
+
+    while q:
+        level_size = len(q)
+        level = []
+
+        for _ in range(level_size):
+            node = q.popleft()
+            level.append(node.val)
+
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+
+        res.append(level)
+
+    return res
 </code></pre>
-<p>To find the cycle start:</p>
-<pre><code class="lang-python">def detect_cycle_start(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        if slow is fast:
-            break
-    else:
-        return None
-    ptr = head
-    while ptr is not slow:
-        ptr = ptr.next
-        slow = slow.next
-    return ptr
+<p>Level aggregates (sum per level) &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
+
+def level_sums(root):
+    if not root:
+        return []
+
+    q = deque([root])
+    sums = []
+
+    while q:
+        level_size = len(q)
+        s = 0
+
+        for _ in range(level_size):
+            node = q.popleft()
+            s += node.val
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+
+        sums.append(s)
+
+    return sums
 </code></pre>
-<p>2) Middle of linked list &#x2014; Python</p>
-<pre><code class="lang-python">def middle_node(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-    return slow
-</code></pre>
-<p>3) Remove Nth node from end &#x2014; gap technique (Python)</p>
-<pre><code class="lang-python">def remove_nth_from_end(head, n):
-    dummy = ListNode(0, head)
-    fast = slow = dummy
-    for _ in range(n):
-        fast = fast.next
-    while fast.next:
-        fast = fast.next
-        slow = slow.next
-    slow.next = slow.next.next
-    return dummy.next
-</code></pre>
-<p>4) JavaScript: detect cycle (Floyd)</p>
-<pre><code class="lang-javascript">function hasCycle(head) {
-  let slow = head, fast = head;
-  while (fast &amp;&amp; fast.next) {
-    slow = slow.next;
-    fast = fast.next.next;
-    if (slow === fast) return true;
-  }
-  return false;
-}
-</code></pre>
-<p>Practice problems</p>
+<p>Common pitfalls</p>
 <ul>
-<li><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank">Linked List Cycle</a> (detect)</li>
-<li><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank">Linked List Cycle II</a> (find cycle start)</li>
-<li><a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank">Middle of the Linked List</a></li>
-<li><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank">Remove Nth Node From End of List</a></li>
-<li><a href="https://leetcode.com/problems/happy-number/" target="_blank">Happy Number</a> (number-cycle detection using fast/slow on digits)</li>
+<li>Forgetting to snapshot <code>level_size</code> before the loop (levels get mixed).</li>
+<li>Using recursion for level order without careful depth tracking (works, but less direct).</li>
+<li>For zigzag: don&#x2019;t reverse the whole result every time; reverse just the current level.</li>
+</ul>
+<p>Problems to practice</p>
+<ul>
+<li><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank">Binary Tree Level Order Traversal</a></li>
+<li><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank">Binary Tree Zigzag Level Order Traversal</a></li>
+<li><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/" target="_blank">Binary Tree Level Order Traversal II</a></li>
+<li><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/" target="_blank">Average of Levels in Binary Tree</a></li>
+<li><a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/" target="_blank">Maximum Level Sum of a Binary Tree</a></li>
 </ul>
 
                                 
@@ -528,14 +542,10 @@ def has_cycle(head):
 
             
                 
-                <a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Two Pointers">
+                <a href="../hash-maps/advanced-techniques.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Advanced Techniques">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../sliding-window/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Sliding Window">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -544,7 +554,7 @@ def has_cycle(head):
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Fast & Slow Pointers","level":"2.2","depth":1,"next":{"title":"Introduction to Sliding Window","level":"3.1","depth":1,"path":"sliding-window/introduction.md","ref":"sliding-window/introduction.md","articles":[]},"previous":{"title":"Introduction to Two Pointers","level":"2.1","depth":1,"path":"two-pointers/introduction.md","ref":"two-pointers/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"two-pointers/fast-slow.md","mtime":"2026-01-24T10:41:09.312Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-24T10:41:51.826Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Level Order Traversal","level":"10.1","depth":1,"previous":{"title":"Advanced Techniques","level":"9.2","depth":1,"path":"hash-maps/advanced-techniques.md","ref":"hash-maps/advanced-techniques.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"level-order-traversal/introduction.md","mtime":"2026-01-24T10:41:09.311Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-24T10:41:51.826Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
