@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to Sliding Window · Coding Patterns Guide</title>
+        <title>Advanced Techniques · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="advanced-techniques.html" />
     
-    
-    <link rel="prev" href="../two-pointers/fast-slow.html" />
+    <link rel="prev" href="introduction.html" />
     
 
     </head>
@@ -154,9 +152,9 @@
         
         
     
-        <li class="chapter active" data-level="3.1" data-path="introduction.html">
+        <li class="chapter " data-level="3.1" data-path="../sliding-window/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../sliding-window/introduction.html">
             
                     
                     Introduction to Sliding Window
@@ -167,9 +165,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="advanced-techniques.html">
+        <li class="chapter " data-level="3.2" data-path="../sliding-window/advanced-techniques.html">
             
-                <a href="advanced-techniques.html">
+                <a href="../sliding-window/advanced-techniques.html">
             
                     
                     Advanced Techniques
@@ -313,9 +311,9 @@
         
         
     
-        <li class="chapter " data-level="9.1" data-path="../hash-maps/introduction.html">
+        <li class="chapter " data-level="9.1" data-path="introduction.html">
             
-                <a href="../hash-maps/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Hash Tables
@@ -326,9 +324,9 @@
             
         </li>
     
-        <li class="chapter " data-level="9.2" data-path="../hash-maps/advanced-techniques.html">
+        <li class="chapter active" data-level="9.2" data-path="advanced-techniques.html">
             
-                <a href="../hash-maps/advanced-techniques.html">
+                <a href="advanced-techniques.html">
             
                     
                     Advanced Techniques
@@ -369,7 +367,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to Sliding Window</a>
+        <a href=".." >Advanced Techniques</a>
     </h1>
 </div>
 
@@ -384,93 +382,129 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-sliding-window-pattern">Introduction to Sliding Window Pattern</h1>
-<p>The Sliding Window pattern uses a range of elements (the &quot;window&quot;) that slides through an array or string to efficiently solve problems involving contiguous subarrays or substrings.</p>
-<p>When to use</p>
+                                <h1 id="hash-maps-advanced-techniques">Hash Maps: Advanced Techniques</h1>
+<p>This page collects a few high-leverage hash map patterns that show up repeatedly in interview problems.</p>
+<h2 id="1-prefix-sum--hash-map">1) Prefix sum + hash map</h2>
+<p>This is the most important &#x201C;advanced&#x201D; hash map technique.</p>
+<p>Idea</p>
 <ul>
-<li>You need to find contiguous subarrays/substrings that satisfy certain conditions.</li>
-<li>The problem asks for maximum, minimum, or optimal values within a range.</li>
-<li>You&apos;re dealing with sequences where you can incrementally update results as you move the window.</li>
+<li>Convert range/subarray questions into a relationship between two prefix sums.</li>
+<li>Use a map to remember prefix sums you&#x2019;ve seen (counts or earliest indices).</li>
 </ul>
-<p>Common variants</p>
-<ul>
-<li>Fixed-size window: window size is constant (e.g., max sum of K consecutive elements).</li>
-<li>Dynamic window: window grows/shrinks based on conditions (e.g., longest substring with K distinct characters).</li>
-<li>Two separate windows: maintain multiple windows for more complex scenarios.</li>
-</ul>
-<p>Pattern recipe</p>
-<ol>
-<li>Initialize window boundaries (<code>left</code>, <code>right</code>) and tracking variables (sum, count, frequency map).</li>
-<li>Expand the window by moving <code>right</code> pointer and updating state.</li>
-<li>Contract the window by moving <code>left</code> pointer when conditions are violated.</li>
-<li>Record the result at each valid window state.</li>
-<li>Continue until <code>right</code> reaches the end of the array/string.</li>
-</ol>
-<p>Complexity</p>
-<ul>
-<li>Time: O(n) &#x2014; each element is visited at most twice (once by right, once by left).</li>
-<li>Space: O(1) to O(k) depending on tracking needs (frequency maps, sets).</li>
-</ul>
-<p>Short examples</p>
-<p>Maximum sum subarray of size K (fixed window) &#x2014; Python</p>
-<pre><code class="lang-python">def max_sum_subarray(arr, k):
-    if len(arr) &lt; k:
-        return None
+<h3 id="a-count-subarrays-with-sum--k">A) Count subarrays with sum = K</h3>
+<p>Let <code>prefix[i]</code> be sum of <code>nums[0..i]</code>. A subarray <code>(j+1..i)</code> sums to <code>k</code> if:</p>
+<p>$$
+prefix[i] - prefix[j] = k \Rightarrow prefix[j] = prefix[i] - k</p>
+<p>$$</p>
+<p>So for each prefix value <code>p</code>, the number of valid subarrays ending here is the count of <code>(p - k)</code> seen so far.</p>
+<p>Python</p>
+<pre><code class="lang-python">def subarray_sum_equals_k(nums, k):
+    count = 0
+    prefix = 0
+    freq = {0: 1}  # empty prefix
 
-    window_sum = sum(arr[:k])
-    max_sum = window_sum
+    for x in nums:
+        prefix += x
+        count += freq.get(prefix - k, 0)
+        freq[prefix] = freq.get(prefix, 0) + 1
 
-    for i in range(k, len(arr)):
-        window_sum = window_sum - arr[i - k] + arr[i]
-        max_sum = max(max_sum, window_sum)
-
-    return max_sum
+    return count
 </code></pre>
-<p>Longest substring with K distinct characters (dynamic window) &#x2014; Python</p>
-<pre><code class="lang-python">def longest_substring_k_distinct(s, k):
-    char_freq = {}
+<p>Common pitfalls</p>
+<ul>
+<li>You must seed <code>freq[0] = 1</code>, otherwise subarrays starting at index <code>0</code> are missed.</li>
+</ul>
+<h3 id="b-longest-subarray-with-sum--k">B) Longest subarray with sum = K</h3>
+<p>Instead of counts, store the <strong>earliest index</strong> where each prefix sum appears.</p>
+<pre><code class="lang-python">def longest_subarray_sum_k(nums, k):
+    first = {0: -1}
+    prefix = 0
+    best = 0
+
+    for i, x in enumerate(nums):
+        prefix += x
+        if prefix not in first:
+            first[prefix] = i
+        j = first.get(prefix - k)
+        if j is not None:
+            best = max(best, i - j)
+
+    return best
+</code></pre>
+<p>Rule of thumb</p>
+<ul>
+<li>Store earliest occurrence to maximize length.</li>
+</ul>
+<h2 id="2-hash-map--sliding-window-frequency-maps">2) Hash map + sliding window (frequency maps)</h2>
+<p>Many sliding-window problems are fundamentally &#x201C;hash map problems&#x201D; because the window validity depends on counts.</p>
+<p>Typical template</p>
+<ul>
+<li>Expand <code>right</code>, update counts.</li>
+<li>While invalid, shrink from <code>left</code>, update counts.</li>
+<li>Track best answer.</li>
+</ul>
+<p>Example: longest substring with at most K distinct</p>
+<pre><code class="lang-python">def longest_k_distinct(s: str, k: int) -&gt; int:
+    freq = {}
     left = 0
-    max_len = 0
+    best = 0
 
-    for right in range(len(s)):
-        char_freq[s[right]] = char_freq.get(s[right], 0) + 1
+    for right, ch in enumerate(s):
+        freq[ch] = freq.get(ch, 0) + 1
 
-        while len(char_freq) &gt; k:
-            char_freq[s[left]] -= 1
-            if char_freq[s[left]] == 0:
-                del char_freq[s[left]]
+        while len(freq) &gt; k:
+            c = s[left]
+            freq[c] -= 1
+            if freq[c] == 0:
+                del freq[c]
             left += 1
 
-        max_len = max(max_len, right - left + 1)
+        best = max(best, right - left + 1)
 
-    return max_len
+    return best
 </code></pre>
-<p>Smallest subarray with sum &gt;= S (dynamic window) &#x2014; Python</p>
-<pre><code class="lang-python">def smallest_subarray_with_sum(arr, s):
-    window_sum = 0
-    min_len = float(&apos;inf&apos;)
-    left = 0
-
-    for right in range(len(arr)):
-        window_sum += arr[right]
-
-        while window_sum &gt;= s:
-            min_len = min(min_len, right - left + 1)
-            window_sum -= arr[left]
-            left += 1
-
-    return min_len if min_len != float(&apos;inf&apos;) else 0
-</code></pre>
+<h2 id="3-grouping--bucketing">3) Grouping / bucketing</h2>
+<p>When you need to group items by an attribute, use a map:</p>
+<ul>
+<li><code>signature -&gt; list</code></li>
+<li><code>category -&gt; running aggregate</code></li>
+</ul>
+<p>Examples</p>
+<ul>
+<li>Group anagrams: <code>sorted(word)</code> or 26-count signature as key.</li>
+<li>Group by domain / user / date: <code>key -&gt; list of events</code>.</li>
+</ul>
+<p>Note</p>
+<ul>
+<li>Sorting strings costs $O(m \log m)$. For fixed alphabets, a 26-count tuple key is $O(m)$.</li>
+</ul>
+<h2 id="4-setmap-for-seen-states">4) Set/map for &#x201C;seen states&#x201D;</h2>
+<p>Use a set (or map) to prevent revisiting states:</p>
+<ul>
+<li>Detect duplicates.</li>
+<li>Graph/DFS/BFS visited tracking.</li>
+<li>Cycle detection for sequences (e.g., &#x201C;Happy Number&#x201D;).</li>
+</ul>
+<h2 id="5-choosing-the-right-key">5) Choosing the right key</h2>
+<p>Good keys are:</p>
+<ul>
+<li>Immutable (hashable)</li>
+<li>Minimal (avoid storing huge objects)</li>
+<li>Comparable by value (not identity)</li>
+</ul>
+<p>Common key patterns</p>
+<ul>
+<li>Tuples for coordinates: <code>(r, c)</code></li>
+<li>Canonical forms: normalized strings, sorted pairs, reduced fractions</li>
+<li>Counters as tuples for fixed alphabets</li>
+</ul>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/maximum-average-subarray-i/" target="_blank">Maximum Sum Subarray of Size K</a></li>
-<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank">Smallest Subarray With a Greater Sum</a></li>
-<li><a href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/" target="_blank">Longest Substring with K Distinct Characters</a></li>
-<li><a href="https://leetcode.com/problems/fruit-into-baskets/" target="_blank">Fruits into Baskets</a></li>
-<li><a href="https://leetcode.com/problems/longest-repeating-character-replacement/" target="_blank">Longest Substring with Same Letters after Replacement</a></li>
-<li><a href="https://leetcode.com/problems/permutation-in-string/" target="_blank">Permutation in a String</a></li>
-<li><a href="https://leetcode.com/problems/find-all-anagrams-in-a-string/" target="_blank">String Anagrams</a></li>
-<li><a href="https://leetcode.com/problems/minimum-window-substring/" target="_blank">Smallest Window containing Substring</a></li>
+<li><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank">Subarray Sum Equals K</a></li>
+<li><a href="https://leetcode.com/problems/binary-subarrays-with-sum/" target="_blank">Binary Subarrays With Sum</a></li>
+<li><a href="https://leetcode.com/problems/continuous-subarray-sum/" target="_blank">Continuous Subarray Sum</a> (prefix sum mod)</li>
+<li><a href="https://leetcode.com/problems/group-anagrams/" target="_blank">Group Anagrams</a></li>
+<li><a href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/" target="_blank">Longest Substring with At Most K Distinct Characters</a></li>
 </ul>
 
                                 
@@ -499,14 +533,10 @@
 
             
                 
-                <a href="../two-pointers/fast-slow.html" class="navigation navigation-prev " aria-label="Previous page: Fast & Slow Pointers">
+                <a href="introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Hash Tables">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="advanced-techniques.html" class="navigation navigation-next " aria-label="Next page: Advanced Techniques">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -515,7 +545,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Sliding Window","level":"3.1","depth":1,"next":{"title":"Advanced Techniques","level":"3.2","depth":1,"path":"sliding-window/advanced-techniques.md","ref":"sliding-window/advanced-techniques.md","articles":[]},"previous":{"title":"Fast & Slow Pointers","level":"2.2","depth":1,"path":"two-pointers/fast-slow.md","ref":"two-pointers/fast-slow.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"sliding-window/introduction.md","mtime":"2026-01-24T05:05:20.111Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-24T05:06:03.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced Techniques","level":"9.2","depth":1,"previous":{"title":"Introduction to Hash Tables","level":"9.1","depth":1,"path":"hash-maps/introduction.md","ref":"hash-maps/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"hash-maps/advanced-techniques.md","mtime":"2026-01-24T05:05:20.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-24T05:06:03.866Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
