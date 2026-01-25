@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Implementing Stack Data Structure · Coding Patterns Guide</title>
+        <title>Introduction to Tree Breadth First Search Pattern · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../monotonic-stack/introduction.html" />
+    <link rel="next" href="../tree-depth-first-search/introduction.html" />
     
     
-    <link rel="prev" href="introduction.html" />
+    <link rel="prev" href="../level-order-traversal/introduction.html" />
     
 
     </head>
@@ -260,9 +260,9 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="introduction.html">
+        <li class="chapter " data-level="7.1" data-path="../stack/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../stack/introduction.html">
             
                     
                     Introduction to Stack
@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="7.2" data-path="implementing-stack-data-structure.html">
+        <li class="chapter " data-level="7.2" data-path="../stack/implementing-stack-data-structure.html">
             
-                <a href="implementing-stack-data-structure.html">
+                <a href="../stack/implementing-stack-data-structure.html">
             
                     
                     Implementing Stack Data Structure
@@ -366,9 +366,9 @@
         
         
     
-        <li class="chapter " data-level="11.1" data-path="../tree-breadth-first-search/introduction.html">
+        <li class="chapter active" data-level="11.1" data-path="introduction.html">
             
-                <a href="../tree-breadth-first-search/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Tree Breadth First Search Pattern
@@ -449,7 +449,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Implementing Stack Data Structure</a>
+        <a href=".." >Introduction to Tree Breadth First Search Pattern</a>
     </h1>
 </div>
 
@@ -464,127 +464,114 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="implementing-stack-data-structure">Implementing Stack Data Structure</h1>
-<p>A stack can be implemented in multiple ways. The most common are:</p>
+                                <h1 id="introduction-to-tree-breadth-first-search-pattern">Introduction to Tree Breadth First Search Pattern</h1>
+<p><strong>Tree Breadth First Search (Tree BFS)</strong> traverses a tree <strong>level by level</strong>, exploring all nodes at depth 0, then depth 1, depth 2, and so on.</p>
+<p>It&#x2019;s typically implemented with a <strong>queue</strong>:</p>
 <ul>
-<li><strong>Dynamic array / list-based stack</strong> (fast and simple)</li>
-<li><strong>Linked-list-based stack</strong> (useful when you want explicit node control)</li>
+<li>enqueue the root</li>
+<li>repeatedly dequeue a node and enqueue its children</li>
 </ul>
-<p>The stack API
-A minimal stack typically supports:</p>
+<p>This pattern is the backbone of &#x201C;level order&#x201D; style problems and is often simpler than DFS when the question is naturally about <strong>levels</strong>, <strong>minimum depth</strong>, or <strong>closest</strong> nodes.</p>
+<p>When to use</p>
 <ul>
-<li><code>push(x)</code></li>
-<li><code>pop()</code></li>
-<li><code>peek()</code></li>
-<li><code>is_empty()</code></li>
-<li>(optional) <code>size()</code></li>
+<li>You need to process nodes <strong>by level</strong> (e.g., return values level-by-level).</li>
+<li>You need the <strong>minimum</strong> number of edges/levels to reach a target (BFS finds shortest paths in unweighted graphs/trees).</li>
+<li>You need to compute per-level aggregates (averages, sums, max).</li>
+<li>You need to connect nodes within the same level (next pointers).</li>
 </ul>
-<p>Implementation 1: list-based stack (Python)</p>
-<p>In Python, a plain list is a great stack:</p>
+<p>Common variants</p>
 <ul>
-<li><code>append(x)</code> is <code>push</code></li>
-<li><code>pop()</code> is <code>pop</code></li>
+<li>Standard level order traversal: output nodes grouped by level.</li>
+<li>Reverse level order: bottom-up levels.</li>
+<li>Zigzag level order: alternate left-to-right and right-to-left.</li>
+<li>Per-level aggregation: min/max/sum/average per level.</li>
+<li>&#x201C;First/last node of each level&#x201D;: right/left view.</li>
 </ul>
-<pre><code class="lang-python">class Stack:
-    def __init__(self):
-        self._data = []
-
-    def push(self, x):
-        self._data.append(x)
-
-    def pop(self):
-        if not self._data:
-            raise IndexError(&quot;pop from empty stack&quot;)
-        return self._data.pop()
-
-    def peek(self):
-        if not self._data:
-            raise IndexError(&quot;peek from empty stack&quot;)
-        return self._data[-1]
-
-    def is_empty(self) -&gt; bool:
-        return len(self._data) == 0
-
-    def size(self) -&gt; int:
-        return len(self._data)
-</code></pre>
-<p>Notes</p>
-<ul>
-<li>Prefer <code>list.append</code> / <code>list.pop()</code> from the <strong>end</strong> for $O(1)$ amortized behavior.</li>
-<li>Avoid <code>insert(0, x)</code> / <code>pop(0)</code> for stack behavior; those are $O(n)$.</li>
+<p>Pattern recipe</p>
+<ol>
+<li>If the tree is empty, return an empty result.</li>
+<li>Initialize a queue and add the root.</li>
+<li>While the queue is not empty:<ul>
+<li>Record the current level size <code>level_size = len(queue)</code>.</li>
+<li>Iterate <code>level_size</code> times:<ul>
+<li>pop a node from the queue</li>
+<li>process it</li>
+<li>push its children</li>
 </ul>
+</li>
+<li>finalize the level&#x2019;s output (list, sum, max, etc.)</li>
+</ul>
+</li>
+</ol>
 <p>Complexity</p>
 <ul>
-<li><code>push</code>: $O(1)$ amortized</li>
-<li><code>pop</code>: $O(1)$ amortized</li>
-<li><code>peek</code>: $O(1)$</li>
-<li>space: $O(n)$</li>
+<li>Time: $O(n)$ &#x2014; every node is enqueued and dequeued once.</li>
+<li>Space: $O(w)$ &#x2014; where $w$ is the maximum width of the tree (worst case $O(n)$).</li>
 </ul>
-<p>Implementation 2: linked-list stack (Python)</p>
-<p>A linked list stack keeps a pointer to the top node.</p>
-<pre><code class="lang-python">class _Node:
-    __slots__ = (&quot;val&quot;, &quot;next&quot;)
+<p>Short examples</p>
+<p>Binary Tree Level Order Traversal &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
 
-    def __init__(self, val, next=None):
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
         self.val = val
-        self.next = next
+        self.left = left
+        self.right = right
 
 
-class LinkedStack:
-    def __init__(self):
-        self._top = None
-        self._size = 0
+def level_order(root):
+    if not root:
+        return []
 
-    def push(self, x):
-        self._top = _Node(x, self._top)
-        self._size += 1
+    result = []
+    q = deque([root])
 
-    def pop(self):
-        if self._top is None:
-            raise IndexError(&quot;pop from empty stack&quot;)
-        x = self._top.val
-        self._top = self._top.next
-        self._size -= 1
-        return x
+    while q:
+        level_size = len(q)
+        level = []
 
-    def peek(self):
-        if self._top is None:
-            raise IndexError(&quot;peek from empty stack&quot;)
-        return self._top.val
+        for _ in range(level_size):
+            node = q.popleft()
+            level.append(node.val)
 
-    def is_empty(self) -&gt; bool:
-        return self._top is None
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
 
-    def size(self) -&gt; int:
-        return self._size
+        result.append(level)
+
+    return result
 </code></pre>
-<p>Complexity</p>
-<ul>
-<li>All operations are $O(1)$ worst-case.</li>
-<li>Space is $O(n)$, plus per-node overhead.</li>
-</ul>
-<p>Common pitfalls</p>
-<ul>
-<li>Returning <code>None</code> on empty <code>pop()</code>/<code>peek()</code> can hide bugs; raising an error is clearer.</li>
-<li>Accidentally implementing a queue by popping from the front of a list (<code>pop(0)</code>) causes $O(n)$ operations.</li>
-<li>Storing values instead of indices in monotonic-stack problems can block you from computing spans/distances.</li>
-</ul>
-<p>Quick usage example</p>
-<pre><code class="lang-python">s = Stack()
+<p>Minimum Depth of Binary Tree &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
 
-s.push(10)
-s.push(20)
-assert s.peek() == 20
-assert s.pop() == 20
-assert s.pop() == 10
-assert s.is_empty()
+def min_depth(root):
+    if not root:
+        return 0
+
+    q = deque([(root, 1)])
+
+    while q:
+        node, depth = q.popleft()
+
+        if not node.left and not node.right:
+            return depth
+
+        if node.left:
+            q.append((node.left, depth + 1))
+        if node.right:
+            q.append((node.right, depth + 1))
+
+    return 0
 </code></pre>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank">Implement Stack using Queues</a></li>
-<li><a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">Evaluate Reverse Polish Notation</a></li>
-<li><a href="https://leetcode.com/problems/simplify-path/" target="_blank">Simplify Path</a></li>
-<li><a href="https://leetcode.com/problems/decode-string/" target="_blank">Decode String</a></li>
+<li><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank">Binary Tree Level Order Traversal</a></li>
+<li><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank">Binary Tree Zigzag Level Order Traversal</a></li>
+<li><a href="https://leetcode.com/problems/binary-tree-right-side-view/" target="_blank">Binary Tree Right Side View</a></li>
+<li><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/" target="_blank">Minimum Depth of Binary Tree</a></li>
+<li><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/" target="_blank">Populating Next Right Pointers in Each Node</a></li>
 </ul>
 
                                 
@@ -613,12 +600,12 @@ assert s.is_empty()
 
             
                 
-                <a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Stack">
+                <a href="../level-order-traversal/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Level Order Traversal">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../monotonic-stack/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Monotonic Stack Pattern">
+                <a href="../tree-depth-first-search/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Tree Depth First Search Pattern">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -629,7 +616,7 @@ assert s.is_empty()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Implementing Stack Data Structure","level":"7.2","depth":1,"next":{"title":"Introduction to Monotonic Stack Pattern","level":"8.1","depth":1,"path":"monotonic-stack/introduction.md","ref":"monotonic-stack/introduction.md","articles":[]},"previous":{"title":"Introduction to Stack","level":"7.1","depth":1,"path":"stack/introduction.md","ref":"stack/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"stack/implementing-stack-data-structure.md","mtime":"2026-01-25T06:03:46.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T06:04:30.454Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Tree Breadth First Search Pattern","level":"11.1","depth":1,"next":{"title":"Introduction to Tree Depth First Search Pattern","level":"12.1","depth":1,"path":"tree-depth-first-search/introduction.md","ref":"tree-depth-first-search/introduction.md","articles":[]},"previous":{"title":"Introduction to Level Order Traversal","level":"10.1","depth":1,"path":"level-order-traversal/introduction.md","ref":"level-order-traversal/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"tree-breadth-first-search/introduction.md","mtime":"2026-01-25T06:03:46.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T06:04:30.454Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Implementing Stack Data Structure · Coding Patterns Guide</title>
+        <title>Introduction to Graph · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../monotonic-stack/introduction.html" />
     
-    
-    <link rel="prev" href="introduction.html" />
+    <link rel="prev" href="../tree-depth-first-search/introduction.html" />
     
 
     </head>
@@ -260,9 +258,9 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="introduction.html">
+        <li class="chapter " data-level="7.1" data-path="../stack/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../stack/introduction.html">
             
                     
                     Introduction to Stack
@@ -273,9 +271,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="7.2" data-path="implementing-stack-data-structure.html">
+        <li class="chapter " data-level="7.2" data-path="../stack/implementing-stack-data-structure.html">
             
-                <a href="implementing-stack-data-structure.html">
+                <a href="../stack/implementing-stack-data-structure.html">
             
                     
                     Implementing Stack Data Structure
@@ -406,9 +404,9 @@
         
         
     
-        <li class="chapter " data-level="13.1" data-path="../graphs/introduction.html">
+        <li class="chapter active" data-level="13.1" data-path="introduction.html">
             
-                <a href="../graphs/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Graph
@@ -449,7 +447,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Implementing Stack Data Structure</a>
+        <a href=".." >Introduction to Graph</a>
     </h1>
 </div>
 
@@ -464,127 +462,120 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="implementing-stack-data-structure">Implementing Stack Data Structure</h1>
-<p>A stack can be implemented in multiple ways. The most common are:</p>
+                                <h1 id="introduction-to-graph">Introduction to Graph</h1>
+<p>A <strong>graph</strong> models relationships between objects.</p>
 <ul>
-<li><strong>Dynamic array / list-based stack</strong> (fast and simple)</li>
-<li><strong>Linked-list-based stack</strong> (useful when you want explicit node control)</li>
+<li><strong>Vertices (nodes)</strong> represent entities.</li>
+<li><strong>Edges</strong> represent connections between entities.</li>
 </ul>
-<p>The stack API
-A minimal stack typically supports:</p>
+<p>Graphs are more general than trees:</p>
 <ul>
-<li><code>push(x)</code></li>
-<li><code>pop()</code></li>
-<li><code>peek()</code></li>
-<li><code>is_empty()</code></li>
-<li>(optional) <code>size()</code></li>
+<li>Trees have no cycles and exactly one path between nodes.</li>
+<li>Graphs can have <strong>cycles</strong>, multiple paths, disconnected components, and directed edges.</li>
 </ul>
-<p>Implementation 1: list-based stack (Python)</p>
-<p>In Python, a plain list is a great stack:</p>
+<p>Key graph types</p>
 <ul>
-<li><code>append(x)</code> is <code>push</code></li>
-<li><code>pop()</code> is <code>pop</code></li>
+<li><strong>Undirected</strong>: edges go both ways (friendships).</li>
+<li><strong>Directed (digraph)</strong>: edges have a direction (prerequisites, one-way roads).</li>
+<li><strong>Weighted</strong>: edges have costs (distance, time).</li>
+<li><strong>Unweighted</strong>: every edge cost is the same.</li>
 </ul>
-<pre><code class="lang-python">class Stack:
-    def __init__(self):
-        self._data = []
-
-    def push(self, x):
-        self._data.append(x)
-
-    def pop(self):
-        if not self._data:
-            raise IndexError(&quot;pop from empty stack&quot;)
-        return self._data.pop()
-
-    def peek(self):
-        if not self._data:
-            raise IndexError(&quot;peek from empty stack&quot;)
-        return self._data[-1]
-
-    def is_empty(self) -&gt; bool:
-        return len(self._data) == 0
-
-    def size(self) -&gt; int:
-        return len(self._data)
-</code></pre>
-<p>Notes</p>
+<p>When to use</p>
 <ul>
-<li>Prefer <code>list.append</code> / <code>list.pop()</code> from the <strong>end</strong> for $O(1)$ amortized behavior.</li>
-<li>Avoid <code>insert(0, x)</code> / <code>pop(0)</code> for stack behavior; those are $O(n)$.</li>
+<li>The problem describes <strong>relationships</strong> (&#x201C;connected to&#x201D;, &#x201C;can reach&#x201D;, &#x201C;depends on&#x201D;).</li>
+<li>You need to find:<ul>
+<li>reachability (&#x201C;is there a path?&#x201D;)</li>
+<li>shortest path (especially in unweighted graphs)</li>
+<li>connected components</li>
+<li>cycles</li>
+<li>ordering constraints (topological order)</li>
 </ul>
+</li>
+</ul>
+<p>Common graph representations</p>
+<p>Adjacency list (most common)</p>
+<ul>
+<li>Store for each node a list of neighbors.</li>
+<li>Great for sparse graphs.</li>
+<li>Space: $O(V + E)$.</li>
+</ul>
+<p>Adjacency matrix</p>
+<ul>
+<li><code>matrix[u][v]</code> indicates whether edge exists (or stores weight).</li>
+<li>Great for dense graphs and fast edge checks.</li>
+<li>Space: $O(V^2)$.</li>
+</ul>
+<p>Pattern recipes</p>
+<p>Graph traversal (DFS)</p>
+<ol>
+<li>Keep a <code>visited</code> set/array.</li>
+<li>Visit a node, mark visited.</li>
+<li>Recurse (or stack) through neighbors.</li>
+</ol>
+<p>Graph traversal (BFS)</p>
+<ol>
+<li>Keep a <code>visited</code> set/array.</li>
+<li>Use a queue.</li>
+<li>BFS explores in &#x201C;layers&#x201D;, which gives shortest path lengths in <strong>unweighted</strong> graphs.</li>
+</ol>
 <p>Complexity</p>
 <ul>
-<li><code>push</code>: $O(1)$ amortized</li>
-<li><code>pop</code>: $O(1)$ amortized</li>
-<li><code>peek</code>: $O(1)$</li>
-<li>space: $O(n)$</li>
+<li>DFS/BFS Time: $O(V + E)$ with adjacency lists.</li>
+<li>DFS/BFS Space: $O(V)$ for visited + recursion/queue.</li>
 </ul>
-<p>Implementation 2: linked-list stack (Python)</p>
-<p>A linked list stack keeps a pointer to the top node.</p>
-<pre><code class="lang-python">class _Node:
-    __slots__ = (&quot;val&quot;, &quot;next&quot;)
+<p>Short examples</p>
+<p>Build an undirected adjacency list &#x2014; Python</p>
+<pre><code class="lang-python">from collections import defaultdict
 
-    def __init__(self, val, next=None):
-        self.val = val
-        self.next = next
-
-
-class LinkedStack:
-    def __init__(self):
-        self._top = None
-        self._size = 0
-
-    def push(self, x):
-        self._top = _Node(x, self._top)
-        self._size += 1
-
-    def pop(self):
-        if self._top is None:
-            raise IndexError(&quot;pop from empty stack&quot;)
-        x = self._top.val
-        self._top = self._top.next
-        self._size -= 1
-        return x
-
-    def peek(self):
-        if self._top is None:
-            raise IndexError(&quot;peek from empty stack&quot;)
-        return self._top.val
-
-    def is_empty(self) -&gt; bool:
-        return self._top is None
-
-    def size(self) -&gt; int:
-        return self._size
+def build_undirected_graph(n, edges):
+    g = defaultdict(list)
+    for u, v in edges:
+        g[u].append(v)
+        g[v].append(u)
+    return g
 </code></pre>
-<p>Complexity</p>
-<ul>
-<li>All operations are $O(1)$ worst-case.</li>
-<li>Space is $O(n)$, plus per-node overhead.</li>
-</ul>
-<p>Common pitfalls</p>
-<ul>
-<li>Returning <code>None</code> on empty <code>pop()</code>/<code>peek()</code> can hide bugs; raising an error is clearer.</li>
-<li>Accidentally implementing a queue by popping from the front of a list (<code>pop(0)</code>) causes $O(n)$ operations.</li>
-<li>Storing values instead of indices in monotonic-stack problems can block you from computing spans/distances.</li>
-</ul>
-<p>Quick usage example</p>
-<pre><code class="lang-python">s = Stack()
+<p>DFS (recursive) &#x2014; Python</p>
+<pre><code class="lang-python">def dfs(g, start):
+    visited = set()
 
-s.push(10)
-s.push(20)
-assert s.peek() == 20
-assert s.pop() == 20
-assert s.pop() == 10
-assert s.is_empty()
+    def go(u):
+        visited.add(u)
+        for v in g[u]:
+            if v not in visited:
+                go(v)
+
+    go(start)
+    return visited
+</code></pre>
+<p>BFS shortest path (unweighted) &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
+
+def shortest_path_length(g, src, dst):
+    if src == dst:
+        return 0
+
+    q = deque([(src, 0)])
+    visited = {src}
+
+    while q:
+        u, d = q.popleft()
+        for v in g[u]:
+            if v in visited:
+                continue
+            if v == dst:
+                return d + 1
+            visited.add(v)
+            q.append((v, d + 1))
+
+    return -1
 </code></pre>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank">Implement Stack using Queues</a></li>
-<li><a href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">Evaluate Reverse Polish Notation</a></li>
-<li><a href="https://leetcode.com/problems/simplify-path/" target="_blank">Simplify Path</a></li>
-<li><a href="https://leetcode.com/problems/decode-string/" target="_blank">Decode String</a></li>
+<li><a href="https://leetcode.com/problems/find-if-path-exists-in-graph/" target="_blank">Find if Path Exists in Graph</a></li>
+<li><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank">Number of Provinces</a></li>
+<li><a href="https://leetcode.com/problems/find-eventual-safe-states/" target="_blank">Find Eventual Safe States</a></li>
+<li><a href="https://leetcode.com/problems/course-schedule/" target="_blank">Course Schedule</a> (cycle detection in directed graph)</li>
+<li><a href="https://leetcode.com/problems/course-schedule-ii/" target="_blank">Course Schedule II</a> (topological order)</li>
 </ul>
 
                                 
@@ -613,14 +604,10 @@ assert s.is_empty()
 
             
                 
-                <a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Stack">
+                <a href="../tree-depth-first-search/introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Tree Depth First Search Pattern">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../monotonic-stack/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Monotonic Stack Pattern">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -629,7 +616,7 @@ assert s.is_empty()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Implementing Stack Data Structure","level":"7.2","depth":1,"next":{"title":"Introduction to Monotonic Stack Pattern","level":"8.1","depth":1,"path":"monotonic-stack/introduction.md","ref":"monotonic-stack/introduction.md","articles":[]},"previous":{"title":"Introduction to Stack","level":"7.1","depth":1,"path":"stack/introduction.md","ref":"stack/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"stack/implementing-stack-data-structure.md","mtime":"2026-01-25T06:03:46.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T06:04:30.454Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Graph","level":"13.1","depth":1,"previous":{"title":"Introduction to Tree Depth First Search Pattern","level":"12.1","depth":1,"path":"tree-depth-first-search/introduction.md","ref":"tree-depth-first-search/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"graphs/introduction.md","mtime":"2026-01-25T06:03:46.853Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T06:04:30.454Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
