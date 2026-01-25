@@ -136,7 +136,7 @@ Explanation of Symbols:
 - Problem 4: Longest Palindrome (easy)
 - Problem 5: Ransom Note (easy)
 
-## 12. Level Order Traversal Pattern (New) (15 lessons)
+## 12. Level Order Traversal Pattern (New) (15 lessons) ✅
 
 - Introduction to Level Order Traversal Pattern
 - Reverse Level Order Traversal (easy)
@@ -147,7 +147,7 @@ Explanation of Symbols:
 - Even Odd Tree (medium)
 - N-ary Tree Level Order Traversal (hard)
 
-## 13. Pattern: Tree Breadth First Search (19 lessons)
+## 13. Pattern: Tree Breadth First Search (19 lessons) ✅
 
 - Introduction to Tree Breadth First Search Pattern
 - Binary Tree Level Order Traversal (easy)
@@ -160,7 +160,7 @@ Explanation of Symbols:
 - Problem Challenge 1: Connect All Level Order Siblings (medium)
 - Problem Challenge 2: Right View of a Binary Tree (easy)
 
-## 14. Pattern: Tree Depth First Search (15 lessons)
+## 14. Pattern: Tree Depth First Search (15 lessons)  ✅
 
 - Introduction to Tree Depth First Search Pattern
 - Binary Tree Path Sum (easy)

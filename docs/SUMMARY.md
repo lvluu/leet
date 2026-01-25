@@ -42,3 +42,15 @@
 ## Level Order Traversal Pattern
 
 * [Introduction to Level Order Traversal](level-order-traversal/introduction.md)
+
+## Tree Breadth First Search Pattern
+
+* [Introduction to Tree Breadth First Search Pattern](tree-breadth-first-search/introduction.md)
+
+## Tree Depth First Search Pattern
+
+* [Introduction to Tree Depth First Search Pattern](tree-depth-first-search/introduction.md)
+
+## Graphs Pattern
+
+* [Introduction to Graph](graphs/introduction.md)
