@@ -26,6 +26,9 @@ Hash maps store key-value pairs to enable fast lookups, frequency counting, grou
 ### Level Order Traversal
 Level order traversal is a BFS pattern for trees that processes nodes row-by-row using a queue.
 
+### Island (Matrix Traversal)
+The Island pattern treats a grid as a graph and uses DFS/BFS to find connected components like islands, regions, and flood fill areas.
+
 ## How to Use This Guide
 
 Each pattern section includes:

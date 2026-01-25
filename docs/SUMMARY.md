@@ -58,3 +58,11 @@
 * [Graph Representations](graphs/graph-representations.md)
 * [Graph Traversal - Depth First Search (DFS)](graphs/graph-traversal-depth-first-search.md)
 * [Graph Traversal - Breadth First Search (BFS)](graphs/graph-traversal-breadth-first-search.md)
+
+## Island (Matrix Traversal) Pattern
+
+* [Introduction to Island Pattern](island/introduction.md)
+
+## Two Heaps Pattern
+
+* [Introduction to Two Heaps Pattern](two-heaps/introduction.md)

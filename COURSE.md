@@ -184,7 +184,7 @@ Explanation of Symbols:
 - Minimum Number of Vertices to Reach All Nodes (medium)
 - Bus Routes (hard)
 
-## 16. Pattern: Island (Matrix Traversal) (15 lessons)
+## 16. Pattern: Island (Matrix Traversal) (15 lessons) ✅
 
 - Introduction to Island Pattern
 - Number of Islands (easy)
