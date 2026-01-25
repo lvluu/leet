@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to Tree Depth First Search Pattern · Coding Patterns Guide</title>
+        <title>Types of Graph · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../graphs/introduction.html" />
+    <link rel="next" href="graph-representations.html" />
     
     
-    <link rel="prev" href="../tree-breadth-first-search/introduction.html" />
+    <link rel="prev" href="introduction.html" />
     
 
     </head>
@@ -386,9 +386,9 @@
         
         
     
-        <li class="chapter active" data-level="12.1" data-path="introduction.html">
+        <li class="chapter " data-level="12.1" data-path="../tree-depth-first-search/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../tree-depth-first-search/introduction.html">
             
                     
                     Introduction to Tree Depth First Search Pattern
@@ -406,9 +406,9 @@
         
         
     
-        <li class="chapter " data-level="13.1" data-path="../graphs/introduction.html">
+        <li class="chapter " data-level="13.1" data-path="introduction.html">
             
-                <a href="../graphs/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Graph
@@ -419,9 +419,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.2" data-path="../graphs/types-of-graph.html">
+        <li class="chapter active" data-level="13.2" data-path="types-of-graph.html">
             
-                <a href="../graphs/types-of-graph.html">
+                <a href="types-of-graph.html">
             
                     
                     Types of Graph
@@ -432,9 +432,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.3" data-path="../graphs/graph-representations.html">
+        <li class="chapter " data-level="13.3" data-path="graph-representations.html">
             
-                <a href="../graphs/graph-representations.html">
+                <a href="graph-representations.html">
             
                     
                     Graph Representations
@@ -445,9 +445,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.4" data-path="../graphs/graph-traversal-depth-first-search.html">
+        <li class="chapter " data-level="13.4" data-path="graph-traversal-depth-first-search.html">
             
-                <a href="../graphs/graph-traversal-depth-first-search.html">
+                <a href="graph-traversal-depth-first-search.html">
             
                     
                     Graph Traversal - Depth First Search (DFS)
@@ -458,9 +458,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.5" data-path="../graphs/graph-traversal-breadth-first-search.html">
+        <li class="chapter " data-level="13.5" data-path="graph-traversal-breadth-first-search.html">
             
-                <a href="../graphs/graph-traversal-breadth-first-search.html">
+                <a href="graph-traversal-breadth-first-search.html">
             
                     
                     Graph Traversal - Breadth First Search (BFS)
@@ -501,7 +501,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to Tree Depth First Search Pattern</a>
+        <a href=".." >Types of Graph</a>
     </h1>
 </div>
 
@@ -516,118 +516,93 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-tree-depth-first-search-pattern">Introduction to Tree Depth First Search Pattern</h1>
-<p><strong>Tree Depth First Search (Tree DFS)</strong> explores a tree by going as deep as possible before backtracking.</p>
-<p>You&#x2019;ll usually see DFS implemented in two ways:</p>
+                                <h1 id="types-of-graph">Types of Graph</h1>
+<p>Graphs can be classified in several useful ways. Recognizing the type early helps you choose the right traversal and algorithm.</p>
+<p>Directed vs undirected</p>
 <ul>
-<li><strong>Recursion</strong> (most readable)</li>
-<li><strong>Explicit stack</strong> (avoids recursion depth limits)</li>
+<li><strong>Undirected</strong>: an edge <code>(u, v)</code> means you can travel both ways.</li>
+<li><strong>Directed</strong>: an edge <code>u &#x2192; v</code> allows travel only from <code>u</code> to <code>v</code>.</li>
 </ul>
-<p>DFS is a great fit when problems ask about:</p>
+<p>Clues in problems</p>
 <ul>
-<li><strong>root-to-leaf paths</strong></li>
-<li><strong>path constraints</strong> (sum, sequence, max/min along a path)</li>
-<li><strong>subtree computations</strong> (aggregate results from children)</li>
+<li>&#x201C;friends&#x201D;, &#x201C;connected&#x201D;, &#x201C;two-way roads&#x201D; &#x2192; likely <strong>undirected</strong></li>
+<li>&#x201C;prerequisite&#x201D;, &#x201C;depends on&#x201D;, &#x201C;follow&#x201D;, &#x201C;one-way roads&#x201D; &#x2192; likely <strong>directed</strong></li>
 </ul>
-<p>When to use</p>
+<p>Weighted vs unweighted</p>
 <ul>
-<li>You need to explore <strong>all paths</strong> from root to leaves.</li>
-<li>You need to compute a value that depends on children (post-order style).</li>
-<li>You need to check existence of a path satisfying a condition.</li>
-<li>You need to produce/collect paths or combinations along a traversal.</li>
+<li><strong>Unweighted</strong>: all edges have equal cost (usually treated as cost 1).</li>
+<li><strong>Weighted</strong>: edges have costs (distance, time, price).</li>
 </ul>
-<p>Common variants</p>
+<p>Rule of thumb</p>
 <ul>
-<li>Pre-order (node &#x2192; left &#x2192; right): good for building paths top-down.</li>
-<li>In-order (left &#x2192; node &#x2192; right): common with BSTs.</li>
-<li>Post-order (left &#x2192; right &#x2192; node): common for bottom-up aggregation.</li>
-<li>&#x201C;Backtracking DFS&#x201D;: maintain a path list, add/remove as recursion enters/exits.</li>
-</ul>
-<p>Pattern recipe (path-based DFS)</p>
-<ol>
-<li>Start DFS from the root with a path/state.</li>
-<li>Update the current state (e.g., add node value to path sum).</li>
-<li>If you reached a leaf, check/record the result.</li>
-<li>Recurse into children.</li>
-<li>Undo state changes when returning (backtrack) if you&#x2019;re using a shared mutable structure.</li>
-</ol>
-<p>Complexity</p>
-<ul>
-<li>Time: $O(n)$ &#x2014; visits each node once.</li>
-<li>Space:<ul>
-<li>recursion depth: $O(h)$ where $h$ is tree height</li>
-<li>plus any path storage/output you keep</li>
+<li>Shortest path in <strong>unweighted</strong> graphs: BFS.</li>
+<li>Shortest path in <strong>weighted</strong> graphs:<ul>
+<li>non-negative weights: Dijkstra</li>
+<li>negative weights: Bellman&#x2013;Ford (and detect negative cycles)</li>
 </ul>
 </li>
 </ul>
+<p>Simple vs multigraph</p>
+<ul>
+<li><strong>Simple graph</strong>: no parallel edges and no self-loops.</li>
+<li><strong>Multigraph</strong>: multiple edges can exist between the same nodes.</li>
+</ul>
+<p>Most interview problems assume a simple graph unless stated otherwise.</p>
+<p>Connected vs disconnected</p>
+<ul>
+<li>A graph may have multiple <strong>connected components</strong>.</li>
+<li>Many tasks require iterating all nodes and starting a traversal from each unvisited node.</li>
+</ul>
+<p>Cyclic vs acyclic</p>
+<ul>
+<li><strong>Cyclic</strong>: contains at least one cycle.</li>
+<li><strong>Acyclic</strong>:<ul>
+<li>For undirected graphs: a connected acyclic graph is a <strong>tree</strong>.</li>
+<li>For directed graphs: an acyclic directed graph is a <strong>DAG</strong>.</li>
+</ul>
+</li>
+</ul>
+<p>Why it matters</p>
+<ul>
+<li>Cycle detection strategies differ between directed and undirected graphs.</li>
+<li>DAGs enable topological ordering and DP on graphs.</li>
+</ul>
+<p>DAG (Directed Acyclic Graph)
+A DAG has no directed cycles.</p>
+<p>Common DAG use cases</p>
+<ul>
+<li>course prerequisites</li>
+<li>build systems / dependency graphs</li>
+<li>scheduling</li>
+</ul>
+<p>Bipartite graphs
+A graph is <strong>bipartite</strong> if vertices can be colored with two colors so that no edge connects same-colored vertices.</p>
+<p>Common use cases</p>
+<ul>
+<li>&#x201C;two groups&#x201D; constraints</li>
+<li>matching problems</li>
+<li>checking odd cycles (a graph is bipartite iff it has no odd-length cycle)</li>
+</ul>
+<p>Trees as a special case
+A tree is an undirected graph with:</p>
+<ul>
+<li>connected</li>
+<li>acyclic</li>
+<li>exactly <code>V - 1</code> edges</li>
+</ul>
 <p>Short examples</p>
-<p>Binary Tree Path Sum (existence) &#x2014; Python</p>
-<pre><code class="lang-python">class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
-def has_path_sum(root, target):
-    if not root:
-        return False
-
-    target -= root.val
-
-    if not root.left and not root.right:
-        return target == 0
-
-    return has_path_sum(root.left, target) or has_path_sum(root.right, target)
-</code></pre>
-<p>All root-to-leaf paths &#x2014; Python</p>
-<pre><code class="lang-python">def all_paths(root):
-    res = []
-
-    def dfs(node, path):
-        if not node:
-            return
-
-        path.append(node.val)
-
-        if not node.left and not node.right:
-            res.append(path.copy())
-        else:
-            dfs(node.left, path)
-            dfs(node.right, path)
-
-        path.pop()  # backtrack
-
-    dfs(root, [])
-    return res
-</code></pre>
-<p>Iterative DFS (explicit stack) &#x2014; Python</p>
-<pre><code class="lang-python">def preorder_iterative(root):
-    if not root:
-        return []
-
-    res = []
-    st = [root]
-
-    while st:
-        node = st.pop()
-        res.append(node.val)
-
-        # push right first so left is processed first
-        if node.right:
-            st.append(node.right)
-        if node.left:
-            st.append(node.left)
-
-    return res
-</code></pre>
+<p>Detect graph type hints (conceptual)</p>
+<ul>
+<li>If input is an edge list without direction, assume undirected.</li>
+<li>If edges are ordered pairs or described as &#x201C;from/to&#x201D;, assume directed.</li>
+</ul>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/path-sum/" target="_blank">Path Sum</a></li>
-<li><a href="https://leetcode.com/problems/path-sum-ii/" target="_blank">Path Sum II</a></li>
-<li><a href="https://leetcode.com/problems/binary-tree-paths/" target="_blank">Binary Tree Paths</a></li>
-<li><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank">Diameter of Binary Tree</a></li>
-<li><a href="https://leetcode.com/problems/path-sum-iii/" target="_blank">Path Sum III</a></li>
+<li><a href="https://leetcode.com/problems/course-schedule/" target="_blank">Course Schedule</a> (directed cycle detection)</li>
+<li><a href="https://leetcode.com/problems/find-if-path-exists-in-graph/" target="_blank">Find if Path Exists in Graph</a> (undirected reachability)</li>
+<li><a href="https://leetcode.com/problems/is-graph-bipartite/" target="_blank">Is Graph Bipartite?</a></li>
+<li><a href="https://leetcode.com/problems/redundant-connection/" target="_blank">Redundant Connection</a> (cycle in undirected)</li>
+<li><a href="https://leetcode.com/problems/find-eventual-safe-states/" target="_blank">Find Eventual Safe States</a> (directed graph)</li>
 </ul>
 
                                 
@@ -656,12 +631,12 @@ def has_path_sum(root, target):
 
             
                 
-                <a href="../tree-breadth-first-search/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Tree Breadth First Search Pattern">
+                <a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Graph">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../graphs/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Graph">
+                <a href="graph-representations.html" class="navigation navigation-next " aria-label="Next page: Graph Representations">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -672,7 +647,7 @@ def has_path_sum(root, target):
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Tree Depth First Search Pattern","level":"12.1","depth":1,"next":{"title":"Introduction to Graph","level":"13.1","depth":1,"path":"graphs/introduction.md","ref":"graphs/introduction.md","articles":[]},"previous":{"title":"Introduction to Tree Breadth First Search Pattern","level":"11.1","depth":1,"path":"tree-breadth-first-search/introduction.md","ref":"tree-breadth-first-search/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"tree-depth-first-search/introduction.md","mtime":"2026-01-25T07:35:45.667Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T07:36:26.347Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Types of Graph","level":"13.2","depth":1,"next":{"title":"Graph Representations","level":"13.3","depth":1,"path":"graphs/graph-representations.md","ref":"graphs/graph-representations.md","articles":[]},"previous":{"title":"Introduction to Graph","level":"13.1","depth":1,"path":"graphs/introduction.md","ref":"graphs/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"graphs/types-of-graph.md","mtime":"2026-01-25T07:35:45.666Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T07:36:26.347Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

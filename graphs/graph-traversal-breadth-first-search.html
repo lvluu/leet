@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to Tree Depth First Search Pattern · Coding Patterns Guide</title>
+        <title>Graph Traversal - Breadth First Search (BFS) · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../graphs/introduction.html" />
     
-    
-    <link rel="prev" href="../tree-breadth-first-search/introduction.html" />
+    <link rel="prev" href="graph-traversal-depth-first-search.html" />
     
 
     </head>
@@ -386,9 +384,9 @@
         
         
     
-        <li class="chapter active" data-level="12.1" data-path="introduction.html">
+        <li class="chapter " data-level="12.1" data-path="../tree-depth-first-search/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../tree-depth-first-search/introduction.html">
             
                     
                     Introduction to Tree Depth First Search Pattern
@@ -406,9 +404,9 @@
         
         
     
-        <li class="chapter " data-level="13.1" data-path="../graphs/introduction.html">
+        <li class="chapter " data-level="13.1" data-path="introduction.html">
             
-                <a href="../graphs/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Graph
@@ -419,9 +417,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.2" data-path="../graphs/types-of-graph.html">
+        <li class="chapter " data-level="13.2" data-path="types-of-graph.html">
             
-                <a href="../graphs/types-of-graph.html">
+                <a href="types-of-graph.html">
             
                     
                     Types of Graph
@@ -432,9 +430,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.3" data-path="../graphs/graph-representations.html">
+        <li class="chapter " data-level="13.3" data-path="graph-representations.html">
             
-                <a href="../graphs/graph-representations.html">
+                <a href="graph-representations.html">
             
                     
                     Graph Representations
@@ -445,9 +443,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.4" data-path="../graphs/graph-traversal-depth-first-search.html">
+        <li class="chapter " data-level="13.4" data-path="graph-traversal-depth-first-search.html">
             
-                <a href="../graphs/graph-traversal-depth-first-search.html">
+                <a href="graph-traversal-depth-first-search.html">
             
                     
                     Graph Traversal - Depth First Search (DFS)
@@ -458,9 +456,9 @@
             
         </li>
     
-        <li class="chapter " data-level="13.5" data-path="../graphs/graph-traversal-breadth-first-search.html">
+        <li class="chapter active" data-level="13.5" data-path="graph-traversal-breadth-first-search.html">
             
-                <a href="../graphs/graph-traversal-breadth-first-search.html">
+                <a href="graph-traversal-breadth-first-search.html">
             
                     
                     Graph Traversal - Breadth First Search (BFS)
@@ -501,7 +499,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to Tree Depth First Search Pattern</a>
+        <a href=".." >Graph Traversal - Breadth First Search (BFS)</a>
     </h1>
 </div>
 
@@ -516,118 +514,92 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-tree-depth-first-search-pattern">Introduction to Tree Depth First Search Pattern</h1>
-<p><strong>Tree Depth First Search (Tree DFS)</strong> explores a tree by going as deep as possible before backtracking.</p>
-<p>You&#x2019;ll usually see DFS implemented in two ways:</p>
-<ul>
-<li><strong>Recursion</strong> (most readable)</li>
-<li><strong>Explicit stack</strong> (avoids recursion depth limits)</li>
-</ul>
-<p>DFS is a great fit when problems ask about:</p>
-<ul>
-<li><strong>root-to-leaf paths</strong></li>
-<li><strong>path constraints</strong> (sum, sequence, max/min along a path)</li>
-<li><strong>subtree computations</strong> (aggregate results from children)</li>
-</ul>
+                                <h1 id="graph-traversal---breadth-first-search-bfs">Graph Traversal - Breadth First Search (BFS)</h1>
+<p><strong>BFS</strong> explores a graph in expanding &#x201C;layers&#x201D; starting from a source node.</p>
+<p>BFS is especially powerful in <strong>unweighted</strong> graphs because the first time you reach a node is via the <strong>shortest number of edges</strong>.</p>
 <p>When to use</p>
 <ul>
-<li>You need to explore <strong>all paths</strong> from root to leaves.</li>
-<li>You need to compute a value that depends on children (post-order style).</li>
-<li>You need to check existence of a path satisfying a condition.</li>
-<li>You need to produce/collect paths or combinations along a traversal.</li>
+<li>You need shortest path in an <strong>unweighted</strong> graph.</li>
+<li>You need minimum steps/moves (grid problems are often graphs).</li>
+<li>You need to explore by distance from a start node.</li>
 </ul>
-<p>Common variants</p>
+<p>Key idea: queue + visited</p>
 <ul>
-<li>Pre-order (node &#x2192; left &#x2192; right): good for building paths top-down.</li>
-<li>In-order (left &#x2192; node &#x2192; right): common with BSTs.</li>
-<li>Post-order (left &#x2192; right &#x2192; node): common for bottom-up aggregation.</li>
-<li>&#x201C;Backtracking DFS&#x201D;: maintain a path list, add/remove as recursion enters/exits.</li>
+<li>Use a queue to process nodes in the order they are discovered.</li>
+<li>Mark nodes visited when enqueuing (prevents duplicate enqueues).</li>
 </ul>
-<p>Pattern recipe (path-based DFS)</p>
+<p>Pattern recipe</p>
 <ol>
-<li>Start DFS from the root with a path/state.</li>
-<li>Update the current state (e.g., add node value to path sum).</li>
-<li>If you reached a leaf, check/record the result.</li>
-<li>Recurse into children.</li>
-<li>Undo state changes when returning (backtrack) if you&#x2019;re using a shared mutable structure.</li>
-</ol>
-<p>Complexity</p>
-<ul>
-<li>Time: $O(n)$ &#x2014; visits each node once.</li>
-<li>Space:<ul>
-<li>recursion depth: $O(h)$ where $h$ is tree height</li>
-<li>plus any path storage/output you keep</li>
+<li>Initialize a queue with the start node.</li>
+<li>Mark start as visited.</li>
+<li>While queue not empty:<ul>
+<li>pop a node</li>
+<li>for each neighbor not visited:<ul>
+<li>mark visited</li>
+<li>enqueue neighbor</li>
 </ul>
 </li>
 </ul>
+</li>
+</ol>
+<p>Complexity</p>
+<ul>
+<li>Time: $O(V + E)$ (adjacency list)</li>
+<li>Space: $O(V)$ for visited + queue</li>
+</ul>
 <p>Short examples</p>
-<p>Binary Tree Path Sum (existence) &#x2014; Python</p>
-<pre><code class="lang-python">class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+<p>BFS traversal &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
 
+def bfs(g, start):
+    visited = {start}
+    q = deque([start])
 
-def has_path_sum(root, target):
-    if not root:
-        return False
+    while q:
+        u = q.popleft()
+        for v in g[u]:
+            if v in visited:
+                continue
+            visited.add(v)
+            q.append(v)
 
-    target -= root.val
-
-    if not root.left and not root.right:
-        return target == 0
-
-    return has_path_sum(root.left, target) or has_path_sum(root.right, target)
+    return visited
 </code></pre>
-<p>All root-to-leaf paths &#x2014; Python</p>
-<pre><code class="lang-python">def all_paths(root):
-    res = []
+<p>Shortest path length (unweighted) &#x2014; Python</p>
+<pre><code class="lang-python">from collections import deque
 
-    def dfs(node, path):
-        if not node:
-            return
+def shortest_path_length(g, src, dst):
+    if src == dst:
+        return 0
 
-        path.append(node.val)
+    visited = {src}
+    q = deque([(src, 0)])
 
-        if not node.left and not node.right:
-            res.append(path.copy())
-        else:
-            dfs(node.left, path)
-            dfs(node.right, path)
+    while q:
+        u, dist = q.popleft()
+        for v in g[u]:
+            if v in visited:
+                continue
+            if v == dst:
+                return dist + 1
+            visited.add(v)
+            q.append((v, dist + 1))
 
-        path.pop()  # backtrack
-
-    dfs(root, [])
-    return res
+    return -1
 </code></pre>
-<p>Iterative DFS (explicit stack) &#x2014; Python</p>
-<pre><code class="lang-python">def preorder_iterative(root):
-    if not root:
-        return []
-
-    res = []
-    st = [root]
-
-    while st:
-        node = st.pop()
-        res.append(node.val)
-
-        # push right first so left is processed first
-        if node.right:
-            st.append(node.right)
-        if node.left:
-            st.append(node.left)
-
-    return res
-</code></pre>
+<p>Multi-source BFS (concept)
+Use when multiple starting points spread simultaneously (rotting oranges, 0-1 matrix).</p>
+<ul>
+<li>Initialize queue with all sources at distance 0.</li>
+<li>BFS as normal.</li>
+</ul>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/path-sum/" target="_blank">Path Sum</a></li>
-<li><a href="https://leetcode.com/problems/path-sum-ii/" target="_blank">Path Sum II</a></li>
-<li><a href="https://leetcode.com/problems/binary-tree-paths/" target="_blank">Binary Tree Paths</a></li>
-<li><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank">Diameter of Binary Tree</a></li>
-<li><a href="https://leetcode.com/problems/path-sum-iii/" target="_blank">Path Sum III</a></li>
+<li><a href="https://leetcode.com/problems/find-if-path-exists-in-graph/" target="_blank">Find if Path Exists in Graph</a></li>
+<li><a href="https://leetcode.com/problems/shortest-path-in-binary-matrix/" target="_blank">Shortest Path in Binary Matrix</a></li>
+<li><a href="https://leetcode.com/problems/rotting-oranges/" target="_blank">Rotting Oranges</a></li>
+<li><a href="https://leetcode.com/problems/01-matrix/" target="_blank">01 Matrix</a></li>
+<li><a href="https://leetcode.com/problems/bus-routes/" target="_blank">Bus Routes</a></li>
 </ul>
 
                                 
@@ -656,14 +628,10 @@ def has_path_sum(root, target):
 
             
                 
-                <a href="../tree-breadth-first-search/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Tree Breadth First Search Pattern">
+                <a href="graph-traversal-depth-first-search.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Graph Traversal - Depth First Search (DFS)">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../graphs/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Graph">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -672,7 +640,7 @@ def has_path_sum(root, target):
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Tree Depth First Search Pattern","level":"12.1","depth":1,"next":{"title":"Introduction to Graph","level":"13.1","depth":1,"path":"graphs/introduction.md","ref":"graphs/introduction.md","articles":[]},"previous":{"title":"Introduction to Tree Breadth First Search Pattern","level":"11.1","depth":1,"path":"tree-breadth-first-search/introduction.md","ref":"tree-breadth-first-search/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"tree-depth-first-search/introduction.md","mtime":"2026-01-25T07:35:45.667Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T07:36:26.347Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Graph Traversal - Breadth First Search (BFS)","level":"13.5","depth":1,"previous":{"title":"Graph Traversal - Depth First Search (DFS)","level":"13.4","depth":1,"path":"graphs/graph-traversal-depth-first-search.md","ref":"graphs/graph-traversal-depth-first-search.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"graphs/graph-traversal-breadth-first-search.md","mtime":"2026-01-25T07:35:45.666Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T07:36:26.347Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
