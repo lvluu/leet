@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to In-place Reversal of a Linked List · Coding Patterns Guide</title>
+        <title>Introduction to Island Pattern · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../stack/introduction.html" />
+    <link rel="next" href="../two-heaps/introduction.html" />
     
     
-    <link rel="prev" href="../cyclic-sort/introduction.html" />
+    <link rel="prev" href="../graphs/graph-traversal-breadth-first-search.html" />
     
 
     </head>
@@ -240,9 +240,9 @@
         
         
     
-        <li class="chapter active" data-level="6.1" data-path="introduction.html">
+        <li class="chapter " data-level="6.1" data-path="../in-place-reversal/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../in-place-reversal/introduction.html">
             
                     
                     Introduction to In-place Reversal of a Linked List
@@ -478,9 +478,9 @@
         
         
     
-        <li class="chapter " data-level="14.1" data-path="../island/introduction.html">
+        <li class="chapter active" data-level="14.1" data-path="introduction.html">
             
-                <a href="../island/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Island Pattern
@@ -541,7 +541,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to In-place Reversal of a Linked List</a>
+        <a href=".." >Introduction to Island Pattern</a>
     </h1>
 </div>
 
@@ -556,140 +556,101 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-in-place-reversal-of-a-linked-list-pattern">Introduction to In-place Reversal of a Linked List Pattern</h1>
-<p>The <strong>In-place Reversal of a Linked List</strong> pattern focuses on reversing pointers inside a linked list without allocating additional data structures.</p>
-<p>Instead of copying values into an array/stack, you <strong>re-wire</strong> <code>next</code> pointers as you traverse.</p>
-<p>When to use</p>
+                                <h1 id="introduction-to-island-pattern-matrix-traversal">Introduction to Island Pattern (Matrix Traversal)</h1>
+<p>The <strong>Island pattern</strong> is &#x201C;graph connected components&#x201D; on a 2D grid.</p>
+<p>You&#x2019;re usually given a matrix (grid) where each cell is either:</p>
 <ul>
-<li>You need to reverse an entire linked list or a portion of it.</li>
-<li>You&#x2019;re asked to reverse nodes in groups (e.g., every $k$ nodes).</li>
-<li>The constraints suggest <strong>$O(1)$ extra space</strong>, and mutating the list is allowed.</li>
+<li><strong>land / water</strong> (e.g., <code>1</code> / <code>0</code>)</li>
+<li><strong>open / blocked</strong></li>
+<li>or some label/color you can transform</li>
 </ul>
-<p>Common variants</p>
+<p>Two land cells are connected if they are adjacent (most commonly <strong>4-directionally</strong>: up/down/left/right; sometimes <strong>8-directionally</strong>).</p>
+<h2 id="when-to-use">When to use</h2>
 <ul>
-<li>Reverse the whole list.</li>
-<li>Reverse a sub-list between positions <code>p</code> and <code>q</code>.</li>
-<li>Reverse nodes in groups of size <code>k</code>.</li>
-<li>Reverse alternating groups of size <code>k</code>.</li>
-<li>Rotate a list (often uses partial reversal or careful pointer rewiring).</li>
+<li>You need to count connected regions (e.g., &#x201C;number of islands&#x201D;).</li>
+<li>You need to measure regions (largest island area/perimeter).</li>
+<li>You need to transform a region (flood fill, recolor, capture surrounded regions).</li>
+<li>You need to detect regions with constraints (closed islands, islands touching border).</li>
 </ul>
-<p>Pattern recipe (reverse a segment)</p>
+<h2 id="core-idea">Core idea</h2>
+<ul>
+<li>Treat each cell as a node.</li>
+<li>Edges connect neighboring cells.</li>
+<li>Run DFS/BFS from every unvisited &#x201C;land&#x201D; cell to mark the whole component.</li>
+</ul>
+<h2 id="pattern-recipe">Pattern recipe</h2>
 <ol>
-<li>Walk the list to reach the node just <strong>before</strong> the segment you want to reverse.</li>
-<li>Reverse the pointers inside the segment using the standard 3-pointer technique:<ul>
-<li><code>prev</code>, <code>current</code>, <code>next</code>.</li>
+<li>Decide the adjacency rule: 4-dir or 8-dir.</li>
+<li>Keep a <code>visited</code> structure (or mark in-place if allowed).</li>
+<li>Loop all cells:<ul>
+<li>if this cell is &#x201C;land&#x201D; and unvisited:<ul>
+<li>start DFS/BFS to visit the full component</li>
+<li>update your answer (count += 1, area += size, etc.)</li>
 </ul>
 </li>
-<li>Reconnect:<ul>
-<li>The node before the segment &#x2192; new head of reversed segment.</li>
-<li>The tail of the reversed segment &#x2192; the node after the segment.</li>
 </ul>
 </li>
 </ol>
-<p>Core reversal loop</p>
+<h2 id="complexity">Complexity</h2>
 <ul>
-<li>Keep a <code>prev</code> pointer.</li>
-<li>Iteratively move <code>current.next</code> to point to <code>prev</code>.</li>
-<li>Advance all pointers forward.</li>
+<li>Time: $O(R \cdot C)$ (each cell processed at most once)</li>
+<li>Space: $O(R \cdot C)$ worst case for <code>visited</code> / queue / recursion stack</li>
 </ul>
-<p>Complexity</p>
+<h2 id="implementation-tips">Implementation tips</h2>
 <ul>
-<li>Time: $O(n)$ &#x2014; each node is processed a constant number of times.</li>
-<li>Space: $O(1)$ extra space.</li>
+<li>Use a direction array:<ul>
+<li>4-dir: <code>[(1,0),(-1,0),(0,1),(0,-1)]</code></li>
 </ul>
-<p>Short examples</p>
-<p>Reverse a linked list (Python)</p>
-<pre><code class="lang-python">class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+</li>
+<li>If in-place marking is allowed, you can mutate:<ul>
+<li><code>grid[r][c] = 0</code> (sink land)</li>
+<li>or change to a sentinel like <code>&apos;#&apos;</code></li>
+</ul>
+</li>
+<li>Python recursion depth can be an issue for big grids; BFS (queue) avoids that.</li>
+</ul>
+<h2 id="short-example-count-islands-dfs-in-place">Short example: count islands (DFS, in-place)</h2>
+<pre><code class="lang-python">def num_islands(grid):
+    if not grid:
+        return 0
 
+    R, C = len(grid), len(grid[0])
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-def reverse_list(head: ListNode | None) -&gt; ListNode | None:
-    prev = None
-    current = head
+    def dfs(r, c):
+        if r &lt; 0 or r &gt;= R or c &lt; 0 or c &gt;= C:
+            return
+        if grid[r][c] != &quot;1&quot;:
+            return
+        grid[r][c] = &quot;0&quot;
+        for dr, dc in dirs:
+            dfs(r + dr, c + dc)
 
-    while current:
-        nxt = current.next
-        current.next = prev
-        prev = current
-        current = nxt
+    ans = 0
+    for r in range(R):
+        for c in range(C):
+            if grid[r][c] == &quot;1&quot;:
+                ans += 1
+                dfs(r, c)
 
-    return prev
+    return ans
 </code></pre>
-<p>Reverse a sub-list from position <code>p</code> to <code>q</code> (1-indexed) &#x2014; Python</p>
-<pre><code class="lang-python">def reverse_sub_list(head: ListNode | None, p: int, q: int) -&gt; ListNode | None:
-    if not head or p == q:
-        return head
-
-    current, prev = head, None
-
-    # 1) Skip first p-1 nodes
-    for _ in range(p - 1):
-        prev = current
-        current = current.next
-
-    # current is now at p
-    last_node_of_first_part = prev
-    last_node_of_sub_list = current
-
-    # 2) Reverse nodes between p and q
-    nxt = None
-    for _ in range(q - p + 1):
-        nxt = current.next
-        current.next = prev
-        prev = current
-        current = nxt
-
-    # 3) Connect with the first part
-    if last_node_of_first_part:
-        last_node_of_first_part.next = prev
-    else:
-        head = prev
-
-    # 4) Connect with the remaining part
-    last_node_of_sub_list.next = current
-
-    return head
-</code></pre>
-<p>Reverse nodes in groups of size <code>k</code> (outline) &#x2014; Python</p>
-<pre><code class="lang-python">def reverse_k_group(head: ListNode | None, k: int) -&gt; ListNode | None:
-    if k &lt;= 1 or not head:
-        return head
-
-    dummy = ListNode(0, head)
-    group_prev = dummy
-
-    while True:
-        # Find the kth node from group_prev
-        kth = group_prev
-        for _ in range(k):
-            kth = kth.next
-            if not kth:
-                return dummy.next
-
-        group_next = kth.next
-
-        # Reverse the group
-        prev, current = group_next, group_prev.next
-        while current != group_next:
-            nxt = current.next
-            current.next = prev
-            prev = current
-            current = nxt
-
-        # Connect group_prev to new head of this group
-        tmp = group_prev.next  # becomes the tail after reversal
-        group_prev.next = kth
-        group_prev = tmp
-</code></pre>
-<p>Problems to practice</p>
+<h2 id="common-variants-to-practice">Common variants to practice</h2>
 <ul>
-<li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">Reverse Linked List</a></li>
-<li><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank">Reverse Linked List II</a></li>
-<li><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank">Reverse Nodes in k-Group</a></li>
-<li><a href="https://leetcode.com/problems/rotate-list/" target="_blank">Rotate List</a></li>
-<li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank">Palindrome Linked List</a> (often reverses the second half)</li>
+<li>Number of Islands</li>
+<li>Max Area of Island / Biggest Island</li>
+<li>Flood Fill</li>
+<li>Number of Closed Islands</li>
+<li>Surrounded Regions (capture regions not touching border)</li>
+</ul>
+<h2 id="problems-to-practice">Problems to practice</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/number-of-islands/" target="_blank">Number of Islands</a></li>
+<li><a href="https://leetcode.com/problems/max-area-of-island/" target="_blank">Max Area of Island</a></li>
+<li><a href="https://leetcode.com/problems/flood-fill/" target="_blank">Flood Fill</a></li>
+<li><a href="https://leetcode.com/problems/number-of-closed-islands/" target="_blank">Number of Closed Islands</a></li>
+<li><a href="https://leetcode.com/problems/surrounded-regions/" target="_blank">Surrounded Regions</a></li>
+<li><a href="https://leetcode.com/problems/pacific-atlantic-water-flow/" target="_blank">Pacific Atlantic Water Flow</a></li>
 </ul>
 
                                 
@@ -718,12 +679,12 @@ def reverse_list(head: ListNode | None) -&gt; ListNode | None:
 
             
                 
-                <a href="../cyclic-sort/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Cyclic Sort">
+                <a href="../graphs/graph-traversal-breadth-first-search.html" class="navigation navigation-prev " aria-label="Previous page: Graph Traversal - Breadth First Search (BFS)">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../stack/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Stack">
+                <a href="../two-heaps/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Two Heaps Pattern">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -734,7 +695,7 @@ def reverse_list(head: ListNode | None) -&gt; ListNode | None:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"next":{"title":"Introduction to Stack","level":"7.1","depth":1,"path":"stack/introduction.md","ref":"stack/introduction.md","articles":[]},"previous":{"title":"Introduction to Cyclic Sort","level":"5.1","depth":1,"path":"cyclic-sort/introduction.md","ref":"cyclic-sort/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"in-place-reversal/introduction.md","mtime":"2026-01-25T16:52:40.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T16:53:22.958Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Island Pattern","level":"14.1","depth":1,"next":{"title":"Introduction to Two Heaps Pattern","level":"15.1","depth":1,"path":"two-heaps/introduction.md","ref":"two-heaps/introduction.md","articles":[]},"previous":{"title":"Graph Traversal - Breadth First Search (BFS)","level":"13.5","depth":1,"path":"graphs/graph-traversal-breadth-first-search.md","ref":"graphs/graph-traversal-breadth-first-search.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"island/introduction.md","mtime":"2026-01-25T16:52:40.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T16:53:22.958Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

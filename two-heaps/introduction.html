@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to In-place Reversal of a Linked List · Coding Patterns Guide</title>
+        <title>Introduction to Two Heaps Pattern · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../stack/introduction.html" />
     
-    
-    <link rel="prev" href="../cyclic-sort/introduction.html" />
+    <link rel="prev" href="../island/introduction.html" />
     
 
     </head>
@@ -240,9 +238,9 @@
         
         
     
-        <li class="chapter active" data-level="6.1" data-path="introduction.html">
+        <li class="chapter " data-level="6.1" data-path="../in-place-reversal/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../in-place-reversal/introduction.html">
             
                     
                     Introduction to In-place Reversal of a Linked List
@@ -498,9 +496,9 @@
         
         
     
-        <li class="chapter " data-level="15.1" data-path="../two-heaps/introduction.html">
+        <li class="chapter active" data-level="15.1" data-path="introduction.html">
             
-                <a href="../two-heaps/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Two Heaps Pattern
@@ -541,7 +539,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to In-place Reversal of a Linked List</a>
+        <a href=".." >Introduction to Two Heaps Pattern</a>
     </h1>
 </div>
 
@@ -556,140 +554,91 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-in-place-reversal-of-a-linked-list-pattern">Introduction to In-place Reversal of a Linked List Pattern</h1>
-<p>The <strong>In-place Reversal of a Linked List</strong> pattern focuses on reversing pointers inside a linked list without allocating additional data structures.</p>
-<p>Instead of copying values into an array/stack, you <strong>re-wire</strong> <code>next</code> pointers as you traverse.</p>
+                                <h1 id="introduction-to-two-heaps-pattern">Introduction to Two Heaps Pattern</h1>
+<p>The Two Heaps pattern solves problems where you need to continuously reason about the <strong>middle</strong> of a dataset (median, k-th boundary) or dynamically split values into a <strong>lower half</strong> and an <strong>upper half</strong>.</p>
+<p>You maintain:</p>
+<ul>
+<li>a <strong>max-heap</strong> for the <em>lower</em> half (so you can quickly get the largest of the smaller values)</li>
+<li>a <strong>min-heap</strong> for the <em>upper</em> half (so you can quickly get the smallest of the larger values)</li>
+</ul>
+<p>The heaps are kept <strong>balanced</strong> (sizes differ by at most 1), which makes the median or boundary element available in $O(1)$ after each update.</p>
 <p>When to use</p>
 <ul>
-<li>You need to reverse an entire linked list or a portion of it.</li>
-<li>You&#x2019;re asked to reverse nodes in groups (e.g., every $k$ nodes).</li>
-<li>The constraints suggest <strong>$O(1)$ extra space</strong>, and mutating the list is allowed.</li>
+<li>You need a running median / dynamic median after each insertion.</li>
+<li>You need to support &#x201C;add a number&#x201D; and &#x201C;query median&#x201D; (streaming data).</li>
+<li>You need to maintain two groups with a natural split (e.g., &#x201C;small vs large&#x201D;) and frequently query the boundary.</li>
+<li>You need a sliding window median (two heaps + lazy deletion bookkeeping).</li>
 </ul>
-<p>Common variants</p>
+<p>Core invariants</p>
 <ul>
-<li>Reverse the whole list.</li>
-<li>Reverse a sub-list between positions <code>p</code> and <code>q</code>.</li>
-<li>Reverse nodes in groups of size <code>k</code>.</li>
-<li>Reverse alternating groups of size <code>k</code>.</li>
-<li>Rotate a list (often uses partial reversal or careful pointer rewiring).</li>
+<li>All values in <code>lower</code> (max-heap) are <code>&lt;=</code> all values in <code>upper</code> (min-heap).</li>
+<li><code>len(lower)</code> is either equal to <code>len(upper)</code> or exactly one larger (common choice).</li>
 </ul>
-<p>Pattern recipe (reverse a segment)</p>
+<p>Pattern recipe (running median)</p>
 <ol>
-<li>Walk the list to reach the node just <strong>before</strong> the segment you want to reverse.</li>
-<li>Reverse the pointers inside the segment using the standard 3-pointer technique:<ul>
-<li><code>prev</code>, <code>current</code>, <code>next</code>.</li>
+<li>Insert the number into one heap:<ul>
+<li>If the number is <code>&lt;= max(lower)</code>, push to <code>lower</code>.</li>
+<li>Else push to <code>upper</code>.</li>
 </ul>
 </li>
-<li>Reconnect:<ul>
-<li>The node before the segment &#x2192; new head of reversed segment.</li>
-<li>The tail of the reversed segment &#x2192; the node after the segment.</li>
+<li>Rebalance sizes so <code>abs(len(lower) - len(upper)) &lt;= 1</code>.<ul>
+<li>If <code>lower</code> is too big, move its top to <code>upper</code>.</li>
+<li>If <code>upper</code> is too big, move its top to <code>lower</code>.</li>
+</ul>
+</li>
+<li>Compute median:<ul>
+<li>If odd count, median is <code>top(lower)</code> (or whichever heap you keep larger).</li>
+<li>If even count, median is the average of <code>top(lower)</code> and <code>top(upper)</code>.</li>
 </ul>
 </li>
 </ol>
-<p>Core reversal loop</p>
-<ul>
-<li>Keep a <code>prev</code> pointer.</li>
-<li>Iteratively move <code>current.next</code> to point to <code>prev</code>.</li>
-<li>Advance all pointers forward.</li>
-</ul>
 <p>Complexity</p>
 <ul>
-<li>Time: $O(n)$ &#x2014; each node is processed a constant number of times.</li>
-<li>Space: $O(1)$ extra space.</li>
+<li>Insert: $O(\log n)$</li>
+<li>Rebalance: $O(\log n)$ (one move)</li>
+<li>Query median/boundary: $O(1)$</li>
+<li>Space: $O(n)$</li>
 </ul>
-<p>Short examples</p>
-<p>Reverse a linked list (Python)</p>
-<pre><code class="lang-python">class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+<p>Short example (running median) &#x2014; Python</p>
+<pre><code class="lang-python">import heapq
 
+class MedianFinder:
+    def __init__(self):
+        # lower: max-heap implemented via negatives
+        self.lower = []
+        # upper: min-heap
+        self.upper = []
 
-def reverse_list(head: ListNode | None) -&gt; ListNode | None:
-    prev = None
-    current = head
+    def add_num(self, num: int) -&gt; None:
+        if not self.lower or num &lt;= -self.lower[0]:
+            heapq.heappush(self.lower, -num)
+        else:
+            heapq.heappush(self.upper, num)
 
-    while current:
-        nxt = current.next
-        current.next = prev
-        prev = current
-        current = nxt
+        # rebalance
+        if len(self.lower) &gt; len(self.upper) + 1:
+            heapq.heappush(self.upper, -heapq.heappop(self.lower))
+        elif len(self.upper) &gt; len(self.lower):
+            heapq.heappush(self.lower, -heapq.heappop(self.upper))
 
-    return prev
+    def find_median(self) -&gt; float:
+        if len(self.lower) &gt; len(self.upper):
+            return float(-self.lower[0])
+        return (-self.lower[0] + self.upper[0]) / 2.0
 </code></pre>
-<p>Reverse a sub-list from position <code>p</code> to <code>q</code> (1-indexed) &#x2014; Python</p>
-<pre><code class="lang-python">def reverse_sub_list(head: ListNode | None, p: int, q: int) -&gt; ListNode | None:
-    if not head or p == q:
-        return head
-
-    current, prev = head, None
-
-    # 1) Skip first p-1 nodes
-    for _ in range(p - 1):
-        prev = current
-        current = current.next
-
-    # current is now at p
-    last_node_of_first_part = prev
-    last_node_of_sub_list = current
-
-    # 2) Reverse nodes between p and q
-    nxt = None
-    for _ in range(q - p + 1):
-        nxt = current.next
-        current.next = prev
-        prev = current
-        current = nxt
-
-    # 3) Connect with the first part
-    if last_node_of_first_part:
-        last_node_of_first_part.next = prev
-    else:
-        head = prev
-
-    # 4) Connect with the remaining part
-    last_node_of_sub_list.next = current
-
-    return head
-</code></pre>
-<p>Reverse nodes in groups of size <code>k</code> (outline) &#x2014; Python</p>
-<pre><code class="lang-python">def reverse_k_group(head: ListNode | None, k: int) -&gt; ListNode | None:
-    if k &lt;= 1 or not head:
-        return head
-
-    dummy = ListNode(0, head)
-    group_prev = dummy
-
-    while True:
-        # Find the kth node from group_prev
-        kth = group_prev
-        for _ in range(k):
-            kth = kth.next
-            if not kth:
-                return dummy.next
-
-        group_next = kth.next
-
-        # Reverse the group
-        prev, current = group_next, group_prev.next
-        while current != group_next:
-            nxt = current.next
-            current.next = prev
-            prev = current
-            current = nxt
-
-        # Connect group_prev to new head of this group
-        tmp = group_prev.next  # becomes the tail after reversal
-        group_prev.next = kth
-        group_prev = tmp
-</code></pre>
+<p>Common pitfalls</p>
+<ul>
+<li>Forgetting to rebalance after every insertion.</li>
+<li>Violating the ordering invariant (<code>max(lower) &lt;= min(upper)</code>).</li>
+<li>Sliding window median requires <em>removals</em>; typical solutions use &#x201C;lazy deletion&#x201D; maps + cleanup loops to discard invalid heap tops.</li>
+<li>Handling even-sized median carefully (integer vs float division).</li>
+</ul>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">Reverse Linked List</a></li>
-<li><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank">Reverse Linked List II</a></li>
-<li><a href="https://leetcode.com/problems/reverse-nodes-in-k-group/" target="_blank">Reverse Nodes in k-Group</a></li>
-<li><a href="https://leetcode.com/problems/rotate-list/" target="_blank">Rotate List</a></li>
-<li><a href="https://leetcode.com/problems/palindrome-linked-list/" target="_blank">Palindrome Linked List</a> (often reverses the second half)</li>
+<li><a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank">Find Median from Data Stream</a></li>
+<li><a href="https://leetcode.com/problems/sliding-window-median/" target="_blank">Sliding Window Median</a> (two heaps + lazy deletion)</li>
+<li><a href="https://leetcode.com/problems/ipo/" target="_blank">IPO (Maximize Capital)</a> (often taught as two heaps: one by required capital, one by profits)</li>
+<li><a href="https://leetcode.com/problems/find-right-interval/" target="_blank">Find Right Interval</a> (commonly solved with heaps or sorting + binary search)</li>
 </ul>
 
                                 
@@ -718,14 +667,10 @@ def reverse_list(head: ListNode | None) -&gt; ListNode | None:
 
             
                 
-                <a href="../cyclic-sort/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Cyclic Sort">
+                <a href="../island/introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Island Pattern">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../stack/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Stack">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -734,7 +679,7 @@ def reverse_list(head: ListNode | None) -&gt; ListNode | None:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"next":{"title":"Introduction to Stack","level":"7.1","depth":1,"path":"stack/introduction.md","ref":"stack/introduction.md","articles":[]},"previous":{"title":"Introduction to Cyclic Sort","level":"5.1","depth":1,"path":"cyclic-sort/introduction.md","ref":"cyclic-sort/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"in-place-reversal/introduction.md","mtime":"2026-01-25T16:52:40.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T16:53:22.958Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Two Heaps Pattern","level":"15.1","depth":1,"previous":{"title":"Introduction to Island Pattern","level":"14.1","depth":1,"path":"island/introduction.md","ref":"island/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"two-heaps/introduction.md","mtime":"2026-01-25T16:52:40.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-25T16:53:22.958Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
