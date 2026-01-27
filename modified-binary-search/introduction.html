@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to Stack · Coding Patterns Guide</title>
+        <title>Introduction to Modified Binary Search Pattern · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="implementing-stack-data-structure.html" />
     
-    
-    <link rel="prev" href="../in-place-reversal/introduction.html" />
+    <link rel="prev" href="../subsets/introduction.html" />
     
 
     </head>
@@ -260,9 +258,9 @@
         
         
     
-        <li class="chapter active" data-level="7.1" data-path="introduction.html">
+        <li class="chapter " data-level="7.1" data-path="../stack/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../stack/introduction.html">
             
                     
                     Introduction to Stack
@@ -273,9 +271,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="implementing-stack-data-structure.html">
+        <li class="chapter " data-level="7.2" data-path="../stack/implementing-stack-data-structure.html">
             
-                <a href="implementing-stack-data-structure.html">
+                <a href="../stack/implementing-stack-data-structure.html">
             
                     
                     Implementing Stack Data Structure
@@ -538,9 +536,9 @@
         
         
     
-        <li class="chapter " data-level="17.1" data-path="../modified-binary-search/introduction.html">
+        <li class="chapter active" data-level="17.1" data-path="introduction.html">
             
-                <a href="../modified-binary-search/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Modified Binary Search Pattern
@@ -581,7 +579,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to Stack</a>
+        <a href=".." >Introduction to Modified Binary Search Pattern</a>
     </h1>
 </div>
 
@@ -596,95 +594,149 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-stack">Introduction to Stack</h1>
-<p>A <strong>stack</strong> is a linear data structure that follows <strong>LIFO</strong> (Last In, First Out): the most recently added element is the first one removed.</p>
-<p>You can think of it like a stack of plates:</p>
+                                <h1 id="introduction-to-modified-binary-search-pattern">Introduction to Modified Binary Search Pattern</h1>
+<p>Classic binary search assumes a <strong>sorted</strong> array and a simple &quot;go left / go right&quot; decision.</p>
+<h2 id="visual-examples">Visual Examples</h2>
+<h3 id="classic-binary-search">Classic Binary Search</h3>
+<p><img src="../.gitbook/assets/animations/modified-binary-search/binary_search_classic.gif" alt="Classic binary search"></p>
+<h3 id="find-first-occurrence">Find First Occurrence</h3>
+<p><img src="../.gitbook/assets/animations/modified-binary-search/binary_search_first.gif" alt="Find first occurrence"></p>
+<h3 id="search-in-rotated-array">Search in Rotated Array</h3>
+<p><img src="../.gitbook/assets/animations/modified-binary-search/binary_search_rotated.gif" alt="Search in rotated array">
+The <em>Modified Binary Search</em> pattern keeps the same $O(\log n)$ search idea, but adapts it to handle more complex structure:</p>
 <ul>
-<li>You <em>push</em> a plate onto the top.</li>
-<li>You <em>pop</em> a plate from the top.</li>
-<li>You can <em>peek</em> at the top plate without removing it.</li>
-</ul>
-<p>Stacks show up constantly in algorithms because they naturally model:</p>
-<ul>
-<li><strong>Nested structures</strong> (parentheses, XML/HTML tags)</li>
-<li><strong>Backtracking</strong> (undo operations, DFS)</li>
-<li><strong>Monotonic behavior</strong> (next greater element, stock span)</li>
+<li>rotated sorted arrays</li>
+<li>bitonic (increasing then decreasing) arrays</li>
+<li>duplicate values</li>
+<li>finding boundaries (first/last position)</li>
+<li>&#x201C;next greater / ceiling / minimum difference&#x201D; style queries</li>
 </ul>
 <p>When to use</p>
 <ul>
-<li>You need to process items in <em>reverse</em> order of arrival.</li>
-<li>You need to match pairs with nesting (e.g., <code>()[]{}</code>).</li>
-<li>You need to maintain a monotonic structure (increasing/decreasing) while scanning.</li>
-<li>You need to simulate recursion / manage call frames explicitly.</li>
+<li>The input is sorted <em>or almost sorted</em> (rotated, bitonic, with duplicates).</li>
+<li>You need <strong>first/last occurrence</strong>, <strong>lower/upper bound</strong>, or a <strong>range</strong>.</li>
+<li>The problem has a monotonic property where one side is always &#x201C;valid&#x201D; and the other &#x201C;invalid&#x201D;.</li>
 </ul>
 <p>Common variants</p>
 <ul>
-<li>Simple stack: supports <code>push</code>, <code>pop</code>, <code>peek</code>.</li>
-<li>Min stack / max stack: can return current min/max in $O(1)$.</li>
-<li>Monotonic stack: maintains increasing or decreasing values/indices.</li>
-<li>Two-stack techniques:<ul>
-<li>Implement a queue using two stacks.</li>
-<li>Evaluate expressions (operator stack + operand stack).</li>
+<li>Order-agnostic binary search: works on ascending or descending arrays.</li>
+<li>Lower bound / upper bound:<ul>
+<li>first index with <code>arr[i] &gt;= x</code></li>
+<li>first index with <code>arr[i] &gt; x</code></li>
+</ul>
+</li>
+<li>Find first/last occurrence: derive from lower/upper bound.</li>
+<li>Rotated array search: one half is always sorted; decide which half contains the target.</li>
+<li>Rotation count / minimum element: find the pivot.</li>
+<li>Bitonic array:<ul>
+<li>find peak index</li>
+<li>binary search in the increasing part, then the decreasing part</li>
+</ul>
+</li>
+<li>&#x201C;Infinite array&#x201D; search: expand window exponentially, then binary search.</li>
+</ul>
+<p>Pattern recipe</p>
+<p>1) Identify the monotonic decision</p>
+<ul>
+<li>For each <code>mid</code>, decide which side <em>must</em> contain the answer.</li>
+</ul>
+<p>2) Use correct bounds template</p>
+<ul>
+<li>For exact match: classic <code>while left &lt;= right</code>.</li>
+<li>For boundary search (first/last): prefer <code>while left &lt; right</code> and converge to an index.</li>
+</ul>
+<p>3) Watch the off-by-one rules</p>
+<ul>
+<li>Boundary problems are typically won or lost by invariants.<ul>
+<li>Example invariant for lower bound: answer is always in <code>[left, right]</code>.</li>
 </ul>
 </li>
 </ul>
-<p>Core operations</p>
-<ul>
-<li><code>push(x)</code>: add to the top</li>
-<li><code>pop()</code>: remove and return the top</li>
-<li><code>peek()</code>: return the top without removing</li>
-<li><code>is_empty()</code>: whether stack has no items</li>
-<li>(optional) <code>size()</code>: number of elements</li>
-</ul>
 <p>Complexity</p>
 <ul>
-<li>Typical time: $O(1)$ per operation (<code>push</code>, <code>pop</code>, <code>peek</code>).</li>
-<li>Space: $O(n)$ for $n$ stored elements.</li>
+<li>Time: $O(\log n)$ for most variants.</li>
+<li>Space: $O(1)$.</li>
 </ul>
 <p>Short examples</p>
-<p>Valid parentheses (stack of opening brackets) &#x2014; Python</p>
-<pre><code class="lang-python">def is_valid_parentheses(s: str) -&gt; bool:
-    pairs = {&apos;)&apos;: &apos;(&apos;, &apos;]&apos;: &apos;[&apos;, &apos;}&apos;: &apos;{&apos;}
-    stack = []
+<p>Order-agnostic binary search &#x2014; Python</p>
+<pre><code class="lang-python">def order_agnostic_bs(arr, target):
+    if not arr:
+        return -1
 
-    for ch in s:
-        if ch in pairs.values():
-            stack.append(ch)
-        elif ch in pairs:
-            if not stack or stack.pop() != pairs[ch]:
-                return False
+    left, right = 0, len(arr) - 1
+    is_asc = arr[left] &lt;= arr[right]
+
+    while left &lt;= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+
+        if is_asc:
+            if target &lt; arr[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
         else:
-            # ignore or handle invalid characters as needed
-            return False
+            if target &gt; arr[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
 
-    return not stack
+    return -1
 </code></pre>
-<p>Next greater element (monotonic decreasing stack of indices) &#x2014; Python</p>
-<pre><code class="lang-python">def next_greater(nums):
-    res = [-1] * len(nums)
-    st = []  # indices, nums[st] is strictly decreasing
-
-    for i, x in enumerate(nums):
-        while st and nums[st[-1]] &lt; x:
-            res[st.pop()] = x
-        st.append(i)
-
-    return res
+<p>Lower bound (first index with <code>arr[i] &gt;= x</code>) &#x2014; Python</p>
+<pre><code class="lang-python">def lower_bound(arr, x):
+    left, right = 0, len(arr)  # right is exclusive
+    while left &lt; right:
+        mid = (left + right) // 2
+        if arr[mid] &lt; x:
+            left = mid + 1
+        else:
+            right = mid
+    return left  # may be len(arr)
 </code></pre>
-<p>Pattern recipe: monotonic stack (next greater style)</p>
-<ol>
-<li>Decide whether you want the stack to be monotonic increasing or decreasing.</li>
-<li>Store <strong>indices</strong> when you need distances/ranges; store <strong>values</strong> when you only need comparisons.</li>
-<li>While the current element breaks monotonicity, pop and resolve answers for popped items.</li>
-<li>Push the current element/index.</li>
-</ol>
+<p>Find range (first and last occurrence) &#x2014; Python</p>
+<pre><code class="lang-python">def search_range(arr, target):
+    left = lower_bound(arr, target)
+    if left == len(arr) or arr[left] != target:
+        return [-1, -1]
+
+    right = lower_bound(arr, target + 1) - 1
+    return [left, right]
+</code></pre>
+<p>Rotated array search (distinct values) &#x2014; Python</p>
+<pre><code class="lang-python">def search_rotated(arr, target):
+    left, right = 0, len(arr) - 1
+
+    while left &lt;= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+
+        # left half is sorted
+        if arr[left] &lt;= arr[mid]:
+            if arr[left] &lt;= target &lt; arr[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        # right half is sorted
+        else:
+            if arr[mid] &lt; target &lt;= arr[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+    return -1
+</code></pre>
 <p>Problems to practice</p>
 <ul>
-<li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">Valid Parentheses</a></li>
-<li><a href="https://leetcode.com/problems/min-stack/" target="_blank">Min Stack</a></li>
-<li><a href="https://leetcode.com/problems/daily-temperatures/" target="_blank">Daily Temperatures</a></li>
-<li><a href="https://leetcode.com/problems/next-greater-element-i/" target="_blank">Next Greater Element I</a></li>
-<li><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank">Largest Rectangle in Histogram</a></li>
+<li><a href="https://leetcode.com/problems/binary-search/" target="_blank">Binary Search</a></li>
+<li><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank">Find First and Last Position of Element in Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank">Search in Rotated Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank">Find Minimum in Rotated Sorted Array</a></li>
+<li><a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/" target="_blank">Search in Rotated Sorted Array II</a> (duplicates)</li>
+<li><a href="https://leetcode.com/problems/peak-index-in-a-mountain-array/" target="_blank">Peak Index in a Mountain Array</a></li>
+<li><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank">Search a 2D Matrix</a></li>
 </ul>
 
                                 
@@ -713,14 +765,10 @@
 
             
                 
-                <a href="../in-place-reversal/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to In-place Reversal of a Linked List">
+                <a href="../subsets/introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Subsets Pattern">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="implementing-stack-data-structure.html" class="navigation navigation-next " aria-label="Next page: Implementing Stack Data Structure">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -729,7 +777,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Stack","level":"7.1","depth":1,"next":{"title":"Implementing Stack Data Structure","level":"7.2","depth":1,"path":"stack/implementing-stack-data-structure.md","ref":"stack/implementing-stack-data-structure.md","articles":[]},"previous":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"path":"in-place-reversal/introduction.md","ref":"in-place-reversal/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"stack/introduction.md","mtime":"2026-01-27T06:52:53.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T06:53:35.693Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Modified Binary Search Pattern","level":"17.1","depth":1,"previous":{"title":"Introduction to Subsets Pattern","level":"16.1","depth":1,"path":"subsets/introduction.md","ref":"subsets/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"modified-binary-search/introduction.md","mtime":"2026-01-27T06:52:53.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T06:53:35.693Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

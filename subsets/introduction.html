@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction to Stack · Coding Patterns Guide</title>
+        <title>Introduction to Subsets Pattern · Coding Patterns Guide</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="implementing-stack-data-structure.html" />
+    <link rel="next" href="../modified-binary-search/introduction.html" />
     
     
-    <link rel="prev" href="../in-place-reversal/introduction.html" />
+    <link rel="prev" href="../two-heaps/introduction.html" />
     
 
     </head>
@@ -260,9 +260,9 @@
         
         
     
-        <li class="chapter active" data-level="7.1" data-path="introduction.html">
+        <li class="chapter " data-level="7.1" data-path="../stack/introduction.html">
             
-                <a href="introduction.html">
+                <a href="../stack/introduction.html">
             
                     
                     Introduction to Stack
@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="implementing-stack-data-structure.html">
+        <li class="chapter " data-level="7.2" data-path="../stack/implementing-stack-data-structure.html">
             
-                <a href="implementing-stack-data-structure.html">
+                <a href="../stack/implementing-stack-data-structure.html">
             
                     
                     Implementing Stack Data Structure
@@ -518,9 +518,9 @@
         
         
     
-        <li class="chapter " data-level="16.1" data-path="../subsets/introduction.html">
+        <li class="chapter active" data-level="16.1" data-path="introduction.html">
             
-                <a href="../subsets/introduction.html">
+                <a href="introduction.html">
             
                     
                     Introduction to Subsets Pattern
@@ -581,7 +581,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Introduction to Stack</a>
+        <a href=".." >Introduction to Subsets Pattern</a>
     </h1>
 </div>
 
@@ -596,96 +596,120 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction-to-stack">Introduction to Stack</h1>
-<p>A <strong>stack</strong> is a linear data structure that follows <strong>LIFO</strong> (Last In, First Out): the most recently added element is the first one removed.</p>
-<p>You can think of it like a stack of plates:</p>
-<ul>
-<li>You <em>push</em> a plate onto the top.</li>
-<li>You <em>pop</em> a plate from the top.</li>
-<li>You can <em>peek</em> at the top plate without removing it.</li>
-</ul>
-<p>Stacks show up constantly in algorithms because they naturally model:</p>
-<ul>
-<li><strong>Nested structures</strong> (parentheses, XML/HTML tags)</li>
-<li><strong>Backtracking</strong> (undo operations, DFS)</li>
-<li><strong>Monotonic behavior</strong> (next greater element, stock span)</li>
-</ul>
-<p>When to use</p>
-<ul>
-<li>You need to process items in <em>reverse</em> order of arrival.</li>
-<li>You need to match pairs with nesting (e.g., <code>()[]{}</code>).</li>
-<li>You need to maintain a monotonic structure (increasing/decreasing) while scanning.</li>
-<li>You need to simulate recursion / manage call frames explicitly.</li>
-</ul>
-<p>Common variants</p>
-<ul>
-<li>Simple stack: supports <code>push</code>, <code>pop</code>, <code>peek</code>.</li>
-<li>Min stack / max stack: can return current min/max in $O(1)$.</li>
-<li>Monotonic stack: maintains increasing or decreasing values/indices.</li>
-<li>Two-stack techniques:<ul>
-<li>Implement a queue using two stacks.</li>
-<li>Evaluate expressions (operator stack + operand stack).</li>
-</ul>
-</li>
-</ul>
-<p>Core operations</p>
-<ul>
-<li><code>push(x)</code>: add to the top</li>
-<li><code>pop()</code>: remove and return the top</li>
-<li><code>peek()</code>: return the top without removing</li>
-<li><code>is_empty()</code>: whether stack has no items</li>
-<li>(optional) <code>size()</code>: number of elements</li>
-</ul>
-<p>Complexity</p>
-<ul>
-<li>Typical time: $O(1)$ per operation (<code>push</code>, <code>pop</code>, <code>peek</code>).</li>
-<li>Space: $O(n)$ for $n$ stored elements.</li>
-</ul>
-<p>Short examples</p>
-<p>Valid parentheses (stack of opening brackets) &#x2014; Python</p>
-<pre><code class="lang-python">def is_valid_parentheses(s: str) -&gt; bool:
-    pairs = {&apos;)&apos;: &apos;(&apos;, &apos;]&apos;: &apos;[&apos;, &apos;}&apos;: &apos;{&apos;}
-    stack = []
+                                <pre><code class="lang-markdown"># Introduction to Subsets Pattern
 
-    for ch in s:
-        if ch in pairs.values():
-            stack.append(ch)
-        elif ch in pairs:
-            if not stack or stack.pop() != pairs[ch]:
-                return False
-        else:
-            # ignore or handle invalid characters as needed
-            return False
+The Subsets pattern (sometimes called the *power set* pattern) is about generating **all combinations** of a collection.
+It shows up whenever a problem asks for *all possible selections*, *all arrangements*, or *all ways to build* something.
 
-    return not stack
-</code></pre>
-<p>Next greater element (monotonic decreasing stack of indices) &#x2014; Python</p>
-<pre><code class="lang-python">def next_greater(nums):
-    res = [-1] * len(nums)
-    st = []  # indices, nums[st] is strictly decreasing
+A key point: the number of results is usually exponential.
+- For $n$ distinct items, the number of subsets is $2^n$.
+- For permutations, the number of results is $n!$.
+
+When to use
+- The problem asks for **all subsets / combinations / selections**.
+- You see phrasing like &#x201C;generate all&#x201D;, &#x201C;return all possible&#x201D;, &#x201C;all ways&#x201D;, &#x201C;find every&#x2026;&#x201D;.
+- You can build the answer by making a sequence of **binary decisions** (include/exclude), or by choosing the **next element** from remaining options.
+
+Common variants
+- Subsets (power set): all combinations of elements.
+- Subsets with duplicates: avoid duplicate subsets by sorting + skipping duplicates.
+- Combinations with constraints: e.g., size $k$, sum == target.
+- Permutations: all orderings of elements.
+- String permutations by case: each letter branches into upper/lower.
+- Balanced parentheses: build only valid sequences by tracking counts.
+- &#x201C;Different ways to evaluate&#x201D;: recursively split expression (divide-and-combine).
+- Structurally unique BSTs: count/generate BSTs (Catalan-number family).
+
+Pattern recipe (classic subsets)
+
+Option A: iterative expansion (BFS-style)
+1. Start with a list containing the empty subset: `[[]]`.
+2. For each element `x`:
+   - Copy all existing subsets and append `x` to each copy.
+   - Add those new subsets back into the list.
+
+Option B: backtracking (DFS)
+1. Keep a `path` (current subset).
+2. At index `i`, branch:
+   - include `nums[i]` in `path`
+   - exclude `nums[i]`
+3. When you reach the end, emit `path`.
+
+Handling duplicates (Subsets II)
+- Sort input.
+- During iterative expansion, only extend the subsets created in the previous step when you see a duplicate.
+- During DFS, skip duplicates at the same recursion depth.
+
+Complexity
+- Subsets (distinct):
+  - Time: $O(n \cdot 2^n)$ (each subset copy can cost up to $n$)
+  - Space: $O(n \cdot 2^n)$ for output
+- Permutations:
+  - Time: $O(n \cdot n!)$
+  - Space: $O(n)$ recursion depth (plus output)
+
+Short examples
+
+Generate all subsets (iterative) &#x2014; Python
+
+```python
+def subsets(nums):
+    result = [[]]
+    for x in nums:
+        result += [curr + [x] for curr in result]
+    return result
+```
+
+Subsets with duplicates (iterative) &#x2014; Python
+
+```python
+def subsets_with_dup(nums):
+    nums.sort()
+    result = [[]]
+    start = 0
 
     for i, x in enumerate(nums):
-        while st and nums[st[-1]] &lt; x:
-            res[st.pop()] = x
-        st.append(i)
+        # if current value is a duplicate, only extend subsets added in the previous step
+        if i &gt; 0 and nums[i] == nums[i - 1]:
+            subset_range = result[start:]
+        else:
+            subset_range = result
 
-    return res
+        start = len(result)
+        result += [curr + [x] for curr in subset_range]
+
+    return result
+```
+
+Balanced parentheses (backtracking) &#x2014; Python
+
+```python
+def generate_parentheses(n):
+    result = []
+
+    def dfs(path, open_count, close_count):
+        if len(path) == 2 * n:
+            result.append(path)
+            return
+        if open_count &lt; n:
+            dfs(path + &quot;(&quot;, open_count + 1, close_count)
+        if close_count &lt; open_count:
+            dfs(path + &quot;)&quot;, open_count, close_count + 1)
+
+    dfs(&quot;&quot;, 0, 0)
+    return result
+```
+
+Problems to practice
+- [Subsets](https://leetcode.com/problems/subsets/)
+- [Subsets II](https://leetcode.com/problems/subsets-ii/)
+- [Permutations](https://leetcode.com/problems/permutations/)
+- [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/)
+- [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
+- [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/)
+- [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
+- [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/)
 </code></pre>
-<p>Pattern recipe: monotonic stack (next greater style)</p>
-<ol>
-<li>Decide whether you want the stack to be monotonic increasing or decreasing.</li>
-<li>Store <strong>indices</strong> when you need distances/ranges; store <strong>values</strong> when you only need comparisons.</li>
-<li>While the current element breaks monotonicity, pop and resolve answers for popped items.</li>
-<li>Push the current element/index.</li>
-</ol>
-<p>Problems to practice</p>
-<ul>
-<li><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">Valid Parentheses</a></li>
-<li><a href="https://leetcode.com/problems/min-stack/" target="_blank">Min Stack</a></li>
-<li><a href="https://leetcode.com/problems/daily-temperatures/" target="_blank">Daily Temperatures</a></li>
-<li><a href="https://leetcode.com/problems/next-greater-element-i/" target="_blank">Next Greater Element I</a></li>
-<li><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank">Largest Rectangle in Histogram</a></li>
-</ul>
 
                                 
                                 </section>
@@ -713,12 +737,12 @@
 
             
                 
-                <a href="../in-place-reversal/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to In-place Reversal of a Linked List">
+                <a href="../two-heaps/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Two Heaps Pattern">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="implementing-stack-data-structure.html" class="navigation navigation-next " aria-label="Next page: Implementing Stack Data Structure">
+                <a href="../modified-binary-search/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Modified Binary Search Pattern">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -729,7 +753,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Stack","level":"7.1","depth":1,"next":{"title":"Implementing Stack Data Structure","level":"7.2","depth":1,"path":"stack/implementing-stack-data-structure.md","ref":"stack/implementing-stack-data-structure.md","articles":[]},"previous":{"title":"Introduction to In-place Reversal of a Linked List","level":"6.1","depth":1,"path":"in-place-reversal/introduction.md","ref":"in-place-reversal/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"stack/introduction.md","mtime":"2026-01-27T06:52:53.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T06:53:35.693Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Subsets Pattern","level":"16.1","depth":1,"next":{"title":"Introduction to Modified Binary Search Pattern","level":"17.1","depth":1,"path":"modified-binary-search/introduction.md","ref":"modified-binary-search/introduction.md","articles":[]},"previous":{"title":"Introduction to Two Heaps Pattern","level":"15.1","depth":1,"path":"two-heaps/introduction.md","ref":"two-heaps/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"subsets/introduction.md","mtime":"2026-01-27T06:52:53.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T06:53:35.693Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
