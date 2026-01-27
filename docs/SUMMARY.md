@@ -66,3 +66,11 @@
 ## Two Heaps Pattern
 
 * [Introduction to Two Heaps Pattern](two-heaps/introduction.md)
+
+## Subsets Pattern
+
+* [Introduction to Subsets Pattern](subsets/introduction.md)
+
+## Modified Binary Search Pattern
+
+* [Introduction to Modified Binary Search Pattern](modified-binary-search/introduction.md)

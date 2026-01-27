@@ -29,6 +29,12 @@ Level order traversal is a BFS pattern for trees that processes nodes row-by-row
 ### Island (Matrix Traversal)
 The Island pattern treats a grid as a graph and uses DFS/BFS to find connected components like islands, regions, and flood fill areas.
 
+### Subsets
+The Subsets pattern generates all combinations (subsets) of a set, and often extends to permutations and other “generate all possibilities” problems using backtracking or iterative expansion.
+
+### Modified Binary Search
+Modified Binary Search adapts classic binary search to handle non-trivial monotonic structure: rotated arrays, bitonic arrays, finding boundaries (first/last occurrence), ceilings/floors, and other “search on an answer space” variants.
+
 ## How to Use This Guide
 
 Each pattern section includes:
