@@ -1,4 +1,3 @@
-````markdown
 # Introduction to Subsets Pattern
 
 The Subsets pattern (sometimes called the *power set* pattern) is about generating **all combinations** of a collection.
@@ -112,4 +111,3 @@ Problems to practice
 - [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/)
 - [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
 - [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/)
-````
