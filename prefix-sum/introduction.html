@@ -1,0 +1,1253 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction to Prefix Sum Pattern · Coding Patterns Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="lvluu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-advanced-emoji/emoji-website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../multi-threaded/introduction.html" />
+    
+    
+    <link rel="prev" href="../ordered-set/introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Pointers Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../two-pointers/introduction.html">
+            
+                <a href="../two-pointers/introduction.html">
+            
+                    
+                    Introduction to Two Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../two-pointers/fast-slow.html">
+            
+                <a href="../two-pointers/fast-slow.html">
+            
+                    
+                    Fast & Slow Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sliding Window Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../sliding-window/introduction.html">
+            
+                <a href="../sliding-window/introduction.html">
+            
+                    
+                    Introduction to Sliding Window
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../sliding-window/advanced-techniques.html">
+            
+                <a href="../sliding-window/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Merge Intervals Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../merge-intervals/introduction.html">
+            
+                <a href="../merge-intervals/introduction.html">
+            
+                    
+                    Introduction to Merge Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../merge-intervals/advanced-techniques.html">
+            
+                <a href="../merge-intervals/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Cyclic Sort Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../cyclic-sort/introduction.html">
+            
+                <a href="../cyclic-sort/introduction.html">
+            
+                    
+                    Introduction to Cyclic Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">In-place Reversal of a Linked List Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../in-place-reversal/introduction.html">
+            
+                <a href="../in-place-reversal/introduction.html">
+            
+                    
+                    Introduction to In-place Reversal of a Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stack</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../stack/introduction.html">
+            
+                <a href="../stack/introduction.html">
+            
+                    
+                    Introduction to Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../stack/implementing-stack-data-structure.html">
+            
+                <a href="../stack/implementing-stack-data-structure.html">
+            
+                    
+                    Implementing Stack Data Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Monotonic Stack Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../monotonic-stack/introduction.html">
+            
+                <a href="../monotonic-stack/introduction.html">
+            
+                    
+                    Introduction to Monotonic Stack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hash Maps Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../hash-maps/introduction.html">
+            
+                <a href="../hash-maps/introduction.html">
+            
+                    
+                    Introduction to Hash Tables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../hash-maps/advanced-techniques.html">
+            
+                <a href="../hash-maps/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Level Order Traversal Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../level-order-traversal/introduction.html">
+            
+                <a href="../level-order-traversal/introduction.html">
+            
+                    
+                    Introduction to Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Tree Breadth First Search Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../tree-breadth-first-search/introduction.html">
+            
+                <a href="../tree-breadth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Breadth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Tree Depth First Search Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../tree-depth-first-search/introduction.html">
+            
+                <a href="../tree-depth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Depth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Graphs Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../graphs/introduction.html">
+            
+                <a href="../graphs/introduction.html">
+            
+                    
+                    Introduction to Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="../graphs/types-of-graph.html">
+            
+                <a href="../graphs/types-of-graph.html">
+            
+                    
+                    Types of Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="../graphs/graph-representations.html">
+            
+                <a href="../graphs/graph-representations.html">
+            
+                    
+                    Graph Representations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="../graphs/graph-traversal-depth-first-search.html">
+            
+                <a href="../graphs/graph-traversal-depth-first-search.html">
+            
+                    
+                    Graph Traversal - Depth First Search (DFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="../graphs/graph-traversal-breadth-first-search.html">
+            
+                <a href="../graphs/graph-traversal-breadth-first-search.html">
+            
+                    
+                    Graph Traversal - Breadth First Search (BFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Island (Matrix Traversal) Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../island/introduction.html">
+            
+                <a href="../island/introduction.html">
+            
+                    
+                    Introduction to Island Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Heaps Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../two-heaps/introduction.html">
+            
+                <a href="../two-heaps/introduction.html">
+            
+                    
+                    Introduction to Two Heaps Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Subsets Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" data-path="../subsets/introduction.html">
+            
+                <a href="../subsets/introduction.html">
+            
+                    
+                    Introduction to Subsets Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Modified Binary Search Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="17.1" data-path="../modified-binary-search/introduction.html">
+            
+                <a href="../modified-binary-search/introduction.html">
+            
+                    
+                    Introduction to Modified Binary Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Bitwise XOR Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="18.1" data-path="../bitwise-xor/introduction.html">
+            
+                <a href="../bitwise-xor/introduction.html">
+            
+                    
+                    Introduction to Bitwise XOR Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Top 'K' Elements Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="19.1" data-path="../top-k-elements/introduction.html">
+            
+                <a href="../top-k-elements/introduction.html">
+            
+                    
+                    Introduction to Top 'K' Elements Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">K-way Merge Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="20.1" data-path="../k-way-merge/introduction.html">
+            
+                <a href="../k-way-merge/introduction.html">
+            
+                    
+                    Introduction to K-way Merge Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Greedy Algorithms</li>
+        
+        
+    
+        <li class="chapter " data-level="21.1" data-path="../greedy/introduction.html">
+            
+                <a href="../greedy/introduction.html">
+            
+                    
+                    Introduction to Greedy Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">0/1 Knapsack (Dynamic Programming)</li>
+        
+        
+    
+        <li class="chapter " data-level="22.1" data-path="../knapsack-dp/introduction.html">
+            
+                <a href="../knapsack-dp/introduction.html">
+            
+                    
+                    Introduction to 0/1 Knapsack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Fibonacci Numbers (Dynamic Programming)</li>
+        
+        
+    
+        <li class="chapter " data-level="23.1" data-path="../fibonacci-dp/introduction.html">
+            
+                <a href="../fibonacci-dp/introduction.html">
+            
+                    
+                    Introduction to Fibonacci Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Palindromic Subsequence (Dynamic Programming)</li>
+        
+        
+    
+        <li class="chapter " data-level="24.1" data-path="../palindromic-dp/introduction.html">
+            
+                <a href="../palindromic-dp/introduction.html">
+            
+                    
+                    Introduction to Palindromic Subsequence
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Backtracking Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="25.1" data-path="../backtracking/introduction.html">
+            
+                <a href="../backtracking/introduction.html">
+            
+                    
+                    Introduction to Backtracking Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Trie</li>
+        
+        
+    
+        <li class="chapter " data-level="26.1" data-path="../trie/introduction.html">
+            
+                <a href="../trie/introduction.html">
+            
+                    
+                    Introduction to Trie
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Topological Sort</li>
+        
+        
+    
+        <li class="chapter " data-level="27.1" data-path="../topological-sort/introduction.html">
+            
+                <a href="../topological-sort/introduction.html">
+            
+                    
+                    Introduction to Topological Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Union Find Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="28.1" data-path="../union-find/introduction.html">
+            
+                <a href="../union-find/introduction.html">
+            
+                    
+                    Introduction to Union Find Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Ordered Set Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="29.1" data-path="../ordered-set/introduction.html">
+            
+                <a href="../ordered-set/introduction.html">
+            
+                    
+                    Introduction to Ordered Set Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Prefix Sum Pattern</li>
+        
+        
+    
+        <li class="chapter active" data-level="30.1" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    Introduction to Prefix Sum Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Multi-threaded Pattern</li>
+        
+        
+    
+        <li class="chapter " data-level="31.1" data-path="../multi-threaded/introduction.html">
+            
+                <a href="../multi-threaded/introduction.html">
+            
+                    
+                    Introduction to Multi-threaded Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Introduction to Prefix Sum Pattern</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction-to-prefix-sum-pattern">Introduction to Prefix Sum Pattern</h1>
+<p>The <strong>Prefix Sum</strong> pattern precomputes cumulative sums to answer range sum queries in O(1) time. Instead of summing elements repeatedly, you build a prefix array once and use subtraction to find any subarray sum.</p>
+<h2 id="visual-example">Visual Example</h2>
+<h3 id="building-and-using-prefix-sum">Building and Using Prefix Sum</h3>
+<p><img src="../assets/prefix-sum/prefix_sum.gif" alt="Prefix sum"></p>
+<p><code>prefix[i]</code> = sum of elements from index 0 to i-1.
+Sum of <code>nums[i:j]</code> = <code>prefix[j] - prefix[i]</code>.</p>
+<h2 id="key-formula">Key Formula</h2>
+<pre><code>prefix[0] = 0
+prefix[i] = prefix[i-1] + nums[i-1]
+
+sum(nums[i:j]) = prefix[j] - prefix[i]
+</code></pre><h2 id="when-to-use">When to Use</h2>
+<ul>
+<li>Multiple range sum queries on static array.</li>
+<li>Find subarray with target sum.</li>
+<li>Count subarrays with specific sum property.</li>
+<li>2D matrix sum queries.</li>
+<li>Problems involving &quot;sum equals K&quot; or &quot;sum divisible by K&quot;.</li>
+</ul>
+<h2 id="pattern-recipe">Pattern Recipe</h2>
+<ol>
+<li><strong>Build prefix array</strong>: <code>prefix[i] = prefix[i-1] + nums[i-1]</code>.</li>
+<li><strong>Query</strong>: <code>sum(i, j) = prefix[j+1] - prefix[i]</code>.</li>
+<li><strong>For counting problems</strong>: Use hashmap to store prefix sum frequencies.</li>
+</ol>
+<h2 id="complexity">Complexity</h2>
+<ul>
+<li>Build: $O(n)$</li>
+<li>Query: $O(1)$</li>
+<li>Space: $O(n)$ for prefix array</li>
+</ul>
+<h2 id="short-examples-&#x2014;-python">Short Examples &#x2014; Python</h2>
+<h3 id="basic-prefix-sum">Basic Prefix Sum</h3>
+<pre><code class="lang-python">def build_prefix(nums: list[int]) -&gt; list[int]:
+    prefix = [0] * (len(nums) + 1)
+    for i in range(len(nums)):
+        prefix[i + 1] = prefix[i] + nums[i]
+    return prefix
+
+def range_sum(prefix: list[int], i: int, j: int) -&gt; int:
+    &quot;&quot;&quot;Sum of nums[i:j+1] (inclusive).&quot;&quot;&quot;
+    return prefix[j + 1] - prefix[i]
+
+# Example:
+# nums = [1, 2, 3, 4, 5]
+# prefix = [0, 1, 3, 6, 10, 15]
+# sum(1, 3) = prefix[4] - prefix[1] = 10 - 1 = 9  (2+3+4)
+</code></pre>
+<h3 id="subarray-sum-equals-k">Subarray Sum Equals K</h3>
+<pre><code class="lang-python">def subarray_sum(nums: list[int], k: int) -&gt; int:
+    &quot;&quot;&quot;Count subarrays with sum equal to k.&quot;&quot;&quot;
+    count = 0
+    prefix_sum = 0
+    prefix_count = {0: 1}  # Empty prefix has sum 0
+
+    for num in nums:
+        prefix_sum += num
+
+        # If (prefix_sum - k) exists, we found subarrays
+        if prefix_sum - k in prefix_count:
+            count += prefix_count[prefix_sum - k]
+
+        prefix_count[prefix_sum] = prefix_count.get(prefix_sum, 0) + 1
+
+    return count
+
+# Example: [1, 1, 1], k=2 &#x2192; 2 subarrays: [1,1] at index 0-1 and 1-2
+</code></pre>
+<h3 id="subarray-sum-divisible-by-k">Subarray Sum Divisible by K</h3>
+<pre><code class="lang-python">def subarrays_div_by_k(nums: list[int], k: int) -&gt; int:
+    &quot;&quot;&quot;Count subarrays with sum divisible by k.&quot;&quot;&quot;
+    count = 0
+    prefix_sum = 0
+    remainder_count = {0: 1}
+
+    for num in nums:
+        prefix_sum += num
+        remainder = prefix_sum % k
+
+        # Handle negative remainders
+        if remainder &lt; 0:
+            remainder += k
+
+        if remainder in remainder_count:
+            count += remainder_count[remainder]
+
+        remainder_count[remainder] = remainder_count.get(remainder, 0) + 1
+
+    return count
+
+# Example: [4, 5, 0, -2, -3, 1], k=5 &#x2192; 7
+</code></pre>
+<h3 id="find-pivot-index-left-sum-equals-right-sum">Find Pivot Index (Left sum equals right sum)</h3>
+<pre><code class="lang-python">def pivot_index(nums: list[int]) -&gt; int:
+    total = sum(nums)
+    left_sum = 0
+
+    for i, num in enumerate(nums):
+        # Right sum = total - left_sum - nums[i]
+        if left_sum == total - left_sum - num:
+            return i
+        left_sum += num
+
+    return -1
+
+# Example: [1, 7, 3, 6, 5, 6] &#x2192; 3 (left: 1+7+3=11, right: 5+6=11)
+</code></pre>
+<h3 id="product-of-array-except-self">Product of Array Except Self</h3>
+<pre><code class="lang-python">def product_except_self(nums: list[int]) -&gt; list[int]:
+    n = len(nums)
+    result = [1] * n
+
+    # Left products
+    left_product = 1
+    for i in range(n):
+        result[i] = left_product
+        left_product *= nums[i]
+
+    # Right products
+    right_product = 1
+    for i in range(n - 1, -1, -1):
+        result[i] *= right_product
+        right_product *= nums[i]
+
+    return result
+
+# Example: [1, 2, 3, 4] &#x2192; [24, 12, 8, 6]
+</code></pre>
+<h3 id="2d-prefix-sum-range-sum-query">2D Prefix Sum (Range Sum Query)</h3>
+<pre><code class="lang-python">class NumMatrix:
+    def __init__(self, matrix: list[list[int]]):
+        if not matrix:
+            return
+
+        rows, cols = len(matrix), len(matrix[0])
+        self.prefix = [[0] * (cols + 1) for _ in range(rows + 1)]
+
+        for r in range(rows):
+            for c in range(cols):
+                self.prefix[r+1][c+1] = (
+                    matrix[r][c]
+                    + self.prefix[r][c+1]
+                    + self.prefix[r+1][c]
+                    - self.prefix[r][c]
+                )
+
+    def sum_region(self, r1: int, c1: int, r2: int, c2: int) -&gt; int:
+        return (
+            self.prefix[r2+1][c2+1]
+            - self.prefix[r1][c2+1]
+            - self.prefix[r2+1][c1]
+            + self.prefix[r1][c1]
+        )
+
+# Visualize 2D prefix:
+#   &#x25A1; &#x25A1; &#x25A1;      Query (r1,c1) to (r2,c2):
+#   &#x25A1; &#x25A0; &#x25A0;      = prefix[r2+1][c2+1]
+#   &#x25A1; &#x25A0; &#x25A0;        - prefix[r1][c2+1]    (top)
+#                - prefix[r2+1][c1]    (left)
+#                + prefix[r1][c1]      (overlap)
+</code></pre>
+<h3 id="maximum-subarray-sum-kadanes-via-prefix">Maximum Subarray Sum (Kadane&apos;s via prefix)</h3>
+<pre><code class="lang-python">def max_subarray_prefix(nums: list[int]) -&gt; int:
+    &quot;&quot;&quot;
+    max(prefix[j] - prefix[i]) where j &gt; i
+    = prefix[j] - min(prefix[0..j-1])
+    &quot;&quot;&quot;
+    max_sum = float(&apos;-inf&apos;)
+    prefix_sum = 0
+    min_prefix = 0
+
+    for num in nums:
+        prefix_sum += num
+        max_sum = max(max_sum, prefix_sum - min_prefix)
+        min_prefix = min(min_prefix, prefix_sum)
+
+    return max_sum
+</code></pre>
+<h3 id="continuous-subarray-sum-multiple-of-k">Continuous Subarray Sum (Multiple of K)</h3>
+<pre><code class="lang-python">def check_subarray_sum(nums: list[int], k: int) -&gt; bool:
+    &quot;&quot;&quot;Check if subarray of length &gt;= 2 has sum multiple of k.&quot;&quot;&quot;
+    remainder_index = {0: -1}
+    prefix_sum = 0
+
+    for i, num in enumerate(nums):
+        prefix_sum += num
+        remainder = prefix_sum % k if k != 0 else prefix_sum
+
+        if remainder in remainder_index:
+            if i - remainder_index[remainder] &gt;= 2:
+                return True
+        else:
+            remainder_index[remainder] = i
+
+    return False
+</code></pre>
+<h3 id="binary-subarrays-with-sum">Binary Subarrays With Sum</h3>
+<pre><code class="lang-python">def num_subarrays_with_sum(nums: list[int], goal: int) -&gt; int:
+    &quot;&quot;&quot;Count subarrays with sum equal to goal (binary array).&quot;&quot;&quot;
+    count = 0
+    prefix_sum = 0
+    prefix_count = {0: 1}
+
+    for num in nums:
+        prefix_sum += num
+
+        if prefix_sum - goal in prefix_count:
+            count += prefix_count[prefix_sum - goal]
+
+        prefix_count[prefix_sum] = prefix_count.get(prefix_sum, 0) + 1
+
+    return count
+</code></pre>
+<h2 id="common-patterns">Common Patterns</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Technique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range sum</td>
+<td><code>prefix[j] - prefix[i]</code></td>
+</tr>
+<tr>
+<td>Sum equals K</td>
+<td>HashMap of prefix sums</td>
+</tr>
+<tr>
+<td>Sum divisible by K</td>
+<td>HashMap of remainders</td>
+</tr>
+<tr>
+<td>Pivot index</td>
+<td>Compare left and right sums</td>
+</tr>
+<tr>
+<td>2D range sum</td>
+<td>2D prefix with inclusion-exclusion</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>Off-by-one errors with prefix indices.</li>
+<li>Forgetting to handle empty prefix (prefix_count[0] = 1).</li>
+<li>Negative remainder in &quot;divisible by K&quot; problems.</li>
+<li>Not handling k=0 case separately.</li>
+</ul>
+<h2 id="problems-to-practice">Problems to Practice</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/range-sum-query-immutable/" target="_blank">Range Sum Query - Immutable</a></li>
+<li><a href="https://leetcode.com/problems/range-sum-query-2d-immutable/" target="_blank">Range Sum Query 2D - Immutable</a></li>
+<li><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank">Subarray Sum Equals K</a></li>
+<li><a href="https://leetcode.com/problems/subarray-sums-divisible-by-k/" target="_blank">Subarray Sums Divisible by K</a></li>
+<li><a href="https://leetcode.com/problems/find-pivot-index/" target="_blank">Find Pivot Index</a></li>
+<li><a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank">Product of Array Except Self</a></li>
+<li><a href="https://leetcode.com/problems/continuous-subarray-sum/" target="_blank">Continuous Subarray Sum</a></li>
+<li><a href="https://leetcode.com/problems/binary-subarrays-with-sum/" target="_blank">Binary Subarrays With Sum</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../ordered-set/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Ordered Set Pattern">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../multi-threaded/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Multi-threaded Pattern">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Prefix Sum Pattern","level":"30.1","depth":1,"next":{"title":"Introduction to Multi-threaded Pattern","level":"31.1","depth":1,"path":"multi-threaded/introduction.md","ref":"multi-threaded/introduction.md","articles":[]},"previous":{"title":"Introduction to Ordered Set Pattern","level":"29.1","depth":1,"path":"ordered-set/introduction.md","ref":"ordered-set/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"prefix-sum/introduction.md","mtime":"2026-01-27T09:56:28.127Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T09:57:06.238Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
