@@ -2,6 +2,14 @@
 
 The Sliding Window pattern uses a range of elements (the "window") that slides through an array or string to efficiently solve problems involving contiguous subarrays or substrings.
 
+## Visual Examples
+
+### Fixed-Size Window
+![Fixed-size sliding window](../.gitbook/assets/animations/sliding-window/sliding_window_fixed.gif)
+
+### Dynamic Window (Expand/Contract)
+![Dynamic sliding window](../.gitbook/assets/animations/sliding-window/sliding_window_dynamic.gif)
+
 When to use
 - You need to find contiguous subarrays/substrings that satisfy certain conditions.
 - The problem asks for maximum, minimum, or optimal values within a range.

@@ -2,6 +2,10 @@
 
 **DFS** explores a graph by going as deep as possible before backtracking.
 
+## Visual Example
+
+![Graph DFS traversal](../.gitbook/assets/animations/graphs/graph_dfs.gif)
+
 DFS is useful for:
 - reachability (“can I get from A to B?”)
 - connected components

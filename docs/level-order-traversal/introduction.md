@@ -2,6 +2,11 @@
 
 **Level order traversal** visits a tree **level by level** (top to bottom), typically using **Breadth-First Search (BFS)** with a queue.
 
+## Visual Example
+
+### Level-by-Level BFS
+![Level order traversal](../.gitbook/assets/animations/tree-breadth-first-search/tree_level_order.gif)
+
 It’s a go-to pattern whenever the problem statement hints at:
 - “level by level”, “each level”, “row by row”
 - “minimum number of steps/edges” (on unweighted graphs/trees)

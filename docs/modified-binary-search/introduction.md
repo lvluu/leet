@@ -1,7 +1,17 @@
-````markdown
 # Introduction to Modified Binary Search Pattern
 
-Classic binary search assumes a **sorted** array and a simple “go left / go right” decision.
+Classic binary search assumes a **sorted** array and a simple "go left / go right" decision.
+
+## Visual Examples
+
+### Classic Binary Search
+![Classic binary search](../.gitbook/assets/animations/modified-binary-search/binary_search_classic.gif)
+
+### Find First Occurrence
+![Find first occurrence](../.gitbook/assets/animations/modified-binary-search/binary_search_first.gif)
+
+### Search in Rotated Array
+![Search in rotated array](../.gitbook/assets/animations/modified-binary-search/binary_search_rotated.gif)
 The *Modified Binary Search* pattern keeps the same $O(\log n)$ search idea, but adapts it to handle more complex structure:
 - rotated sorted arrays
 - bitonic (increasing then decreasing) arrays
@@ -136,5 +146,3 @@ Problems to practice
 - [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/) (duplicates)
 - [Peak Index in a Mountain Array](https://leetcode.com/problems/peak-index-in-a-mountain-array/)
 - [Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
-
-````

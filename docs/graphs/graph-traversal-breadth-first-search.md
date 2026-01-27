@@ -1,6 +1,10 @@
 # Graph Traversal - Breadth First Search (BFS)
 
-**BFS** explores a graph in expanding “layers” starting from a source node.
+**BFS** explores a graph in expanding "layers" starting from a source node.
+
+## Visual Example
+
+![Graph BFS traversal](../.gitbook/assets/animations/graphs/graph_bfs.gif)
 
 BFS is especially powerful in **unweighted** graphs because the first time you reach a node is via the **shortest number of edges**.
 

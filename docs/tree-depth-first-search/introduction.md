@@ -2,6 +2,17 @@
 
 **Tree Depth First Search (Tree DFS)** explores a tree by going as deep as possible before backtracking.
 
+## Visual Examples
+
+### Pre-order Traversal (Root → Left → Right)
+![Pre-order traversal](../.gitbook/assets/animations/tree-depth-first-search/tree_preorder.gif)
+
+### In-order Traversal (Left → Root → Right)
+![In-order traversal](../.gitbook/assets/animations/tree-depth-first-search/tree_inorder.gif)
+
+### Post-order Traversal (Left → Right → Root)
+![Post-order traversal](../.gitbook/assets/animations/tree-depth-first-search/tree_postorder.gif)
+
 You’ll usually see DFS implemented in two ways:
 - **Recursion** (most readable)
 - **Explicit stack** (avoids recursion depth limits)

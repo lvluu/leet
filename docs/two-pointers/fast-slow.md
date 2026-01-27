@@ -2,6 +2,11 @@
 
 The Fast & Slow (aka Tortoise and Hare) pattern uses two pointers that move through a data structure at different speeds. It's especially powerful on linked lists and sequences where relative distance or cycle detection is required.
 
+## Visual Example
+
+### Finding Middle Element
+![Fast and slow pointers](../.gitbook/assets/animations/two-pointers/two_pointers_fast_slow.gif)
+
 When to use
 - You need to detect cycles or loops (e.g., linked list cycle detection).
 - You need the middle element, or to compare elements separated by a fixed gap (e.g., remove Nth from end).

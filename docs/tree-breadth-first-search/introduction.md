@@ -2,6 +2,11 @@
 
 **Tree Breadth First Search (Tree BFS)** traverses a tree **level by level**, exploring all nodes at depth 0, then depth 1, depth 2, and so on.
 
+## Visual Example
+
+### Level Order Traversal
+![Level order traversal](../.gitbook/assets/animations/tree-breadth-first-search/tree_level_order.gif)
+
 It’s typically implemented with a **queue**:
 - enqueue the root
 - repeatedly dequeue a node and enqueue its children

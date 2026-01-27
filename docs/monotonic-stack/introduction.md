@@ -1,6 +1,16 @@
 # Introduction to Monotonic Stack Pattern
 
 A **monotonic stack** is a stack that keeps its elements in a **monotonic order** (either increasing or decreasing). As you scan an array, you pop elements that break the monotonic rule and use those pops to answer questions like:
+
+## Visual Examples
+
+### Next Greater Element
+![Next greater element](../.gitbook/assets/animations/monotonic-stack/monotonic_next_greater.gif)
+
+### Next Smaller Element
+![Next smaller element](../.gitbook/assets/animations/monotonic-stack/monotonic_next_smaller.gif)
+
+The monotonic stack helps find:
 - the **next greater** element
 - the **previous smaller** element
 - the span/range where an element is the **minimum/maximum**
