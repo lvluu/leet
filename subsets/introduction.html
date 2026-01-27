@@ -596,74 +596,80 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre><code class="lang-markdown"># Introduction to Subsets Pattern
-
-The Subsets pattern (sometimes called the *power set* pattern) is about generating **all combinations** of a collection.
-It shows up whenever a problem asks for *all possible selections*, *all arrangements*, or *all ways to build* something.
-
-A key point: the number of results is usually exponential.
-- For $n$ distinct items, the number of subsets is $2^n$.
-- For permutations, the number of results is $n!$.
-
-When to use
-- The problem asks for **all subsets / combinations / selections**.
-- You see phrasing like &#x201C;generate all&#x201D;, &#x201C;return all possible&#x201D;, &#x201C;all ways&#x201D;, &#x201C;find every&#x2026;&#x201D;.
-- You can build the answer by making a sequence of **binary decisions** (include/exclude), or by choosing the **next element** from remaining options.
-
-Common variants
-- Subsets (power set): all combinations of elements.
-- Subsets with duplicates: avoid duplicate subsets by sorting + skipping duplicates.
-- Combinations with constraints: e.g., size $k$, sum == target.
-- Permutations: all orderings of elements.
-- String permutations by case: each letter branches into upper/lower.
-- Balanced parentheses: build only valid sequences by tracking counts.
-- &#x201C;Different ways to evaluate&#x201D;: recursively split expression (divide-and-combine).
-- Structurally unique BSTs: count/generate BSTs (Catalan-number family).
-
-Pattern recipe (classic subsets)
-
-Option A: iterative expansion (BFS-style)
-1. Start with a list containing the empty subset: `[[]]`.
-2. For each element `x`:
-   - Copy all existing subsets and append `x` to each copy.
-   - Add those new subsets back into the list.
-
-Option B: backtracking (DFS)
-1. Keep a `path` (current subset).
-2. At index `i`, branch:
-   - include `nums[i]` in `path`
-   - exclude `nums[i]`
-3. When you reach the end, emit `path`.
-
-Handling duplicates (Subsets II)
-- Sort input.
-- During iterative expansion, only extend the subsets created in the previous step when you see a duplicate.
-- During DFS, skip duplicates at the same recursion depth.
-
-Complexity
-- Subsets (distinct):
-  - Time: $O(n \cdot 2^n)$ (each subset copy can cost up to $n$)
-  - Space: $O(n \cdot 2^n)$ for output
-- Permutations:
-  - Time: $O(n \cdot n!)$
-  - Space: $O(n)$ recursion depth (plus output)
-
-Short examples
-
-Generate all subsets (iterative) &#x2014; Python
-
-```python
-def subsets(nums):
+                                <h1 id="introduction-to-subsets-pattern">Introduction to Subsets Pattern</h1>
+<p>The Subsets pattern (sometimes called the <em>power set</em> pattern) is about generating <strong>all combinations</strong> of a collection.
+It shows up whenever a problem asks for <em>all possible selections</em>, <em>all arrangements</em>, or <em>all ways to build</em> something.</p>
+<p>A key point: the number of results is usually exponential.</p>
+<ul>
+<li>For $n$ distinct items, the number of subsets is $2^n$.</li>
+<li>For permutations, the number of results is $n!$.</li>
+</ul>
+<p>When to use</p>
+<ul>
+<li>The problem asks for <strong>all subsets / combinations / selections</strong>.</li>
+<li>You see phrasing like &#x201C;generate all&#x201D;, &#x201C;return all possible&#x201D;, &#x201C;all ways&#x201D;, &#x201C;find every&#x2026;&#x201D;.</li>
+<li>You can build the answer by making a sequence of <strong>binary decisions</strong> (include/exclude), or by choosing the <strong>next element</strong> from remaining options.</li>
+</ul>
+<p>Common variants</p>
+<ul>
+<li>Subsets (power set): all combinations of elements.</li>
+<li>Subsets with duplicates: avoid duplicate subsets by sorting + skipping duplicates.</li>
+<li>Combinations with constraints: e.g., size $k$, sum == target.</li>
+<li>Permutations: all orderings of elements.</li>
+<li>String permutations by case: each letter branches into upper/lower.</li>
+<li>Balanced parentheses: build only valid sequences by tracking counts.</li>
+<li>&#x201C;Different ways to evaluate&#x201D;: recursively split expression (divide-and-combine).</li>
+<li>Structurally unique BSTs: count/generate BSTs (Catalan-number family).</li>
+</ul>
+<p>Pattern recipe (classic subsets)</p>
+<p>Option A: iterative expansion (BFS-style)</p>
+<ol>
+<li>Start with a list containing the empty subset: <code>[[]]</code>.</li>
+<li>For each element <code>x</code>:<ul>
+<li>Copy all existing subsets and append <code>x</code> to each copy.</li>
+<li>Add those new subsets back into the list.</li>
+</ul>
+</li>
+</ol>
+<p>Option B: backtracking (DFS)</p>
+<ol>
+<li>Keep a <code>path</code> (current subset).</li>
+<li>At index <code>i</code>, branch:<ul>
+<li>include <code>nums[i]</code> in <code>path</code></li>
+<li>exclude <code>nums[i]</code></li>
+</ul>
+</li>
+<li>When you reach the end, emit <code>path</code>.</li>
+</ol>
+<p>Handling duplicates (Subsets II)</p>
+<ul>
+<li>Sort input.</li>
+<li>During iterative expansion, only extend the subsets created in the previous step when you see a duplicate.</li>
+<li>During DFS, skip duplicates at the same recursion depth.</li>
+</ul>
+<p>Complexity</p>
+<ul>
+<li>Subsets (distinct):<ul>
+<li>Time: $O(n \cdot 2^n)$ (each subset copy can cost up to $n$)</li>
+<li>Space: $O(n \cdot 2^n)$ for output</li>
+</ul>
+</li>
+<li>Permutations:<ul>
+<li>Time: $O(n \cdot n!)$</li>
+<li>Space: $O(n)$ recursion depth (plus output)</li>
+</ul>
+</li>
+</ul>
+<p>Short examples</p>
+<p>Generate all subsets (iterative) &#x2014; Python</p>
+<pre><code class="lang-python">def subsets(nums):
     result = [[]]
     for x in nums:
         result += [curr + [x] for curr in result]
     return result
-```
-
-Subsets with duplicates (iterative) &#x2014; Python
-
-```python
-def subsets_with_dup(nums):
+</code></pre>
+<p>Subsets with duplicates (iterative) &#x2014; Python</p>
+<pre><code class="lang-python">def subsets_with_dup(nums):
     nums.sort()
     result = [[]]
     start = 0
@@ -679,12 +685,9 @@ def subsets_with_dup(nums):
         result += [curr + [x] for curr in subset_range]
 
     return result
-```
-
-Balanced parentheses (backtracking) &#x2014; Python
-
-```python
-def generate_parentheses(n):
+</code></pre>
+<p>Balanced parentheses (backtracking) &#x2014; Python</p>
+<pre><code class="lang-python">def generate_parentheses(n):
     result = []
 
     def dfs(path, open_count, close_count):
@@ -698,18 +701,18 @@ def generate_parentheses(n):
 
     dfs(&quot;&quot;, 0, 0)
     return result
-```
-
-Problems to practice
-- [Subsets](https://leetcode.com/problems/subsets/)
-- [Subsets II](https://leetcode.com/problems/subsets-ii/)
-- [Permutations](https://leetcode.com/problems/permutations/)
-- [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/)
-- [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
-- [Different Ways to Add Parentheses](https://leetcode.com/problems/different-ways-to-add-parentheses/)
-- [Unique Binary Search Trees](https://leetcode.com/problems/unique-binary-search-trees/)
-- [Unique Binary Search Trees II](https://leetcode.com/problems/unique-binary-search-trees-ii/)
 </code></pre>
+<p>Problems to practice</p>
+<ul>
+<li><a href="https://leetcode.com/problems/subsets/" target="_blank">Subsets</a></li>
+<li><a href="https://leetcode.com/problems/subsets-ii/" target="_blank">Subsets II</a></li>
+<li><a href="https://leetcode.com/problems/permutations/" target="_blank">Permutations</a></li>
+<li><a href="https://leetcode.com/problems/letter-case-permutation/" target="_blank">Letter Case Permutation</a></li>
+<li><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank">Generate Parentheses</a></li>
+<li><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/" target="_blank">Different Ways to Add Parentheses</a></li>
+<li><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank">Unique Binary Search Trees</a></li>
+<li><a href="https://leetcode.com/problems/unique-binary-search-trees-ii/" target="_blank">Unique Binary Search Trees II</a></li>
+</ul>
 
                                 
                                 </section>
@@ -753,7 +756,7 @@ Problems to practice
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction to Subsets Pattern","level":"16.1","depth":1,"next":{"title":"Introduction to Modified Binary Search Pattern","level":"17.1","depth":1,"path":"modified-binary-search/introduction.md","ref":"modified-binary-search/introduction.md","articles":[]},"previous":{"title":"Introduction to Two Heaps Pattern","level":"15.1","depth":1,"path":"two-heaps/introduction.md","ref":"two-heaps/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"subsets/introduction.md","mtime":"2026-01-27T07:05:52.640Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T07:06:34.088Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Subsets Pattern","level":"16.1","depth":1,"next":{"title":"Introduction to Modified Binary Search Pattern","level":"17.1","depth":1,"path":"modified-binary-search/introduction.md","ref":"modified-binary-search/introduction.md","articles":[]},"previous":{"title":"Introduction to Two Heaps Pattern","level":"15.1","depth":1,"path":"two-heaps/introduction.md","ref":"two-heaps/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","copy-code-button","splitter","search-plus","advanced-emoji","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"expandable-chapters-small":{},"copy-code-button":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"subsets/introduction.md","mtime":"2026-01-27T07:14:51.009Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-01-27T07:15:35.021Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
