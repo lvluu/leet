@@ -2,6 +2,11 @@
 
 The Two Heaps pattern solves problems where you need to continuously reason about the **middle** of a dataset (median, k-th boundary) or dynamically split values into a **lower half** and an **upper half**.
 
+## Visual Example
+
+### Running Median with Two Heaps
+![Two heaps running median](../assets/two-heaps/two_heaps_median.gif)
+
 You maintain:
 - a **max-heap** for the *lower* half (so you can quickly get the largest of the smaller values)
 - a **min-heap** for the *upper* half (so you can quickly get the smallest of the larger values)

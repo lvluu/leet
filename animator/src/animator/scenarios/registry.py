@@ -395,3 +395,40 @@ def monotonic_next_smaller_scenario(
     arr = [4, 5, 2, 10, 8] if not data else json.loads(data)
     pattern = MonotonicStackPattern(config=config)
     return pattern.create_animation(arr, variant="next_smaller")
+
+
+# === Stack Operations Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "stack_push_pop",
+    "stack",
+    "Stack push and pop operations (LIFO)",
+)
+def stack_push_pop_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.stack_operations import StackOperationsPattern
+
+    values = [3, 7, 1, 9, 4] if not data else json.loads(data)
+    operations = [("push", x) for x in values] + [("pop",) for _ in range(3)]
+    pattern = StackOperationsPattern(config=config)
+    return pattern.create_animation(values, operations=operations)
+
+
+# === Two Heaps Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "two_heaps_median",
+    "two-heaps",
+    "Running median using two heaps",
+)
+def two_heaps_median_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.two_heaps import TwoHeapsPattern
+
+    nums = [3, 1, 5, 4, 2] if not data else json.loads(data)
+    pattern = TwoHeapsPattern(config=config)
+    return pattern.create_animation(nums)

@@ -2,6 +2,11 @@
 
 A **stack** is a linear data structure that follows **LIFO** (Last In, First Out): the most recently added element is the first one removed.
 
+## Visual Example
+
+### Push and Pop Operations
+![Stack push/pop operations](../assets/stack/stack_push_pop.gif)
+
 You can think of it like a stack of plates:
 - You *push* a plate onto the top.
 - You *pop* a plate from the top.

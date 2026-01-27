@@ -8,6 +8,8 @@ from .tree_traversal import TreeTraversalPattern, build_tree
 from .graph_traversal import GraphTraversalPattern
 from .island_traversal import IslandTraversalPattern
 from .monotonic_stack import MonotonicStackPattern
+from .stack_operations import StackOperationsPattern
+from .two_heaps import TwoHeapsPattern
 
 __all__ = [
     "BasePattern",
@@ -20,4 +22,6 @@ __all__ = [
     "GraphTraversalPattern",
     "IslandTraversalPattern",
     "MonotonicStackPattern",
+    "StackOperationsPattern",
+    "TwoHeapsPattern",
 ]
