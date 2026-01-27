@@ -74,3 +74,59 @@
 ## Modified Binary Search Pattern
 
 * [Introduction to Modified Binary Search Pattern](modified-binary-search/introduction.md)
+
+## Bitwise XOR Pattern
+
+* [Introduction to Bitwise XOR Pattern](bitwise-xor/introduction.md)
+
+## Top 'K' Elements Pattern
+
+* [Introduction to Top 'K' Elements Pattern](top-k-elements/introduction.md)
+
+## K-way Merge Pattern
+
+* [Introduction to K-way Merge Pattern](k-way-merge/introduction.md)
+
+## Greedy Algorithms
+
+* [Introduction to Greedy Algorithm](greedy/introduction.md)
+
+## 0/1 Knapsack (Dynamic Programming)
+
+* [Introduction to 0/1 Knapsack Pattern](knapsack-dp/introduction.md)
+
+## Fibonacci Numbers (Dynamic Programming)
+
+* [Introduction to Fibonacci Numbers](fibonacci-dp/introduction.md)
+
+## Palindromic Subsequence (Dynamic Programming)
+
+* [Introduction to Palindromic Subsequence](palindromic-dp/introduction.md)
+
+## Backtracking Pattern
+
+* [Introduction to Backtracking Pattern](backtracking/introduction.md)
+
+## Trie
+
+* [Introduction to Trie](trie/introduction.md)
+
+## Topological Sort
+
+* [Introduction to Topological Sort](topological-sort/introduction.md)
+
+## Union Find Pattern
+
+* [Introduction to Union Find Pattern](union-find/introduction.md)
+
+## Ordered Set Pattern
+
+* [Introduction to Ordered Set Pattern](ordered-set/introduction.md)
+
+## Prefix Sum Pattern
+
+* [Introduction to Prefix Sum Pattern](prefix-sum/introduction.md)
+
+## Multi-threaded Pattern
+
+* [Introduction to Multi-threaded Pattern](multi-threaded/introduction.md)

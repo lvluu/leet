@@ -432,3 +432,166 @@ def two_heaps_median_scenario(
     nums = [3, 1, 5, 4, 2] if not data else json.loads(data)
     pattern = TwoHeapsPattern(config=config)
     return pattern.create_animation(nums)
+
+
+# === Bitwise XOR Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "xor_single_number",
+    "bitwise-xor",
+    "Find single number using XOR",
+)
+def xor_single_number_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.xor_pattern import XORPattern
+
+    nums = [4, 1, 2, 1, 2] if not data else json.loads(data)
+    pattern = XORPattern(config=config)
+    return pattern.create_animation(nums)
+
+
+# === Top K Elements Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "top_k_heap",
+    "top-k-elements",
+    "Find top K elements using min-heap",
+)
+def top_k_heap_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.top_k_pattern import TopKPattern
+
+    nums = [3, 1, 5, 12, 2, 11, 7, 9] if not data else json.loads(data)
+    pattern = TopKPattern(config=config)
+    return pattern.create_animation(nums, k=3)
+
+
+# === Prefix Sum Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "prefix_sum_build",
+    "prefix-sum",
+    "Building prefix sum array",
+)
+def prefix_sum_build_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.prefix_sum_pattern import PrefixSumPattern
+
+    nums = [1, 2, 3, 4, 5] if not data else json.loads(data)
+    pattern = PrefixSumPattern(config=config)
+    return pattern.create_animation(nums)
+
+
+# === Trie Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "trie_operations",
+    "trie",
+    "Trie insert and search operations",
+)
+def trie_operations_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.trie_pattern import TriePattern
+
+    words = ["app", "apple", "ape"] if not data else json.loads(data)
+    pattern = TriePattern(config=config)
+    return pattern.create_animation(words)
+
+
+# === Union Find Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "union_find_basic",
+    "union-find",
+    "Union Find operations",
+)
+def union_find_basic_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.union_find_pattern import UnionFindPattern
+
+    n = 5
+    edges = [(0, 1), (1, 2), (3, 4), (2, 4)]
+    pattern = UnionFindPattern(config=config)
+    return pattern.create_animation(n, edges)
+
+
+# === Backtracking Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "backtracking_permutations",
+    "backtracking",
+    "Generate permutations with backtracking",
+)
+def backtracking_permutations_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.backtracking_pattern import BacktrackingPattern
+
+    nums = [1, 2, 3] if not data else json.loads(data)
+    pattern = BacktrackingPattern(config=config)
+    return pattern.create_animation(nums)
+
+
+# === Dynamic Programming Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "knapsack_dp",
+    "knapsack-dp",
+    "0/1 Knapsack DP table",
+)
+def knapsack_dp_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.dp_pattern import KnapsackPattern
+
+    weights = [1, 2, 3]
+    values = [6, 10, 12]
+    capacity = 5
+    pattern = KnapsackPattern(config=config)
+    return pattern.create_animation(weights, values, capacity)
+
+
+@ScenarioRegistry.register(
+    "fibonacci_dp",
+    "fibonacci-dp",
+    "Fibonacci with tabulation",
+)
+def fibonacci_dp_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.dp_pattern import FibonacciPattern
+
+    n = 8 if not data else int(data)
+    pattern = FibonacciPattern(config=config)
+    return pattern.create_animation(n)
+
+
+# === Topological Sort Scenarios ===
+
+
+@ScenarioRegistry.register(
+    "topo_sort_kahn",
+    "topological-sort",
+    "Topological Sort using Kahn's Algorithm",
+)
+def topo_sort_kahn_scenario(
+    config: AnimationConfig, data: Optional[str] = None
+) -> Animation:
+    from ..patterns.topo_sort_pattern import TopoSortPattern
+
+    n = 6
+    edges = [(5, 2), (5, 0), (4, 0), (4, 1), (2, 3), (3, 1)]
+    pattern = TopoSortPattern(config=config)
+    return pattern.create_animation(n, edges)
