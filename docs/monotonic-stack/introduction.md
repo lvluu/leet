@@ -5,10 +5,10 @@ A **monotonic stack** is a stack that keeps its elements in a **monotonic order*
 ## Visual Examples
 
 ### Next Greater Element
-![Next greater element](../.gitbook/assets/animations/monotonic-stack/monotonic_next_greater.gif)
+![Next greater element](../assets/monotonic-stack/monotonic_next_greater.gif)
 
 ### Next Smaller Element
-![Next smaller element](../.gitbook/assets/animations/monotonic-stack/monotonic_next_smaller.gif)
+![Next smaller element](../assets/monotonic-stack/monotonic_next_smaller.gif)
 
 The monotonic stack helps find:
 - the **next greater** element

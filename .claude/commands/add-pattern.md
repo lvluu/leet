@@ -20,11 +20,11 @@ When the user wants to add documentation for a new pattern:
 4. **Generate animations if needed**:
    - If animations don't exist for this pattern, consider adding them to the animator
    - Add new scenarios to `animator/src/animator/scenarios/registry.py`
-   - Generate with: `cd animator && uv run animator generate-all --output-dir ../docs/.gitbook/assets/animations`
+   - Generate with: `cd animator && uv run animator generate-all --output-dir ../docs/assets`
 
 5. **Embed animations** in the markdown using:
    ```markdown
-   ![Description](../.gitbook/assets/animations/<pattern>/<animation>.gif)
+   ![Description](../assets/<pattern>/<animation>.gif)
    ```
 
 6. **Update docs/SUMMARY.md** to include the new pages in the sidebar navigation

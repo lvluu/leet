@@ -4,7 +4,7 @@
 
 ## Visual Example
 
-![Graph DFS traversal](../.gitbook/assets/animations/graphs/graph_dfs.gif)
+![Graph DFS traversal](../assets/graphs/graph_dfs.gif)
 
 DFS is useful for:
 - reachability (“can I get from A to B?”)

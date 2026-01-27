@@ -66,7 +66,7 @@ uv run animator generate sliding_window_fixed
 uv run animator generate two_pointers_opposite --data "[1,2,3,7,11]" --speed 400
 
 # Generate all animations to docs
-uv run animator generate-all --output-dir ../docs/.gitbook/assets/animations
+uv run animator generate-all --output-dir ../docs/assets
 ```
 
 ### Adding New Animations
@@ -76,7 +76,7 @@ uv run animator generate-all --output-dir ../docs/.gitbook/assets/animations
 
 ### Embedding in Markdown
 ```markdown
-![Animation](../.gitbook/assets/animations/sliding-window/sliding_window_fixed.gif)
+![Animation](../assets/sliding-window/sliding_window_fixed.gif)
 ```
 
 ## Deployment

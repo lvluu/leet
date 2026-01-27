@@ -30,7 +30,7 @@ def main():
     all_parser = subparsers.add_parser("generate-all", help="Generate all animations")
     all_parser.add_argument(
         "--output-dir",
-        default="docs/.gitbook/assets/animations",
+        default="docs/assets",
         help="Output directory",
     )
     all_parser.add_argument("--speed", type=int, default=500, help="Frame duration in ms")

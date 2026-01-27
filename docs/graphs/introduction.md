@@ -5,10 +5,10 @@ A **graph** models relationships between objects.
 ## Visual Examples
 
 ### Breadth-First Search (BFS)
-![Graph BFS traversal](../.gitbook/assets/animations/graphs/graph_bfs.gif)
+![Graph BFS traversal](../assets/graphs/graph_bfs.gif)
 
 ### Depth-First Search (DFS)
-![Graph DFS traversal](../.gitbook/assets/animations/graphs/graph_dfs.gif)
+![Graph DFS traversal](../assets/graphs/graph_dfs.gif)
 - **Vertices (nodes)** represent entities.
 - **Edges** represent connections between entities.
 

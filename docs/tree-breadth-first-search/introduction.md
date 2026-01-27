@@ -5,7 +5,7 @@
 ## Visual Example
 
 ### Level Order Traversal
-![Level order traversal](../.gitbook/assets/animations/tree-breadth-first-search/tree_level_order.gif)
+![Level order traversal](../assets/tree-breadth-first-search/tree_level_order.gif)
 
 It’s typically implemented with a **queue**:
 - enqueue the root

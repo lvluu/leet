@@ -5,13 +5,13 @@ Classic binary search assumes a **sorted** array and a simple "go left / go righ
 ## Visual Examples
 
 ### Classic Binary Search
-![Classic binary search](../.gitbook/assets/animations/modified-binary-search/binary_search_classic.gif)
+![Classic binary search](../assets/modified-binary-search/binary_search_classic.gif)
 
 ### Find First Occurrence
-![Find first occurrence](../.gitbook/assets/animations/modified-binary-search/binary_search_first.gif)
+![Find first occurrence](../assets/modified-binary-search/binary_search_first.gif)
 
 ### Search in Rotated Array
-![Search in rotated array](../.gitbook/assets/animations/modified-binary-search/binary_search_rotated.gif)
+![Search in rotated array](../assets/modified-binary-search/binary_search_rotated.gif)
 The *Modified Binary Search* pattern keeps the same $O(\log n)$ search idea, but adapts it to handle more complex structure:
 - rotated sorted arrays
 - bitonic (increasing then decreasing) arrays

@@ -5,10 +5,10 @@ The Sliding Window pattern uses a range of elements (the "window") that slides t
 ## Visual Examples
 
 ### Fixed-Size Window
-![Fixed-size sliding window](../.gitbook/assets/animations/sliding-window/sliding_window_fixed.gif)
+![Fixed-size sliding window](../assets/sliding-window/sliding_window_fixed.gif)
 
 ### Dynamic Window (Expand/Contract)
-![Dynamic sliding window](../.gitbook/assets/animations/sliding-window/sliding_window_dynamic.gif)
+![Dynamic sliding window](../assets/sliding-window/sliding_window_dynamic.gif)
 
 When to use
 - You need to find contiguous subarrays/substrings that satisfy certain conditions.

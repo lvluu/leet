@@ -5,7 +5,7 @@
 ## Visual Example
 
 ### Level-by-Level BFS
-![Level order traversal](../.gitbook/assets/animations/tree-breadth-first-search/tree_level_order.gif)
+![Level order traversal](../assets/tree-breadth-first-search/tree_level_order.gif)
 
 It’s a go-to pattern whenever the problem statement hints at:
 - “level by level”, “each level”, “row by row”

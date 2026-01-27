@@ -4,7 +4,7 @@
 
 ## Visual Example
 
-![Graph BFS traversal](../.gitbook/assets/animations/graphs/graph_bfs.gif)
+![Graph BFS traversal](../assets/graphs/graph_bfs.gif)
 
 BFS is especially powerful in **unweighted** graphs because the first time you reach a node is via the **shortest number of edges**.
 

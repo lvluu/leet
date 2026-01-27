@@ -5,10 +5,10 @@ The **Island pattern** is "graph connected components" on a 2D grid.
 ## Visual Examples
 
 ### Count Islands (BFS)
-![Island counting with BFS](../.gitbook/assets/animations/island/island_count_bfs.gif)
+![Island counting with BFS](../assets/island/island_count_bfs.gif)
 
 ### Flood Fill
-![Flood fill algorithm](../.gitbook/assets/animations/island/island_flood_fill.gif)
+![Flood fill algorithm](../assets/island/island_flood_fill.gif)
 
 You’re usually given a matrix (grid) where each cell is either:
 - **land / water** (e.g., `1` / `0`)

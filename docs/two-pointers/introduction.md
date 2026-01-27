@@ -5,10 +5,10 @@ The Two Pointers pattern uses a small number of indices (usually two) that move 
 ## Visual Examples
 
 ### Opposite-Direction Pointers (Pair Sum)
-![Two pointers converging](../.gitbook/assets/animations/two-pointers/two_pointers_opposite.gif)
+![Two pointers converging](../assets/two-pointers/two_pointers_opposite.gif)
 
 ### Same-Direction Pointers (Remove Duplicates)
-![Same direction pointers](../.gitbook/assets/animations/two-pointers/two_pointers_same.gif)
+![Same direction pointers](../assets/two-pointers/two_pointers_same.gif)
 
 When to use
 - The input is ordered (or can be sorted) and you need to find pairs or windows.

@@ -22,7 +22,7 @@ class AnimationConfig:
     title_font_size: int = 20
 
     # Output
-    output_dir: str = "docs/.gitbook/assets/animations"
+    output_dir: str = "docs/assets"
 
 
 @dataclass
