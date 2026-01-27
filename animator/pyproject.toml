@@ -1,0 +1,19 @@
+[project]
+name = "animator"
+version = "0.1.0"
+description = "DSA algorithm animation generator for GitBook"
+readme = "README.md"
+authors = [
+    { name = "lvluu", email = "loithui162@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "pillow>=12.1.0",
+]
+
+[project.scripts]
+animator = "animator:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
