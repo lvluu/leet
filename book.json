@@ -14,20 +14,32 @@
     "github",
     "edit-link",
     "-highlight",
+    "prism",
+    "prism-themes",
     "copy-code-button",
     "splitter",
     "search-plus",
-    "advanced-emoji",
     "anchorjs",
     "expandable-chapters-small",
     "page-toc-button",
     "back-to-top-button",
     "-lunr",
-    "-search"
+    "-search",
+    "-sharing"
   ],
   "pluginsConfig": {
     "theme-comscore": {
       "showLevel": true
+    },
+    "prism": {
+      "lang": {
+        "python": "python",
+        "js": "javascript",
+        "typescript": "typescript",
+        "java": "java",
+        "cpp": "cpp"
+      },
+      "css": ["prism-themes/themes/prism-one-light.css"]
     },
     "github": {
       "url": "https://github.com/lvluu/leet"
@@ -44,11 +56,7 @@
       "maxTocDepth": 2,
       "minTocSize": 2
     },
-    "sharing": {
-      "facebook": false,
-      "twitter": false,
-      "all": []
-    }
+    "sharing": false
   },
   "styles": {
     "website": "styles/website.css"
