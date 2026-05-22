@@ -1,0 +1,1173 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction to Union Find Pattern · Coding Patterns Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="lvluu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-one-light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../11-backtracking/introduction.html" />
+    
+    
+    <link rel="prev" href="../10-topological-sort/introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Arrays & Hashing</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../01-hash-maps/introduction.html">
+            
+                <a href="../01-hash-maps/introduction.html">
+            
+                    
+                    Introduction to Hash Tables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../01-hash-maps/advanced-techniques.html">
+            
+                <a href="../01-hash-maps/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../01-prefix-sum/introduction.html">
+            
+                <a href="../01-prefix-sum/introduction.html">
+            
+                    
+                    Introduction to Prefix Sum Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Pointers</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../02-two-pointers/introduction.html">
+            
+                <a href="../02-two-pointers/introduction.html">
+            
+                    
+                    Introduction to Two Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../02-two-pointers/fast-slow.html">
+            
+                <a href="../02-two-pointers/fast-slow.html">
+            
+                    
+                    Fast & Slow Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sliding Window</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../03-sliding-window/introduction.html">
+            
+                <a href="../03-sliding-window/introduction.html">
+            
+                    
+                    Introduction to Sliding Window
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../03-sliding-window/advanced-techniques.html">
+            
+                <a href="../03-sliding-window/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stack & Monotonic Stack</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../04-stack/introduction.html">
+            
+                <a href="../04-stack/introduction.html">
+            
+                    
+                    Introduction to Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../04-stack/implementing-stack-data-structure.html">
+            
+                <a href="../04-stack/implementing-stack-data-structure.html">
+            
+                    
+                    Implementing Stack Data Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../04-monotonic-stack/introduction.html">
+            
+                <a href="../04-monotonic-stack/introduction.html">
+            
+                    
+                    Introduction to Monotonic Stack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Binary Search</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../05-modified-binary-search/introduction.html">
+            
+                <a href="../05-modified-binary-search/introduction.html">
+            
+                    
+                    Introduction to Modified Binary Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linked Lists</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../06-in-place-reversal/introduction.html">
+            
+                <a href="../06-in-place-reversal/introduction.html">
+            
+                    
+                    Introduction to In-place Reversal of a Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sorting & Intervals</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../07-cyclic-sort/introduction.html">
+            
+                <a href="../07-cyclic-sort/introduction.html">
+            
+                    
+                    Introduction to Cyclic Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../07-merge-intervals/introduction.html">
+            
+                <a href="../07-merge-intervals/introduction.html">
+            
+                    
+                    Introduction to Merge Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../07-merge-intervals/advanced-techniques.html">
+            
+                <a href="../07-merge-intervals/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Trees</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../08-level-order-traversal/introduction.html">
+            
+                <a href="../08-level-order-traversal/introduction.html">
+            
+                    
+                    Introduction to Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../08-tree-breadth-first-search/introduction.html">
+            
+                <a href="../08-tree-breadth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Breadth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../08-tree-depth-first-search/introduction.html">
+            
+                <a href="../08-tree-depth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Depth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Heaps & Priority Queues</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../09-two-heaps/introduction.html">
+            
+                <a href="../09-two-heaps/introduction.html">
+            
+                    
+                    Introduction to Two Heaps Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../09-top-k-elements/introduction.html">
+            
+                <a href="../09-top-k-elements/introduction.html">
+            
+                    
+                    Introduction to Top 'K' Elements Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../09-k-way-merge/introduction.html">
+            
+                <a href="../09-k-way-merge/introduction.html">
+            
+                    
+                    Introduction to K-way Merge Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Graphs</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../10-graphs/introduction.html">
+            
+                <a href="../10-graphs/introduction.html">
+            
+                    
+                    Introduction to Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../10-graphs/types-of-graph.html">
+            
+                <a href="../10-graphs/types-of-graph.html">
+            
+                    
+                    Types of Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../10-graphs/graph-representations.html">
+            
+                <a href="../10-graphs/graph-representations.html">
+            
+                    
+                    Graph Representations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../10-graphs/graph-traversal-depth-first-search.html">
+            
+                <a href="../10-graphs/graph-traversal-depth-first-search.html">
+            
+                    
+                    Graph Traversal - Depth First Search (DFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../10-graphs/graph-traversal-breadth-first-search.html">
+            
+                <a href="../10-graphs/graph-traversal-breadth-first-search.html">
+            
+                    
+                    Graph Traversal - Breadth First Search (BFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../10-island/introduction.html">
+            
+                <a href="../10-island/introduction.html">
+            
+                    
+                    Introduction to Island Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../10-topological-sort/introduction.html">
+            
+                <a href="../10-topological-sort/introduction.html">
+            
+                    
+                    Introduction to Topological Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="11.8" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    Introduction to Union Find Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Backtracking</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../11-backtracking/introduction.html">
+            
+                <a href="../11-backtracking/introduction.html">
+            
+                    
+                    Introduction to Backtracking Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../11-subsets/introduction.html">
+            
+                <a href="../11-subsets/introduction.html">
+            
+                    
+                    Introduction to Subsets Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Dynamic Programming</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../12-knapsack-dp/introduction.html">
+            
+                <a href="../12-knapsack-dp/introduction.html">
+            
+                    
+                    Introduction to 0/1 Knapsack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="../12-fibonacci-dp/introduction.html">
+            
+                <a href="../12-fibonacci-dp/introduction.html">
+            
+                    
+                    Introduction to Fibonacci Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="../12-palindromic-dp/introduction.html">
+            
+                <a href="../12-palindromic-dp/introduction.html">
+            
+                    
+                    Introduction to Palindromic Subsequence
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Greedy Algorithms</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../13-greedy/introduction.html">
+            
+                <a href="../13-greedy/introduction.html">
+            
+                    
+                    Introduction to Greedy Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Advanced Data Structures</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../14-trie/introduction.html">
+            
+                <a href="../14-trie/introduction.html">
+            
+                    
+                    Introduction to Trie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="../14-ordered-set/introduction.html">
+            
+                <a href="../14-ordered-set/introduction.html">
+            
+                    
+                    Introduction to Ordered Set Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Bit Manipulation</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" data-path="../15-bitwise-xor/introduction.html">
+            
+                <a href="../15-bitwise-xor/introduction.html">
+            
+                    
+                    Introduction to Bitwise XOR Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Concurrency</li>
+        
+        
+    
+        <li class="chapter " data-level="17.1" data-path="../16-multi-threaded/introduction.html">
+            
+                <a href="../16-multi-threaded/introduction.html">
+            
+                    
+                    Introduction to Multi-threaded Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Introduction to Union Find Pattern</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction-to-union-find-pattern">Introduction to Union Find Pattern</h1>
+<p><strong>Union Find</strong> (Disjoint Set Union / DSU) is a data structure that tracks elements partitioned into disjoint sets. It supports two operations efficiently: <strong>Union</strong> (merge two sets) and <strong>Find</strong> (determine which set an element belongs to).</p>
+<h2 id="visual-example">Visual Example</h2>
+<h3 id="union-find-with-path-compression">Union Find with Path Compression</h3>
+<p><img src="../assets/union-find/union_find.gif" alt="Union Find operations"></p>
+<p>Initially, each element is its own set. Union operations merge sets by connecting roots. Path compression flattens the tree during Find operations.</p>
+<h2 id="core-operations">Core Operations</h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Description</th>
+<th>Optimized Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>find(x)</code></td>
+<td>Find root/representative of x&apos;s set</td>
+<td>~O(1) amortized</td>
+</tr>
+<tr>
+<td><code>union(x, y)</code></td>
+<td>Merge sets containing x and y</td>
+<td>~O(1) amortized</td>
+</tr>
+<tr>
+<td><code>connected(x, y)</code></td>
+<td>Check if x and y in same set</td>
+<td>~O(1) amortized</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use">When to Use</h2>
+<ul>
+<li>Dynamic connectivity queries.</li>
+<li>Finding connected components.</li>
+<li>Cycle detection in undirected graphs.</li>
+<li>Kruskal&apos;s minimum spanning tree.</li>
+<li>Accounts merge / friend circles.</li>
+<li>Grid problems (islands with union).</li>
+</ul>
+<h2 id="key-optimizations">Key Optimizations</h2>
+<ol>
+<li><strong>Path Compression</strong>: During <code>find()</code>, make each node point directly to root.</li>
+<li><strong>Union by Rank/Size</strong>: Attach smaller tree under larger tree&apos;s root.</li>
+</ol>
+<p>Together, these achieve nearly O(1) amortized time per operation (technically O(&#x3B1;(n)) where &#x3B1; is the inverse Ackermann function).</p>
+<h2 id="short-examples-&#x2014;-python">Short Examples &#x2014; Python</h2>
+<h3 id="basic-union-find">Basic Union Find</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">class</span> <span class="token class-name">UnionFind</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>parent <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>rank <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+
+    <span class="token keyword">def</span> <span class="token function">find</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">!=</span> x<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># Path compression</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">union</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;Returns True if x and y were in different sets.&quot;&quot;&quot;</span>
+        root_x<span class="token punctuation">,</span> root_y <span class="token operator">=</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> root_x <span class="token operator">==</span> root_y<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>  <span class="token comment"># Already connected</span>
+
+        <span class="token comment"># Union by rank</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>rank<span class="token punctuation">[</span>root_x<span class="token punctuation">]</span> <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>rank<span class="token punctuation">[</span>root_y<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            root_x<span class="token punctuation">,</span> root_y <span class="token operator">=</span> root_y<span class="token punctuation">,</span> root_x
+        self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>root_y<span class="token punctuation">]</span> <span class="token operator">=</span> root_x
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>rank<span class="token punctuation">[</span>root_x<span class="token punctuation">]</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>rank<span class="token punctuation">[</span>root_y<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>rank<span class="token punctuation">[</span>root_x<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">def</span> <span class="token function">connected</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="union-find-with-size-tracking">Union Find with Size Tracking</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">class</span> <span class="token class-name">UnionFindWithSize</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>parent <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+        self<span class="token punctuation">.</span>num_components <span class="token operator">=</span> n
+
+    <span class="token keyword">def</span> <span class="token function">find</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">!=</span> x<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">union</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        root_x<span class="token punctuation">,</span> root_y <span class="token operator">=</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> root_x <span class="token operator">==</span> root_y<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+        <span class="token comment"># Union by size</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>size<span class="token punctuation">[</span>root_x<span class="token punctuation">]</span> <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>size<span class="token punctuation">[</span>root_y<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            root_x<span class="token punctuation">,</span> root_y <span class="token operator">=</span> root_y<span class="token punctuation">,</span> root_x
+
+        self<span class="token punctuation">.</span>parent<span class="token punctuation">[</span>root_y<span class="token punctuation">]</span> <span class="token operator">=</span> root_x
+        self<span class="token punctuation">.</span>size<span class="token punctuation">[</span>root_x<span class="token punctuation">]</span> <span class="token operator">+=</span> self<span class="token punctuation">.</span>size<span class="token punctuation">[</span>root_y<span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>num_components <span class="token operator">-=</span> <span class="token number">1</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_size</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>size<span class="token punctuation">[</span>self<span class="token punctuation">.</span>find<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">count_components</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>num_components
+</code></pre>
+<h3 id="number-of-connected-components">Number of Connected Components</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">count_components</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> edges<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    uf <span class="token operator">=</span> UnionFind<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> a<span class="token punctuation">,</span> b <span class="token keyword">in</span> edges<span class="token punctuation">:</span>
+        uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+
+    <span class="token comment"># Count unique roots</span>
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>uf<span class="token punctuation">.</span>find<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># Or using the component counter:</span>
+<span class="token keyword">def</span> <span class="token function">count_components_v2</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> edges<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    uf <span class="token operator">=</span> UnionFindWithSize<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> a<span class="token punctuation">,</span> b <span class="token keyword">in</span> edges<span class="token punctuation">:</span>
+        uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> uf<span class="token punctuation">.</span>count_components<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="redundant-connection-find-cycle-edge">Redundant Connection (Find cycle edge)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">find_redundant_connection</span><span class="token punctuation">(</span>edges<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;Find the edge that creates a cycle.&quot;&quot;&quot;</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>edges<span class="token punctuation">)</span>
+    uf <span class="token operator">=</span> UnionFind<span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 1-indexed</span>
+
+    <span class="token keyword">for</span> a<span class="token punctuation">,</span> b <span class="token keyword">in</span> edges<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span>  <span class="token comment"># Already connected = cycle</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment"># Example: [[1,2], [1,3], [2,3]] &#x2192; [2,3]</span>
+</code></pre>
+<h3 id="number-of-provinces-friend-circles">Number of Provinces (Friend Circles)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">find_circle_num</span><span class="token punctuation">(</span>is_connected<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>is_connected<span class="token punctuation">)</span>
+    uf <span class="token operator">=</span> UnionFind<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> is_connected<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>uf<span class="token punctuation">.</span>find<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="accounts-merge">Accounts Merge</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> defaultdict
+
+<span class="token keyword">def</span> <span class="token function">accounts_merge</span><span class="token punctuation">(</span>accounts<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    email_to_id <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    email_to_name <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    uf <span class="token operator">=</span> UnionFind<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>accounts<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span>  <span class="token comment"># Upper bound on emails</span>
+    email_id <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token comment"># Assign IDs and union emails within same account</span>
+    <span class="token keyword">for</span> account <span class="token keyword">in</span> accounts<span class="token punctuation">:</span>
+        name <span class="token operator">=</span> account<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        first_email_id <span class="token operator">=</span> <span class="token boolean">None</span>
+
+        <span class="token keyword">for</span> email <span class="token keyword">in</span> account<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> email <span class="token keyword">not</span> <span class="token keyword">in</span> email_to_id<span class="token punctuation">:</span>
+                email_to_id<span class="token punctuation">[</span>email<span class="token punctuation">]</span> <span class="token operator">=</span> email_id
+                email_to_name<span class="token punctuation">[</span>email<span class="token punctuation">]</span> <span class="token operator">=</span> name
+                email_id <span class="token operator">+=</span> <span class="token number">1</span>
+
+            <span class="token keyword">if</span> first_email_id <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                first_email_id <span class="token operator">=</span> email_to_id<span class="token punctuation">[</span>email<span class="token punctuation">]</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>first_email_id<span class="token punctuation">,</span> email_to_id<span class="token punctuation">[</span>email<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Group emails by root</span>
+    groups <span class="token operator">=</span> defaultdict<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> email<span class="token punctuation">,</span> eid <span class="token keyword">in</span> email_to_id<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        root <span class="token operator">=</span> uf<span class="token punctuation">.</span>find<span class="token punctuation">(</span>eid<span class="token punctuation">)</span>
+        groups<span class="token punctuation">[</span>root<span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>email<span class="token punctuation">)</span>
+
+    <span class="token comment"># Format result</span>
+    result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> root<span class="token punctuation">,</span> emails <span class="token keyword">in</span> groups<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        name <span class="token operator">=</span> email_to_name<span class="token punctuation">[</span>emails<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+        result<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>emails<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> result
+</code></pre>
+<h3 id="number-of-islands-union-find-approach">Number of Islands (Union Find approach)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">num_islands_uf</span><span class="token punctuation">(</span>grid<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> grid<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+    rows<span class="token punctuation">,</span> cols <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>grid<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_id</span><span class="token punctuation">(</span>r<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> r <span class="token operator">*</span> cols <span class="token operator">+</span> c
+
+    uf <span class="token operator">=</span> UnionFind<span class="token punctuation">(</span>rows <span class="token operator">*</span> cols<span class="token punctuation">)</span>
+    land_count <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> r <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>rows<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> c <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cols<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> grid<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">&apos;1&apos;</span><span class="token punctuation">:</span>
+                land_count <span class="token operator">+=</span> <span class="token number">1</span>
+
+                <span class="token comment"># Union with adjacent land cells</span>
+                <span class="token keyword">for</span> dr<span class="token punctuation">,</span> dc <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                    nr<span class="token punctuation">,</span> nc <span class="token operator">=</span> r <span class="token operator">+</span> dr<span class="token punctuation">,</span> c <span class="token operator">+</span> dc
+                    <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">&lt;=</span> nr <span class="token operator">&lt;</span> rows <span class="token keyword">and</span> <span class="token number">0</span> <span class="token operator">&lt;=</span> nc <span class="token operator">&lt;</span> cols <span class="token keyword">and</span> grid<span class="token punctuation">[</span>nr<span class="token punctuation">]</span><span class="token punctuation">[</span>nc<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">&apos;1&apos;</span><span class="token punctuation">:</span>
+                        <span class="token keyword">if</span> uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>get_id<span class="token punctuation">(</span>r<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">,</span> get_id<span class="token punctuation">(</span>nr<span class="token punctuation">,</span> nc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                            land_count <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> land_count
+</code></pre>
+<h3 id="graph-valid-tree">Graph Valid Tree</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">valid_tree</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> edges<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;A valid tree has n-1 edges and is fully connected.&quot;&quot;&quot;</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>edges<span class="token punctuation">)</span> <span class="token operator">!=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    uf <span class="token operator">=</span> UnionFind<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> a<span class="token punctuation">,</span> b <span class="token keyword">in</span> edges<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> uf<span class="token punctuation">.</span>union<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>  <span class="token comment"># Cycle detected</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+</code></pre>
+<h2 id="union-find-vs-dfsbfs">Union Find vs DFS/BFS</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Union Find</th>
+<th>DFS/BFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dynamic edges</td>
+<td>Excellent</td>
+<td>Rebuild graph</td>
+</tr>
+<tr>
+<td>Static components</td>
+<td>Good</td>
+<td>Also good</td>
+</tr>
+<tr>
+<td>Online queries</td>
+<td>O(1) per query</td>
+<td>O(V+E) per query</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Moderate</td>
+<td>Simple</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>Forgetting path compression (performance degrades).</li>
+<li>Off-by-one with node indices (0-indexed vs 1-indexed).</li>
+<li>Not handling the &quot;already connected&quot; case in union.</li>
+<li>Using union-find for directed graphs (it&apos;s for undirected).</li>
+</ul>
+<h2 id="problems-to-practice">Problems to Practice</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/number-of-provinces/" target="_blank">Number of Provinces</a></li>
+<li><a href="https://leetcode.com/problems/redundant-connection/" target="_blank">Redundant Connection</a></li>
+<li><a href="https://leetcode.com/problems/accounts-merge/" target="_blank">Accounts Merge</a></li>
+<li><a href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" target="_blank">Number of Connected Components</a></li>
+<li><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank">Graph Valid Tree</a></li>
+<li><a href="https://leetcode.com/problems/longest-consecutive-sequence/" target="_blank">Longest Consecutive Sequence</a></li>
+<li><a href="https://leetcode.com/problems/satisfiability-of-equality-equations/" target="_blank">Satisfiability of Equality Equations</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../10-topological-sort/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Topological Sort">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../11-backtracking/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Backtracking Pattern">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Union Find Pattern","level":"11.8","depth":1,"next":{"title":"Introduction to Backtracking Pattern","level":"12.1","depth":1,"path":"11-backtracking/introduction.md","ref":"11-backtracking/introduction.md","articles":[]},"previous":{"title":"Introduction to Topological Sort","level":"11.7","depth":1,"path":"10-topological-sort/introduction.md","ref":"10-topological-sort/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","prism","prism-themes","copy-code-button","splitter","search-plus","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search","-sharing"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"lang":{"python":"python","js":"javascript","typescript":"typescript","java":"java","cpp":"cpp"},"css":["prism-themes/themes/prism-one-light.css"]},"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"prism-themes":{},"expandable-chapters-small":{},"copy-code-button":{},"sharing":false,"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"10-union-find/introduction.md","mtime":"2026-05-22T04:57:29.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-05-22T04:58:03.505Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

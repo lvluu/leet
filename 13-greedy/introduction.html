@@ -1,0 +1,1072 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction to Greedy Algorithm · Coding Patterns Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="lvluu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-one-light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../14-trie/introduction.html" />
+    
+    
+    <link rel="prev" href="../12-palindromic-dp/introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Arrays & Hashing</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../01-hash-maps/introduction.html">
+            
+                <a href="../01-hash-maps/introduction.html">
+            
+                    
+                    Introduction to Hash Tables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../01-hash-maps/advanced-techniques.html">
+            
+                <a href="../01-hash-maps/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../01-prefix-sum/introduction.html">
+            
+                <a href="../01-prefix-sum/introduction.html">
+            
+                    
+                    Introduction to Prefix Sum Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Pointers</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../02-two-pointers/introduction.html">
+            
+                <a href="../02-two-pointers/introduction.html">
+            
+                    
+                    Introduction to Two Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../02-two-pointers/fast-slow.html">
+            
+                <a href="../02-two-pointers/fast-slow.html">
+            
+                    
+                    Fast & Slow Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sliding Window</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../03-sliding-window/introduction.html">
+            
+                <a href="../03-sliding-window/introduction.html">
+            
+                    
+                    Introduction to Sliding Window
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../03-sliding-window/advanced-techniques.html">
+            
+                <a href="../03-sliding-window/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stack & Monotonic Stack</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../04-stack/introduction.html">
+            
+                <a href="../04-stack/introduction.html">
+            
+                    
+                    Introduction to Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../04-stack/implementing-stack-data-structure.html">
+            
+                <a href="../04-stack/implementing-stack-data-structure.html">
+            
+                    
+                    Implementing Stack Data Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../04-monotonic-stack/introduction.html">
+            
+                <a href="../04-monotonic-stack/introduction.html">
+            
+                    
+                    Introduction to Monotonic Stack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Binary Search</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../05-modified-binary-search/introduction.html">
+            
+                <a href="../05-modified-binary-search/introduction.html">
+            
+                    
+                    Introduction to Modified Binary Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linked Lists</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../06-in-place-reversal/introduction.html">
+            
+                <a href="../06-in-place-reversal/introduction.html">
+            
+                    
+                    Introduction to In-place Reversal of a Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sorting & Intervals</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../07-cyclic-sort/introduction.html">
+            
+                <a href="../07-cyclic-sort/introduction.html">
+            
+                    
+                    Introduction to Cyclic Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../07-merge-intervals/introduction.html">
+            
+                <a href="../07-merge-intervals/introduction.html">
+            
+                    
+                    Introduction to Merge Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../07-merge-intervals/advanced-techniques.html">
+            
+                <a href="../07-merge-intervals/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Trees</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../08-level-order-traversal/introduction.html">
+            
+                <a href="../08-level-order-traversal/introduction.html">
+            
+                    
+                    Introduction to Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../08-tree-breadth-first-search/introduction.html">
+            
+                <a href="../08-tree-breadth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Breadth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../08-tree-depth-first-search/introduction.html">
+            
+                <a href="../08-tree-depth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Depth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Heaps & Priority Queues</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../09-two-heaps/introduction.html">
+            
+                <a href="../09-two-heaps/introduction.html">
+            
+                    
+                    Introduction to Two Heaps Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../09-top-k-elements/introduction.html">
+            
+                <a href="../09-top-k-elements/introduction.html">
+            
+                    
+                    Introduction to Top 'K' Elements Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../09-k-way-merge/introduction.html">
+            
+                <a href="../09-k-way-merge/introduction.html">
+            
+                    
+                    Introduction to K-way Merge Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Graphs</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../10-graphs/introduction.html">
+            
+                <a href="../10-graphs/introduction.html">
+            
+                    
+                    Introduction to Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../10-graphs/types-of-graph.html">
+            
+                <a href="../10-graphs/types-of-graph.html">
+            
+                    
+                    Types of Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../10-graphs/graph-representations.html">
+            
+                <a href="../10-graphs/graph-representations.html">
+            
+                    
+                    Graph Representations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../10-graphs/graph-traversal-depth-first-search.html">
+            
+                <a href="../10-graphs/graph-traversal-depth-first-search.html">
+            
+                    
+                    Graph Traversal - Depth First Search (DFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../10-graphs/graph-traversal-breadth-first-search.html">
+            
+                <a href="../10-graphs/graph-traversal-breadth-first-search.html">
+            
+                    
+                    Graph Traversal - Breadth First Search (BFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../10-island/introduction.html">
+            
+                <a href="../10-island/introduction.html">
+            
+                    
+                    Introduction to Island Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../10-topological-sort/introduction.html">
+            
+                <a href="../10-topological-sort/introduction.html">
+            
+                    
+                    Introduction to Topological Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.8" data-path="../10-union-find/introduction.html">
+            
+                <a href="../10-union-find/introduction.html">
+            
+                    
+                    Introduction to Union Find Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Backtracking</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../11-backtracking/introduction.html">
+            
+                <a href="../11-backtracking/introduction.html">
+            
+                    
+                    Introduction to Backtracking Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../11-subsets/introduction.html">
+            
+                <a href="../11-subsets/introduction.html">
+            
+                    
+                    Introduction to Subsets Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Dynamic Programming</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../12-knapsack-dp/introduction.html">
+            
+                <a href="../12-knapsack-dp/introduction.html">
+            
+                    
+                    Introduction to 0/1 Knapsack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="../12-fibonacci-dp/introduction.html">
+            
+                <a href="../12-fibonacci-dp/introduction.html">
+            
+                    
+                    Introduction to Fibonacci Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="../12-palindromic-dp/introduction.html">
+            
+                <a href="../12-palindromic-dp/introduction.html">
+            
+                    
+                    Introduction to Palindromic Subsequence
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Greedy Algorithms</li>
+        
+        
+    
+        <li class="chapter active" data-level="14.1" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    Introduction to Greedy Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Advanced Data Structures</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../14-trie/introduction.html">
+            
+                <a href="../14-trie/introduction.html">
+            
+                    
+                    Introduction to Trie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="../14-ordered-set/introduction.html">
+            
+                <a href="../14-ordered-set/introduction.html">
+            
+                    
+                    Introduction to Ordered Set Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Bit Manipulation</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" data-path="../15-bitwise-xor/introduction.html">
+            
+                <a href="../15-bitwise-xor/introduction.html">
+            
+                    
+                    Introduction to Bitwise XOR Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Concurrency</li>
+        
+        
+    
+        <li class="chapter " data-level="17.1" data-path="../16-multi-threaded/introduction.html">
+            
+                <a href="../16-multi-threaded/introduction.html">
+            
+                    
+                    Introduction to Multi-threaded Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Introduction to Greedy Algorithm</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction-to-greedy-algorithms">Introduction to Greedy Algorithms</h1>
+<p>A <strong>Greedy Algorithm</strong> makes the locally optimal choice at each step, hoping to find a global optimum. It never reconsiders previous decisions&#x2014;once a choice is made, it&apos;s final.</p>
+<h2 id="visual-example">Visual Example</h2>
+<h3 id="activity-selection-greedy-by-end-time">Activity Selection (Greedy by End Time)</h3>
+<p><img src="../assets/greedy/greedy_activity.gif" alt="Greedy activity selection"></p>
+<p>To maximize non-overlapping activities, always pick the one that <strong>ends earliest</strong>&#x2014;this leaves maximum room for future activities.</p>
+<h2 id="when-to-use">When to Use</h2>
+<p>Greedy works when the problem has:</p>
+<ol>
+<li><strong>Greedy Choice Property</strong>: A locally optimal choice leads to a globally optimal solution.</li>
+<li><strong>Optimal Substructure</strong>: An optimal solution contains optimal solutions to subproblems.</li>
+</ol>
+<p>Common greedy scenarios:</p>
+<ul>
+<li>Interval scheduling (meeting rooms, activity selection)</li>
+<li>Huffman encoding</li>
+<li>Minimum spanning trees (Prim&apos;s, Kruskal&apos;s)</li>
+<li>Shortest paths (Dijkstra&apos;s)</li>
+<li>Coin change (with specific denominations)</li>
+<li>Fractional knapsack</li>
+</ul>
+<h2 id="when-not-to-use">When NOT to Use</h2>
+<p>Greedy fails when local optima don&apos;t lead to global optima:</p>
+<ul>
+<li><strong>0/1 Knapsack</strong>: Must use DP (can&apos;t take fractions)</li>
+<li><strong>Coin change with arbitrary denominations</strong>: e.g., coins [1, 3, 4], amount 6 &#x2192; greedy gives [4,1,1] but optimal is [3,3]</li>
+<li><strong>Longest path in graph</strong>: Greedy can get stuck</li>
+</ul>
+<h2 id="pattern-recipe">Pattern Recipe</h2>
+<ol>
+<li><strong>Identify the greedy choice</strong>: What local decision seems best?</li>
+<li><strong>Prove it works</strong> (or trust the pattern for known problems).</li>
+<li><strong>Sort</strong> the input if needed (by end time, deadline, ratio, etc.).</li>
+<li><strong>Iterate</strong> and make greedy choices, updating state.</li>
+<li><strong>Return</strong> the result.</li>
+</ol>
+<h2 id="complexity">Complexity</h2>
+<ul>
+<li>Usually $O(n \log n)$ due to sorting</li>
+<li>Sometimes $O(n)$ if no sorting needed</li>
+</ul>
+<h2 id="short-examples-&#x2014;-python">Short Examples &#x2014; Python</h2>
+<h3 id="activity-selection-maximum-non-overlapping-intervals">Activity Selection (Maximum Non-overlapping Intervals)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">max_activities</span><span class="token punctuation">(</span>activities<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">tuple</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token comment"># Sort by end time</span>
+    activities<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    count <span class="token operator">=</span> <span class="token number">0</span>
+    last_end <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">&apos;-inf&apos;</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> start<span class="token punctuation">,</span> end <span class="token keyword">in</span> activities<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> start <span class="token operator">&gt;=</span> last_end<span class="token punctuation">:</span>  <span class="token comment"># Non-overlapping</span>
+            count <span class="token operator">+=</span> <span class="token number">1</span>
+            last_end <span class="token operator">=</span> end
+
+    <span class="token keyword">return</span> count
+
+<span class="token comment"># Example: [(1,3), (2,4), (3,5), (0,6), (5,7)] &#x2192; 3</span>
+<span class="token comment"># Select: (1,3), (3,5), (5,7)</span>
+</code></pre>
+<h3 id="minimum-meeting-rooms-interval-partitioning">Minimum Meeting Rooms (Interval Partitioning)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> heapq
+
+<span class="token keyword">def</span> <span class="token function">min_meeting_rooms</span><span class="token punctuation">(</span>intervals<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> intervals<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+    intervals<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># Sort by start</span>
+    heap <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># Track end times of ongoing meetings</span>
+
+    <span class="token keyword">for</span> start<span class="token punctuation">,</span> end <span class="token keyword">in</span> intervals<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> heap <span class="token keyword">and</span> heap<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> start<span class="token punctuation">:</span>
+            heapq<span class="token punctuation">.</span>heappop<span class="token punctuation">(</span>heap<span class="token punctuation">)</span>  <span class="token comment"># Reuse room</span>
+        heapq<span class="token punctuation">.</span>heappush<span class="token punctuation">(</span>heap<span class="token punctuation">,</span> end<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>heap<span class="token punctuation">)</span>  <span class="token comment"># Number of rooms needed</span>
+</code></pre>
+<h3 id="jump-game-can-reach-end">Jump Game (Can Reach End?)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">can_jump</span><span class="token punctuation">(</span>nums<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+    max_reach <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> i<span class="token punctuation">,</span> jump <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token operator">&gt;</span> max_reach<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>  <span class="token comment"># Can&apos;t reach this index</span>
+        max_reach <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>max_reach<span class="token punctuation">,</span> i <span class="token operator">+</span> jump<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+<span class="token comment"># Example: [2,3,1,1,4] &#x2192; True</span>
+<span class="token comment"># Example: [3,2,1,0,4] &#x2192; False</span>
+</code></pre>
+<h3 id="gas-station-circuit">Gas Station Circuit</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">can_complete_circuit</span><span class="token punctuation">(</span>gas<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> cost<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    total_tank <span class="token operator">=</span> <span class="token number">0</span>
+    current_tank <span class="token operator">=</span> <span class="token number">0</span>
+    start <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>gas<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        total_tank <span class="token operator">+=</span> gas<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> cost<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        current_tank <span class="token operator">+=</span> gas<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> cost<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+        <span class="token keyword">if</span> current_tank <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            start <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment"># Reset start</span>
+            current_tank <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">return</span> start <span class="token keyword">if</span> total_tank <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token number">1</span>
+</code></pre>
+<h3 id="fractional-knapsack">Fractional Knapsack</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">def</span> <span class="token function">fractional_knapsack</span><span class="token punctuation">(</span>
+    capacity<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span>
+    items<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">[</span><span class="token builtin">tuple</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span>  <span class="token comment"># (value, weight)</span>
+<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">float</span><span class="token punctuation">:</span>
+    <span class="token comment"># Sort by value/weight ratio (descending)</span>
+    items<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    total_value <span class="token operator">=</span> <span class="token number">0.0</span>
+
+    <span class="token keyword">for</span> value<span class="token punctuation">,</span> weight <span class="token keyword">in</span> items<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> capacity <span class="token operator">&gt;=</span> weight<span class="token punctuation">:</span>
+            total_value <span class="token operator">+=</span> value
+            capacity <span class="token operator">-=</span> weight
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># Take fraction</span>
+            total_value <span class="token operator">+=</span> value <span class="token operator">*</span> <span class="token punctuation">(</span>capacity <span class="token operator">/</span> weight<span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+
+    <span class="token keyword">return</span> total_value
+</code></pre>
+<h2 id="greedy-proof-techniques">Greedy Proof Techniques</h2>
+<ol>
+<li><strong>Exchange Argument</strong>: Show that swapping a non-greedy choice with a greedy one doesn&apos;t worsen the solution.</li>
+<li><strong>Stays Ahead</strong>: Show the greedy solution is at least as good as any other at every step.</li>
+<li><strong>Structural</strong>: Show the greedy choice must be part of some optimal solution.</li>
+</ol>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>Assuming greedy works without verification (it often doesn&apos;t!).</li>
+<li>Wrong sorting criteria (e.g., sorting by start time instead of end time).</li>
+<li>Not handling ties correctly.</li>
+<li>Forgetting edge cases (empty input, single element).</li>
+</ul>
+<h2 id="greedy-vs-dynamic-programming">Greedy vs Dynamic Programming</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Greedy</th>
+<th>DP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approach</td>
+<td>Local optimal choice</td>
+<td>Explore all subproblems</td>
+</tr>
+<tr>
+<td>Revisits</td>
+<td>Never</td>
+<td>Stores and reuses</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Usually faster</td>
+<td>Can be slower</td>
+</tr>
+<tr>
+<td>Correctness</td>
+<td>Only for specific problems</td>
+<td>Always correct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="problems-to-practice">Problems to Practice</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/jump-game/" target="_blank">Jump Game</a></li>
+<li><a href="https://leetcode.com/problems/jump-game-ii/" target="_blank">Jump Game II</a></li>
+<li><a href="https://leetcode.com/problems/gas-station/" target="_blank">Gas Station</a></li>
+<li><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank">Meeting Rooms II</a></li>
+<li><a href="https://leetcode.com/problems/non-overlapping-intervals/" target="_blank">Non-overlapping Intervals</a></li>
+<li><a href="https://leetcode.com/problems/task-scheduler/" target="_blank">Task Scheduler</a></li>
+<li><a href="https://leetcode.com/problems/partition-labels/" target="_blank">Partition Labels</a></li>
+<li><a href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/" target="_blank">Minimum Number of Arrows to Burst Balloons</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../12-palindromic-dp/introduction.html" class="navigation navigation-prev " aria-label="Previous page: Introduction to Palindromic Subsequence">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../14-trie/introduction.html" class="navigation navigation-next " aria-label="Next page: Introduction to Trie">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Greedy Algorithm","level":"14.1","depth":1,"next":{"title":"Introduction to Trie","level":"15.1","depth":1,"path":"14-trie/introduction.md","ref":"14-trie/introduction.md","articles":[]},"previous":{"title":"Introduction to Palindromic Subsequence","level":"13.3","depth":1,"path":"12-palindromic-dp/introduction.md","ref":"12-palindromic-dp/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","prism","prism-themes","copy-code-button","splitter","search-plus","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search","-sharing"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"lang":{"python":"python","js":"javascript","typescript":"typescript","java":"java","cpp":"cpp"},"css":["prism-themes/themes/prism-one-light.css"]},"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"prism-themes":{},"expandable-chapters-small":{},"copy-code-button":{},"sharing":false,"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"13-greedy/introduction.md","mtime":"2026-05-22T04:57:29.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-05-22T04:58:03.505Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

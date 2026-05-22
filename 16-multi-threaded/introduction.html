@@ -1,0 +1,1199 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction to Multi-threaded Pattern · Coding Patterns Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="lvluu">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-one-light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../15-bitwise-xor/introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Arrays & Hashing</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../01-hash-maps/introduction.html">
+            
+                <a href="../01-hash-maps/introduction.html">
+            
+                    
+                    Introduction to Hash Tables
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../01-hash-maps/advanced-techniques.html">
+            
+                <a href="../01-hash-maps/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../01-prefix-sum/introduction.html">
+            
+                <a href="../01-prefix-sum/introduction.html">
+            
+                    
+                    Introduction to Prefix Sum Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Two Pointers</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../02-two-pointers/introduction.html">
+            
+                <a href="../02-two-pointers/introduction.html">
+            
+                    
+                    Introduction to Two Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../02-two-pointers/fast-slow.html">
+            
+                <a href="../02-two-pointers/fast-slow.html">
+            
+                    
+                    Fast & Slow Pointers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sliding Window</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../03-sliding-window/introduction.html">
+            
+                <a href="../03-sliding-window/introduction.html">
+            
+                    
+                    Introduction to Sliding Window
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../03-sliding-window/advanced-techniques.html">
+            
+                <a href="../03-sliding-window/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Stack & Monotonic Stack</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../04-stack/introduction.html">
+            
+                <a href="../04-stack/introduction.html">
+            
+                    
+                    Introduction to Stack
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../04-stack/implementing-stack-data-structure.html">
+            
+                <a href="../04-stack/implementing-stack-data-structure.html">
+            
+                    
+                    Implementing Stack Data Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../04-monotonic-stack/introduction.html">
+            
+                <a href="../04-monotonic-stack/introduction.html">
+            
+                    
+                    Introduction to Monotonic Stack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Binary Search</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../05-modified-binary-search/introduction.html">
+            
+                <a href="../05-modified-binary-search/introduction.html">
+            
+                    
+                    Introduction to Modified Binary Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linked Lists</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../06-in-place-reversal/introduction.html">
+            
+                <a href="../06-in-place-reversal/introduction.html">
+            
+                    
+                    Introduction to In-place Reversal of a Linked List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Sorting & Intervals</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../07-cyclic-sort/introduction.html">
+            
+                <a href="../07-cyclic-sort/introduction.html">
+            
+                    
+                    Introduction to Cyclic Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../07-merge-intervals/introduction.html">
+            
+                <a href="../07-merge-intervals/introduction.html">
+            
+                    
+                    Introduction to Merge Intervals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../07-merge-intervals/advanced-techniques.html">
+            
+                <a href="../07-merge-intervals/advanced-techniques.html">
+            
+                    
+                    Advanced Techniques
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Trees</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../08-level-order-traversal/introduction.html">
+            
+                <a href="../08-level-order-traversal/introduction.html">
+            
+                    
+                    Introduction to Level Order Traversal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="../08-tree-breadth-first-search/introduction.html">
+            
+                <a href="../08-tree-breadth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Breadth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="../08-tree-depth-first-search/introduction.html">
+            
+                <a href="../08-tree-depth-first-search/introduction.html">
+            
+                    
+                    Introduction to Tree Depth First Search Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Heaps & Priority Queues</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../09-two-heaps/introduction.html">
+            
+                <a href="../09-two-heaps/introduction.html">
+            
+                    
+                    Introduction to Two Heaps Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../09-top-k-elements/introduction.html">
+            
+                <a href="../09-top-k-elements/introduction.html">
+            
+                    
+                    Introduction to Top 'K' Elements Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../09-k-way-merge/introduction.html">
+            
+                <a href="../09-k-way-merge/introduction.html">
+            
+                    
+                    Introduction to K-way Merge Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Graphs</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../10-graphs/introduction.html">
+            
+                <a href="../10-graphs/introduction.html">
+            
+                    
+                    Introduction to Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../10-graphs/types-of-graph.html">
+            
+                <a href="../10-graphs/types-of-graph.html">
+            
+                    
+                    Types of Graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../10-graphs/graph-representations.html">
+            
+                <a href="../10-graphs/graph-representations.html">
+            
+                    
+                    Graph Representations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../10-graphs/graph-traversal-depth-first-search.html">
+            
+                <a href="../10-graphs/graph-traversal-depth-first-search.html">
+            
+                    
+                    Graph Traversal - Depth First Search (DFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="../10-graphs/graph-traversal-breadth-first-search.html">
+            
+                <a href="../10-graphs/graph-traversal-breadth-first-search.html">
+            
+                    
+                    Graph Traversal - Breadth First Search (BFS)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="../10-island/introduction.html">
+            
+                <a href="../10-island/introduction.html">
+            
+                    
+                    Introduction to Island Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="../10-topological-sort/introduction.html">
+            
+                <a href="../10-topological-sort/introduction.html">
+            
+                    
+                    Introduction to Topological Sort
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.8" data-path="../10-union-find/introduction.html">
+            
+                <a href="../10-union-find/introduction.html">
+            
+                    
+                    Introduction to Union Find Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Backtracking</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../11-backtracking/introduction.html">
+            
+                <a href="../11-backtracking/introduction.html">
+            
+                    
+                    Introduction to Backtracking Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../11-subsets/introduction.html">
+            
+                <a href="../11-subsets/introduction.html">
+            
+                    
+                    Introduction to Subsets Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Dynamic Programming</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../12-knapsack-dp/introduction.html">
+            
+                <a href="../12-knapsack-dp/introduction.html">
+            
+                    
+                    Introduction to 0/1 Knapsack Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="../12-fibonacci-dp/introduction.html">
+            
+                <a href="../12-fibonacci-dp/introduction.html">
+            
+                    
+                    Introduction to Fibonacci Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="../12-palindromic-dp/introduction.html">
+            
+                <a href="../12-palindromic-dp/introduction.html">
+            
+                    
+                    Introduction to Palindromic Subsequence
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Greedy Algorithms</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../13-greedy/introduction.html">
+            
+                <a href="../13-greedy/introduction.html">
+            
+                    
+                    Introduction to Greedy Algorithm
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Advanced Data Structures</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../14-trie/introduction.html">
+            
+                <a href="../14-trie/introduction.html">
+            
+                    
+                    Introduction to Trie
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="../14-ordered-set/introduction.html">
+            
+                <a href="../14-ordered-set/introduction.html">
+            
+                    
+                    Introduction to Ordered Set Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Bit Manipulation</li>
+        
+        
+    
+        <li class="chapter " data-level="16.1" data-path="../15-bitwise-xor/introduction.html">
+            
+                <a href="../15-bitwise-xor/introduction.html">
+            
+                    
+                    Introduction to Bitwise XOR Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Concurrency</li>
+        
+        
+    
+        <li class="chapter active" data-level="17.1" data-path="introduction.html">
+            
+                <a href="introduction.html">
+            
+                    
+                    Introduction to Multi-threaded Pattern
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Introduction to Multi-threaded Pattern</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction-to-multi-threaded-pattern">Introduction to Multi-threaded Pattern</h1>
+<p>The <strong>Multi-threaded</strong> pattern covers concurrent programming techniques for solving problems that benefit from parallel execution. This includes thread synchronization, parallel algorithms, and concurrent data structure access.</p>
+<h2 id="visual-example">Visual Example</h2>
+<h3 id="parallel-tree-traversal">Parallel Tree Traversal</h3>
+<p><img src="../assets/multi-threaded/parallel_execution.gif" alt="Multi-threaded execution"></p>
+<p>Multiple threads can process independent subtrees simultaneously. Synchronization ensures correctness when combining results.</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="thread-vs-process">Thread vs Process</h3>
+<ul>
+<li><strong>Thread</strong>: Lightweight, shares memory with other threads</li>
+<li><strong>Process</strong>: Heavyweight, isolated memory space</li>
+</ul>
+<h3 id="concurrency-vs-parallelism">Concurrency vs Parallelism</h3>
+<ul>
+<li><strong>Concurrency</strong>: Managing multiple tasks (may interleave)</li>
+<li><strong>Parallelism</strong>: Executing multiple tasks simultaneously (requires multiple cores)</li>
+</ul>
+<h2 id="when-to-use">When to Use</h2>
+<ul>
+<li>CPU-bound tasks that can be divided (tree/graph traversal).</li>
+<li>I/O-bound tasks (parallel API calls, file reads).</li>
+<li>Producer-consumer scenarios.</li>
+<li>Problems explicitly asking for concurrent solutions.</li>
+<li>Embarrassingly parallel problems (independent subproblems).</li>
+</ul>
+<h2 id="python-threading-basics">Python Threading Basics</h2>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> threading
+<span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ThreadPoolExecutor<span class="token punctuation">,</span> as_completed
+
+<span class="token comment"># Basic thread</span>
+<span class="token keyword">def</span> <span class="token function">worker</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Thread </span><span class="token interpolation"><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token string"> running&quot;</span></span><span class="token punctuation">)</span>
+
+thread <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>worker<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&quot;A&quot;</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+thread<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+thread<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># Wait for completion</span>
+
+<span class="token comment"># Thread pool</span>
+<span class="token keyword">with</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+    futures <span class="token operator">=</span> <span class="token punctuation">[</span>executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>worker<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> future <span class="token keyword">in</span> as_completed<span class="token punctuation">(</span>futures<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result <span class="token operator">=</span> future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="synchronization-primitives">Synchronization Primitives</h2>
+<table>
+<thead>
+<tr>
+<th>Primitive</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lock/Mutex</td>
+<td>Mutual exclusion (one thread at a time)</td>
+</tr>
+<tr>
+<td>Semaphore</td>
+<td>Limit concurrent access (N threads)</td>
+</tr>
+<tr>
+<td>Condition</td>
+<td>Wait for specific condition</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>Signal between threads</td>
+</tr>
+<tr>
+<td>Barrier</td>
+<td>Wait for all threads to reach point</td>
+</tr>
+</tbody>
+</table>
+<h2 id="short-examples-&#x2014;-python">Short Examples &#x2014; Python</h2>
+<h3 id="same-tree-parallel-comparison">Same Tree (Parallel Comparison)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ThreadPoolExecutor
+
+<span class="token keyword">class</span> <span class="token class-name">TreeNode</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> val<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> left<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> right<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>val <span class="token operator">=</span> val
+        self<span class="token punctuation">.</span>left <span class="token operator">=</span> left
+        self<span class="token punctuation">.</span>right <span class="token operator">=</span> right
+
+<span class="token keyword">def</span> <span class="token function">is_same_tree_parallel</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> TreeNode<span class="token punctuation">,</span> q<span class="token punctuation">:</span> TreeNode<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> p <span class="token keyword">and</span> <span class="token keyword">not</span> q<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> p <span class="token keyword">or</span> <span class="token keyword">not</span> q <span class="token keyword">or</span> p<span class="token punctuation">.</span>val <span class="token operator">!=</span> q<span class="token punctuation">.</span>val<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">with</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+        left_future <span class="token operator">=</span> executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>is_same_tree_parallel<span class="token punctuation">,</span> p<span class="token punctuation">.</span>left<span class="token punctuation">,</span> q<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
+        right_future <span class="token operator">=</span> executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>is_same_tree_parallel<span class="token punctuation">,</span> p<span class="token punctuation">.</span>right<span class="token punctuation">,</span> q<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> left_future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">and</span> right_future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="invert-binary-tree-parallel">Invert Binary Tree (Parallel)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ThreadPoolExecutor
+
+<span class="token keyword">def</span> <span class="token function">invert_tree_parallel</span><span class="token punctuation">(</span>root<span class="token punctuation">:</span> TreeNode<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> TreeNode<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> root<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">with</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+        left_future <span class="token operator">=</span> executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>invert_tree_parallel<span class="token punctuation">,</span> root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
+        right_future <span class="token operator">=</span> executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>invert_tree_parallel<span class="token punctuation">,</span> root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+
+        root<span class="token punctuation">.</span>left <span class="token operator">=</span> right_future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        root<span class="token punctuation">.</span>right <span class="token operator">=</span> left_future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> root
+</code></pre>
+<h3 id="producer-consumer-pattern">Producer-Consumer Pattern</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> threading
+<span class="token keyword">from</span> queue <span class="token keyword">import</span> Queue
+
+<span class="token keyword">def</span> <span class="token function">producer</span><span class="token punctuation">(</span>queue<span class="token punctuation">:</span> Queue<span class="token punctuation">,</span> items<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> item <span class="token keyword">in</span> items<span class="token punctuation">:</span>
+        queue<span class="token punctuation">.</span>put<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Produced: </span><span class="token interpolation"><span class="token punctuation">{</span>item<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+    queue<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>  <span class="token comment"># Sentinel to signal completion</span>
+
+<span class="token keyword">def</span> <span class="token function">consumer</span><span class="token punctuation">(</span>queue<span class="token punctuation">:</span> Queue<span class="token punctuation">,</span> results<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        item <span class="token operator">=</span> queue<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> item <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        results<span class="token punctuation">.</span>append<span class="token punctuation">(</span>item <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment"># Process item</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;Consumed: </span><span class="token interpolation"><span class="token punctuation">{</span>item<span class="token punctuation">}</span></span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+
+queue <span class="token operator">=</span> Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>
+results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+prod_thread <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>producer<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+cons_thread <span class="token operator">=</span> threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>consumer<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>queue<span class="token punctuation">,</span> results<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+prod_thread<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+cons_thread<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+prod_thread<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+cons_thread<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span>  <span class="token comment"># [2, 4, 6, 8, 10]</span>
+</code></pre>
+<h3 id="thread-safe-counter-with-lock">Thread-Safe Counter (with Lock)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> threading
+
+<span class="token keyword">class</span> <span class="token class-name">ThreadSafeCounter</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token number">0</span>
+        self<span class="token punctuation">.</span>lock <span class="token operator">=</span> threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">increment</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> self<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>count <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> self<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>count
+
+<span class="token comment"># Usage</span>
+counter <span class="token operator">=</span> ThreadSafeCounter<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">worker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        counter<span class="token punctuation">.</span>increment<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+threads <span class="token operator">=</span> <span class="token punctuation">[</span>threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>worker<span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> t <span class="token keyword">in</span> threads<span class="token punctuation">:</span>
+    t<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> t <span class="token keyword">in</span> threads<span class="token punctuation">:</span>
+    t<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 10000</span>
+</code></pre>
+<h3 id="parallel-merge-sort">Parallel Merge Sort</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ThreadPoolExecutor
+
+<span class="token keyword">def</span> <span class="token function">parallel_merge_sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">,</span> depth<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> max_depth<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> arr
+
+    mid <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>
+
+    <span class="token keyword">if</span> depth <span class="token operator">&lt;</span> max_depth<span class="token punctuation">:</span>
+        <span class="token keyword">with</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+            left_future <span class="token operator">=</span> executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>parallel_merge_sort<span class="token punctuation">,</span> arr<span class="token punctuation">[</span><span class="token punctuation">:</span>mid<span class="token punctuation">]</span><span class="token punctuation">,</span> depth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> max_depth<span class="token punctuation">)</span>
+            right_future <span class="token operator">=</span> executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>parallel_merge_sort<span class="token punctuation">,</span> arr<span class="token punctuation">[</span>mid<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> depth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> max_depth<span class="token punctuation">)</span>
+            left <span class="token operator">=</span> left_future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            right <span class="token operator">=</span> right_future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token comment"># Sequential at deeper levels (thread overhead not worth it)</span>
+        left <span class="token operator">=</span> parallel_merge_sort<span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token punctuation">:</span>mid<span class="token punctuation">]</span><span class="token punctuation">,</span> depth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> max_depth<span class="token punctuation">)</span>
+        right <span class="token operator">=</span> parallel_merge_sort<span class="token punctuation">(</span>arr<span class="token punctuation">[</span>mid<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> depth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> max_depth<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> merge<span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">merge</span><span class="token punctuation">(</span>left<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">,</span> right<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    i <span class="token operator">=</span> j <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span> <span class="token keyword">and</span> j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> left<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> right<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            result<span class="token punctuation">.</span>append<span class="token punctuation">(</span>left<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            result<span class="token punctuation">.</span>append<span class="token punctuation">(</span>right<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            j <span class="token operator">+=</span> <span class="token number">1</span>
+    result<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>left<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    result<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>right<span class="token punctuation">[</span>j<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> result
+</code></pre>
+<h3 id="bst-iterator-thread-safe">BST Iterator (Thread-Safe)</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">import</span> threading
+
+<span class="token keyword">class</span> <span class="token class-name">BSTIterator</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root<span class="token punctuation">:</span> TreeNode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>lock <span class="token operator">=</span> threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_push_left<span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">_push_left</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> node<span class="token punctuation">:</span> TreeNode<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">while</span> node<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+            node <span class="token operator">=</span> node<span class="token punctuation">.</span>left
+
+    <span class="token keyword">def</span> <span class="token function">next</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> self<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+            node <span class="token operator">=</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            self<span class="token punctuation">.</span>_push_left<span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> node<span class="token punctuation">.</span>val
+
+    <span class="token keyword">def</span> <span class="token function">has_next</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> self<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>stack<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span>
+</code></pre>
+<h3 id="parallel-web-requests">Parallel Web Requests</h3>
+<pre class="language-"><code class="lang-python"><span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ThreadPoolExecutor<span class="token punctuation">,</span> as_completed
+<span class="token keyword">import</span> urllib<span class="token punctuation">.</span>request
+
+<span class="token keyword">def</span> <span class="token function">fetch_url</span><span class="token punctuation">(</span>url<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">tuple</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> url<span class="token punctuation">,</span> response<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> url<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+
+urls <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;https://example.com&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;https://httpbin.org/get&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;https://jsonplaceholder.typicode.com/posts/1&quot;</span>
+<span class="token punctuation">]</span>
+
+<span class="token keyword">with</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+    future_to_url <span class="token operator">=</span> <span class="token punctuation">{</span>executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>fetch_url<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span> url <span class="token keyword">for</span> url <span class="token keyword">in</span> urls<span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> future <span class="token keyword">in</span> as_completed<span class="token punctuation">(</span>future_to_url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        url<span class="token punctuation">,</span> result <span class="token operator">=</span> future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>url<span class="token punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">{</span>result<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token format-spec">50]</span><span class="token punctuation">}</span></span><span class="token string">...&quot;</span></span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<h3 id="race-conditions">Race Conditions</h3>
+<pre class="language-"><code class="lang-python"><span class="token comment"># BAD - Race condition</span>
+count <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">def</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">global</span> count
+    count <span class="token operator">+=</span> <span class="token number">1</span>  <span class="token comment"># Not atomic!</span>
+
+<span class="token comment"># GOOD - Use lock</span>
+lock <span class="token operator">=</span> threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">safe_increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">global</span> count
+    <span class="token keyword">with</span> lock<span class="token punctuation">:</span>
+        count <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h3 id="deadlock">Deadlock</h3>
+<pre class="language-"><code class="lang-python"><span class="token comment"># BAD - Potential deadlock</span>
+<span class="token keyword">def</span> <span class="token function">transfer</span><span class="token punctuation">(</span>from_acc<span class="token punctuation">,</span> to_acc<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> from_acc<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+        <span class="token keyword">with</span> to_acc<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>  <span class="token comment"># If another thread locks in opposite order = deadlock</span>
+            <span class="token keyword">pass</span>
+
+<span class="token comment"># GOOD - Consistent lock ordering</span>
+<span class="token keyword">def</span> <span class="token function">safe_transfer</span><span class="token punctuation">(</span>acc1<span class="token punctuation">,</span> acc2<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    first<span class="token punctuation">,</span> second <span class="token operator">=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span><span class="token punctuation">[</span>acc1<span class="token punctuation">,</span> acc2<span class="token punctuation">]</span><span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token builtin">id</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> first<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+        <span class="token keyword">with</span> second<span class="token punctuation">.</span>lock<span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+</code></pre>
+<h2 id="python-gil-note">Python GIL Note</h2>
+<p>Python&apos;s Global Interpreter Lock (GIL) means only one thread executes Python bytecode at a time. Threading helps with:</p>
+<ul>
+<li>I/O-bound tasks (waiting for network, disk)</li>
+<li>Calling C extensions that release GIL</li>
+</ul>
+<p>For CPU-bound parallelism, use:</p>
+<ul>
+<li><code>multiprocessing</code> module</li>
+<li>NumPy (releases GIL for array operations)</li>
+<li><code>concurrent.futures.ProcessPoolExecutor</code></li>
+</ul>
+<h2 id="thread-safety-checklist">Thread Safety Checklist</h2>
+<ul>
+<li>[ ] Protect shared mutable state with locks</li>
+<li>[ ] Use thread-safe data structures (Queue, etc.)</li>
+<li>[ ] Avoid shared state when possible</li>
+<li>[ ] Use consistent lock ordering to prevent deadlocks</li>
+<li>[ ] Consider using higher-level abstractions (ThreadPoolExecutor)</li>
+</ul>
+<h2 id="problems-to-practice">Problems to Practice</h2>
+<ul>
+<li><a href="https://leetcode.com/problems/print-in-order/" target="_blank">Print in Order</a></li>
+<li><a href="https://leetcode.com/problems/print-foobar-alternately/" target="_blank">Print FooBar Alternately</a></li>
+<li><a href="https://leetcode.com/problems/building-h2o/" target="_blank">Building H2O</a></li>
+<li><a href="https://leetcode.com/problems/the-dining-philosophers/" target="_blank">The Dining Philosophers</a></li>
+<li><a href="https://leetcode.com/problems/fizz-buzz-multithreaded/" target="_blank">Fizz Buzz Multithreaded</a></li>
+<li><a href="https://leetcode.com/problems/web-crawler-multithreaded/" target="_blank">Web Crawler Multithreaded</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../15-bitwise-xor/introduction.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Introduction to Bitwise XOR Pattern">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction to Multi-threaded Pattern","level":"17.1","depth":1,"previous":{"title":"Introduction to Bitwise XOR Pattern","level":"16.1","depth":1,"path":"15-bitwise-xor/introduction.md","ref":"15-bitwise-xor/introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","edit-link","-highlight","prism","prism-themes","copy-code-button","splitter","search-plus","anchorjs","expandable-chapters-small","page-toc-button","back-to-top-button","-lunr","-search","-sharing"],"root":"./docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{"lang":{"python":"python","js":"javascript","typescript":"typescript","java":"java","cpp":"cpp"},"css":["prism-themes/themes/prism-one-light.css"]},"github":{"url":"https://github.com/lvluu/leet"},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"prism-themes":{},"expandable-chapters-small":{},"copy-code-button":{},"sharing":false,"edit-link":{"label":"✏️ Edit","base":"https://github.com/lvluu/leet/edit/main"},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false},"anchorjs":{},"search-plus":{"depth":3,"maxLength":10000}},"theme":"default","author":"lvluu","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Coding Patterns Guide","language":"en","gitbook":">=3.2.3","description":"Free comprehensive guide to common coding patterns for algorithmic problems. Based on Grokking the Coding Interview by DesignGurus.io"},"file":{"path":"16-multi-threaded/introduction.md","mtime":"2026-05-22T04:57:29.130Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-05-22T04:58:03.505Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-anchorjs/anchor-style.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
